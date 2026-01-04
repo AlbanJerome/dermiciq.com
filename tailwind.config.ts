@@ -6,12 +6,13 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        lg: ".5625rem",
+        md: ".375rem",
+        sm: ".1875rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
       },
       colors: {
-        // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
         border: "hsl(var(--border) / <alpha-value>)",
@@ -73,7 +74,7 @@ export default {
         "sidebar-accent": {
           DEFAULT: "hsl(var(--sidebar-accent) / <alpha-value>)",
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
-          border: "var(--sidebar-accent-border)"
+          border: "var(--sidebar-accent-border)",
         },
         status: {
           online: "rgb(34 197 94)",
@@ -81,11 +82,37 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+        dermiciq: {
+          turquoise: "#6AEEE8",
+          mint: "#F8FFFE",
+          teal: "#005F5B",
+          softMint: "#C8F2EB",
+          charcoal: "#223331",
+          coral: "#FF9E9E",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["Inter", "var(--font-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+      },
+      fontSize: {
+        "hero": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+        "hero-mobile": ["3rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+        "section": ["3.5rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "section-mobile": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+        "subsection": ["2rem", { lineHeight: "1.3", fontWeight: "600" }],
+        "subsection-mobile": ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "body": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "caption": ["0.875rem", { lineHeight: "1.5", fontWeight: "500" }],
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
+      },
+      maxWidth: {
+        "8xl": "88rem",
       },
       keyframes: {
         "accordion-down": {
@@ -96,10 +123,25 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "count-up": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.5s ease-out forwards",
+        "fade-in": "fade-in 0.3s ease-out forwards",
+        "count-up": "count-up 0.5s ease-out forwards",
       },
     },
   },
