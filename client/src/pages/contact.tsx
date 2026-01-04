@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { siteContent } from "@/config/siteContent";
-import { MessageSquare, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { MessageSquare, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -212,20 +212,6 @@ export default function Contact() {
                       {contact.infoCards.location}
                     </h3>
                     <p className="text-muted-foreground">{contact.info.location}</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <Clock className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">
-                      {contact.infoCards.hours}
-                    </h3>
-                    <p className="text-muted-foreground">{contact.info.hours}</p>
                   </div>
                 </div>
               </Card>

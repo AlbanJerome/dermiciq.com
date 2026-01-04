@@ -50,37 +50,37 @@ export const siteContent = {
   },
 
   pillars: {
-    headline: "The Dynamic Sensitivity Protocol",
-    subheadline: "A proprietary intelligence layer that shifts the burden of chemical cross-referencing from you to sophisticated algorithms.",
+    headline: "Skincare That Knows You",
+    subheadline: "We do the ingredient research so you don't have to. Finally, skincare advice that's actually about your skin.",
     items: [
       {
-        title: "Dynamic Sensitivity Protocol",
-        description: "Context-aware analysis that considers your unique biological profile, not just universal hazard ratings.",
+        title: "Your Skin, Your Profile",
+        description: "Tell us about your sensitivities once, and we'll remember. Every product check is personalized to you.",
         icon: "Dna",
       },
       {
-        title: "Hierarchical Derivative Mapping",
-        description: "Identifies hidden molecular triggers by cross-referencing thousands of chemical synonyms and derivatives.",
+        title: "Hidden Ingredient Detection",
+        description: "Coconut-free but still reacting? We catch the 50+ hidden derivatives that other apps miss completely.",
         icon: "Network",
       },
       {
-        title: "Context-Aware Risk Assessment",
-        description: "Calculates real-world exposure risk based on concentration, product type, and your personal sensitivity threshold.",
+        title: "Real-World Risk, Not Scare Tactics",
+        description: "We consider how much of an ingredient is actually in your serum—not just that it exists.",
         icon: "ShieldCheck",
       },
       {
-        title: "Sovereign Neutrality",
-        description: "Zero 'pay-to-play' brand certifications. Pure science. Absolute consumer trust.",
+        title: "No Paid Endorsements. Ever.",
+        description: "Brands can't pay us for good ratings. Your trust matters more than their money.",
         icon: "Scale",
       },
       {
-        title: "Regulatory Aligned",
-        description: "Built to translate Health Canada's 2025 fragrance allergen disclosure requirements into actionable insights.",
+        title: "Backed by New Regulations",
+        description: "Canada's new ingredient transparency laws are coming. We're ready to decode them for you.",
         icon: "FileCheck",
       },
       {
-        title: "Continuous Learning",
-        description: "Your feedback refines your personal sensitivity model, making recommendations smarter over time.",
+        title: "Gets Smarter With You",
+        description: "Track what works (and what doesn't). Your profile learns from your experience over time.",
         icon: "Brain",
       },
     ],
@@ -109,58 +109,60 @@ export const siteContent = {
   science: {
     meta: {
       title: "The Science | Dermiciq Technologies",
-      description: "Learn how Hierarchical Derivative Mapping (HDM) identifies hidden ingredient triggers that binary apps miss.",
+      description: "Learn how Dermiciq finds hidden ingredient triggers that other apps miss completely.",
     },
     hero: {
-      headline: "Hierarchical Derivative Mapping",
-      subheadline: "The technology behind personalized ingredient intelligence",
+      headline: "How We Find What Others Miss",
+      subheadline: "The smart technology behind truly personalized ingredient checking",
       badge: "The Technology",
     },
     cta: {
-      headline: "Experience the Difference",
-      subheadline: "See how Dermiciq's context-aware intelligence works for your unique skin.",
+      headline: "See the Difference",
+      subheadline: "Try Dermiciq and discover what your skincare is really doing for your skin.",
       buttonLabel: "Get Started",
     },
     howItWorks: {
-      headline: "How HDM Works",
+      headline: "How It Works",
       steps: [
         {
           number: 1,
-          title: "Ingredient Parsing",
-          description: "Our engine scans INCI lists and identifies every ingredient, including hidden derivatives and synonyms.",
+          title: "Scan Your Products",
+          description: "Snap a photo or search by name. We identify every ingredient—including the tricky ones brands hide under scientific names.",
         },
         {
           number: 2,
-          title: "Derivative Tree Construction",
-          description: "Each ingredient is mapped to its molecular family tree—coconut derivatives, for example, include over 50 hidden surfactants.",
+          title: "Uncover Hidden Ingredients",
+          description: "Many ingredients have 'family members' that can trigger the same reactions. We map these connections so nothing slips through.",
         },
         {
           number: 3,
-          title: "Profile Cross-Reference",
-          description: "Your personal sensitivity profile is matched against the derivative tree to identify potential triggers.",
+          title: "Match to Your Profile",
+          description: "Your sensitivities are unique. We cross-check every ingredient against what we know about your skin.",
         },
         {
           number: 4,
-          title: "Context-Aware Scoring",
-          description: "Risk is calculated based on concentration, product type (rinse-off vs. leave-on), and your historical reaction data.",
+          title: "Get Real Answers",
+          description: "Not just 'good' or 'bad'—we tell you why something might not work for you, based on how much is in the product and how you'll use it.",
         },
       ],
     },
     comparison: {
-      headline: "Binary Apps vs. Dermiciq",
+      headline: "Other Apps vs. Dermiciq",
+      competitorLabel: "Other Apps",
+      dermiciqLabel: "Dermiciq",
       dermiciq: [
-        "Context-aware risk assessment",
-        "Personal sensitivity profiles",
-        "Hidden derivative detection",
-        "Dose-response calculations",
-        "Regulatory-aligned intelligence",
+        "Personalized to your skin",
+        "Catches hidden ingredient forms",
+        "Considers actual amounts used",
+        "No fear-mongering tactics",
+        "Always up-to-date research",
       ],
       competitors: [
-        "Universal 'safe vs. toxic' scores",
-        "One-size-fits-all ratings",
-        "Surface-level ingredient matching",
-        "Hazard-based fear marketing",
-        "Outdated databases",
+        "Same score for everyone",
+        "Misses ingredient variations",
+        "Ignores real-world usage",
+        "Designed to scare you",
+        "Outdated information",
       ],
     },
   },
@@ -278,7 +280,6 @@ export const siteContent = {
     infoCards: {
       email: "Email",
       location: "Location",
-      hours: "Hours",
     },
     form: {
       fields: {
@@ -292,9 +293,8 @@ export const siteContent = {
       error: "Something went wrong. Please try again.",
     },
     info: {
-      email: "hello@dermiciq.com",
+      email: "contact@dermiciq.com",
       location: "Toronto, Canada",
-      hours: "Monday - Friday, 9AM - 5PM EST",
     },
   },
 
@@ -327,23 +327,23 @@ export const siteContent = {
     items: [
       {
         question: "How is Dermiciq different from apps like Yuka or Think Dirty?",
-        answer: "Legacy apps use universal 'hazard-based' scoring that treats all users identically. Dermiciq's Dynamic Sensitivity Protocol creates a personalized risk profile based on your unique biology, skin conditions, and reaction history.",
+        answer: "Those apps give everyone the same score. But what irritates your skin might be perfectly fine for someone else. Dermiciq learns about your unique sensitivities and gives you personalized results.",
       },
       {
-        question: "What is Hierarchical Derivative Mapping?",
-        answer: "HDM is our proprietary technology that identifies hidden ingredient triggers. For example, if you're sensitive to coconut, HDM will flag over 50 coconut-derived surfactants that other apps miss entirely.",
+        question: "How do you catch 'hidden' ingredients?",
+        answer: "Many ingredients have dozens of variations that go by different names. If you're sensitive to coconut, for example, we'll flag over 50 coconut-derived ingredients that other apps miss completely.",
       },
       {
-        question: "How does Dermiciq stay neutral?",
-        answer: "We refuse all 'pay-to-play' brand certifications. Our revenue comes from B2B data licensing and consumer subscriptions—never from brands seeking favorable ratings.",
+        question: "Why should I trust your ratings?",
+        answer: "Brands can't pay us for good scores. Ever. We don't sell 'clean beauty' certifications or accept sponsorships. Your trust is worth more than their money.",
       },
       {
-        question: "Is my data sold to third parties?",
-        answer: "Never. Your sensitivity data is encrypted and used solely to improve your personal recommendations. We do not sell user data or use it for advertising.",
+        question: "Is my information safe?",
+        answer: "Absolutely. Your skin profile stays private and encrypted. We never sell your data or use it for ads. It's only used to give you better recommendations.",
       },
       {
-        question: "What is the Health Canada 2025 regulation?",
-        answer: "Health Canada's Self-Care Framework mandates detailed fragrance allergen disclosure starting 2025-2026. Dermiciq is built to translate this complex chemical data into personalized health insights.",
+        question: "What's changing with ingredient labels in 2025?",
+        answer: "Canada is requiring brands to list fragrance ingredients in detail starting 2025-2026. We're ready to help you understand what all those new ingredient names actually mean for your skin.",
       },
     ],
   },
