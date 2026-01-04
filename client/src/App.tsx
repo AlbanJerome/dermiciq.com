@@ -17,6 +17,7 @@ import Terms from "@/pages/terms";
 import Cookies from "@/pages/cookies";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
+import BlogArticle from "@/pages/blog-article";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/cookies" component={Cookies} />
       <Route path="/about" component={About} />
       <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogArticle} />
       <Route component={NotFound} />
     </Switch>
   );
