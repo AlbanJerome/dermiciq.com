@@ -40,7 +40,7 @@ export default function Cookies() {
                 <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                   <li><strong>Essential cookies:</strong> Keep you logged in and remember your session</li>
                   <li><strong>Preference cookies:</strong> Remember your settings like dark mode preference</li>
-                  <li><strong>Analytics cookies:</strong> Help us understand how people use Dermiciq so we can improve</li>
+                  <li><strong>Analytics cookies:</strong> Help us understand how people use Dermiciq so we can improve. This includes first-party analytics that may use URL parameters (like UTM tags) to understand how you found us—but we never share this with third-party advertisers</li>
                 </ul>
               </div>
 

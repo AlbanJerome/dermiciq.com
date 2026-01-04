@@ -388,7 +388,7 @@ export const siteContent = {
         ],
       },
     ],
-    copyright: "© 2024 Dermiciq Technologies. All rights reserved.",
+    copyright: "© 2026 Dermiciq Technologies. All rights reserved.",
     location: "Toronto, Canada",
   },
 };
