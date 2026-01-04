@@ -1,10 +1,9 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/siteContent";
-import { Building2, Stethoscope, Palette, Database, ArrowRight } from "lucide-react";
+import { Stethoscope, Palette, Database, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect, useState, useRef } from "react";
 
@@ -95,14 +94,6 @@ export default function Partners() {
       <section className="py-16 lg:py-24 bg-gradient-to-br from-dermiciq-softMint/30 via-background to-background">
         <div className="container-content">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge
-              variant="secondary"
-              className="mb-6 text-caption no-default-active-elevate"
-              data-testid="badge-partners"
-            >
-              <Building2 className="h-3.5 w-3.5 mr-1.5" />
-              {partners.hero.badge}
-            </Badge>
             <h1
               className="text-hero-mobile lg:text-hero mb-6 text-foreground"
               data-testid="text-partners-headline"

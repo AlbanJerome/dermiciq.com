@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { siteContent } from "@/config/siteContent";
 import { ShieldCheck } from "lucide-react";
+import heroImage from "@assets/stock_images/young_woman_applying_6ff17e5d.jpg";
 
 export function Hero() {
   const { hero } = siteContent;
@@ -63,18 +64,21 @@ export function Hero() {
           </div>
 
           <div className="order-1 lg:order-2 relative">
-            <div className="relative aspect-square max-w-lg mx-auto lg:max-w-none">
-              <div className="absolute inset-0 bg-gradient-to-br from-dermiciq-turquoise/20 to-dermiciq-teal/10 rounded-3xl" />
-              <div className="absolute inset-4 bg-gradient-to-tr from-dermiciq-softMint to-dermiciq-mint rounded-2xl flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-dermiciq-turquoise to-dermiciq-teal rounded-full flex items-center justify-center shadow-xl">
-                    <span className="text-4xl font-bold text-white">dIQ</span>
-                  </div>
-                  <p className="text-subsection-mobile text-dermiciq-charcoal font-semibold">
+            <div className="relative aspect-square max-w-lg mx-auto lg:max-w-none overflow-hidden rounded-3xl shadow-2xl">
+              <img 
+                src={heroImage} 
+                alt="Woman applying skincare products" 
+                className="w-full h-full object-cover"
+                data-testid="img-hero"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dermiciq-charcoal/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/90 dark:bg-dermiciq-charcoal/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                  <p className="text-sm font-semibold text-foreground">
                     {siteContent.brand.tagline}
                   </p>
-                  <p className="text-body text-dermiciq-charcoal/70 mt-2">
-                    Powered by Dynamic Sensitivity Protocol
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Skincare that truly understands you
                   </p>
                 </div>
               </div>

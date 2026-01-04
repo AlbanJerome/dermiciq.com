@@ -221,7 +221,6 @@ export const siteContent = {
     hero: {
       headline: "Partner With Dermiciq",
       subheadline: "Bring personalized ingredient intelligence to your patients and customers.",
-      badge: "B2B Solutions",
     },
     statsHeadline: "Market Opportunity",
     logosSection: {
@@ -375,17 +374,17 @@ export const siteContent = {
       {
         title: "Legal",
         links: [
-          { label: "Privacy Policy", href: "#" },
-          { label: "Terms of Service", href: "#" },
-          { label: "Cookie Policy", href: "#" },
+          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Terms of Service", href: "/terms" },
+          { label: "Cookie Policy", href: "/cookies" },
         ],
       },
       {
         title: "Company",
         links: [
-          { label: "About Us", href: "#" },
+          { label: "About Us", href: "/about" },
           { label: "Contact", href: "/contact" },
-          { label: "Careers", href: "#" },
+          { label: "Blog", href: "/blog" },
         ],
       },
     ],

@@ -1,16 +1,28 @@
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
 
 export function Footer() {
   const { footer, brand } = siteContent;
+  const [, setLocation] = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "auto" });
+    setTimeout(() => setLocation(href), 0);
+  };
 
   return (
     <footer className="bg-card border-t border-border" data-testid="footer">
       <div className="container-content py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-logo">
+            <a 
+              href="/"
+              onClick={(e) => handleNavClick(e, "/")}
+              className="flex items-center gap-2 mb-4" 
+              data-testid="link-footer-logo"
+            >
               <img
                 src="/logo.png"
                 alt={brand.name}
@@ -19,7 +31,7 @@ export function Footer() {
               <span className="text-xl font-semibold text-foreground">
                 {brand.name}
               </span>
-            </Link>
+            </a>
             <p className="text-muted-foreground text-body mb-4">
               {footer.tagline}
             </p>
@@ -37,13 +49,14 @@ export function Footer() {
               <ul className="space-y-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <Link
+                    <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors text-body"
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className="text-muted-foreground hover:text-foreground transition-colors text-body cursor-pointer"
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -56,20 +69,22 @@ export function Footer() {
             {footer.copyright}
           </p>
           <div className="flex items-center gap-6">
-            <Link
-              href="#"
-              className="text-caption text-muted-foreground hover:text-foreground transition-colors"
+            <a
+              href="/privacy"
+              onClick={(e) => handleNavClick(e, "/privacy")}
+              className="text-caption text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               data-testid="link-footer-privacy"
             >
               Privacy Policy
-            </Link>
-            <Link
-              href="#"
-              className="text-caption text-muted-foreground hover:text-foreground transition-colors"
+            </a>
+            <a
+              href="/terms"
+              onClick={(e) => handleNavClick(e, "/terms")}
+              className="text-caption text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               data-testid="link-footer-terms"
             >
               Terms of Service
-            </Link>
+            </a>
           </div>
         </div>
       </div>
