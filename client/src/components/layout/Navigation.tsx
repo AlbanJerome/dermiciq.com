@@ -64,7 +64,7 @@ export function Navigation() {
 
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
-          <Button asChild data-testid="button-open-app">
+          <Button asChild data-testid="button-login">
             {href.startsWith("http") ? (
               <a href={href} target="_blank" rel="noopener noreferrer">
                 {label}
@@ -112,7 +112,7 @@ export function Navigation() {
                 <span className="text-muted-foreground">Theme</span>
                 <ThemeToggle />
               </div>
-              <Button asChild className="w-full" data-testid="button-mobile-open-app">
+              <Button asChild className="w-full" data-testid="button-mobile-login">
                 {href.startsWith("http") ? (
                   <a href={href} target="_blank" rel="noopener noreferrer">
                     {label}

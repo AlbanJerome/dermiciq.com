@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
-import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
+import { marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Heart, Shield, Sparkles, ArrowRight } from "lucide-react";
 import aboutImage from "@assets/stock_images/diverse_women_skinca_4f516423.jpg";
@@ -128,7 +128,7 @@ export default function About() {
             className="text-lg px-8"
             data-testid="button-about-cta"
           >
-            {hasPublicApp ? "Get Started" : "Contact us"}
+            Get Started
             <ArrowRight className="ml-2 h-5 w-5" />
           </MarketingButtonLink>
         </div>

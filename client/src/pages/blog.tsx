@@ -3,7 +3,7 @@ import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
-import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
+import { marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import blogImage1 from "@assets/stock_images/woman_reading_produc_9efadd18.jpg";
@@ -282,7 +282,7 @@ export default function Blog() {
             className="text-lg px-8"
             data-testid="button-blog-cta"
           >
-            {hasPublicApp ? "Get Started Free" : "Contact us"}
+            Get Started Free
             <ArrowRight className="ml-2 h-5 w-5" />
           </MarketingButtonLink>
         </div>

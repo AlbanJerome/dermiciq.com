@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
-import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
+import { marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { blogPosts } from "./blog";
@@ -173,7 +173,7 @@ export default function BlogArticle() {
               className="text-lg px-8"
               data-testid="button-article-cta"
             >
-              {hasPublicApp ? "Get Started Free" : "Contact us"}
+              Get Started Free
               <ArrowRight className="ml-2 h-5 w-5" />
             </MarketingButtonLink>
           </div>
