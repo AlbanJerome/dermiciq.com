@@ -1,6 +1,12 @@
 /**
- * Backend API origin (e.g. `https://app.dermiciq.com`). Leave unset for static
- * previews (GitHub Pages): auth and contact use fallbacks instead of `/api/*`.
+ * Intended split:
+ * - Apex domain (`dermiciq.com`): static marketing site (this Vite output).
+ * - App subdomain (`app.dermiciq.com`): real app + `/api/*` (sessions, login, etc.).
+ *
+ * Set `VITE_API_ORIGIN` to `https://app.dermiciq.com` when building the marketing
+ * site for production so login and contact POST hit the app (CORS must allow the
+ * marketing origin). Leave it unset for GitHub Pages preview builds: no `/api`
+ * calls; contact falls back to `mailto:`.
  */
 const raw = (import.meta.env.VITE_API_ORIGIN as string | undefined)?.trim();
 
