@@ -15,6 +15,17 @@ function productionBaseFromHomepage(): string {
   }
 }
 
+/** Vite `base` for production: `/` for apex custom domain, `/repo/` for GitHub project Pages. */
+function productionBase(): string {
+  const raw = process.env.VITE_BASE?.trim();
+  if (raw) {
+    if (raw === "/" || raw === "") return "/";
+    const withLeading = raw.startsWith("/") ? raw : `/${raw}`;
+    return withLeading.endsWith("/") ? withLeading : `${withLeading}/`;
+  }
+  return productionBaseFromHomepage();
+}
+
 export default defineConfig(async ({ command }) => {
   const plugins: PluginOption[] = [react()];
 
@@ -56,7 +67,7 @@ export default defineConfig(async ({ command }) => {
   }
 
   return {
-    base: command === "serve" ? "/" : productionBaseFromHomepage(),
+    base: command === "serve" ? "/" : productionBase(),
     plugins,
     resolve: {
       alias: {
