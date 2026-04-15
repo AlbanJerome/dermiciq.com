@@ -26,32 +26,8 @@ function productionBase(): string {
   return productionBaseFromHomepage();
 }
 
-export default defineConfig(async ({ command }) => {
+export default defineConfig(({ command }) => {
   const plugins: PluginOption[] = [react()];
-
-  try {
-    const { default: runtimeErrorOverlay } = await import(
-      "@replit/vite-plugin-runtime-error-modal"
-    );
-    plugins.push(runtimeErrorOverlay());
-  } catch {
-    /* optional Replit dev overlay */
-  }
-
-  if (
-    process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-  ) {
-    try {
-      const [{ cartographer }, { devBanner }] = await Promise.all([
-        import("@replit/vite-plugin-cartographer"),
-        import("@replit/vite-plugin-dev-banner"),
-      ]);
-      plugins.push(cartographer(), devBanner());
-    } catch {
-      /* optional Replit dev plugins */
-    }
-  }
 
   if (command === "build") {
     plugins.push({
@@ -72,7 +48,6 @@ export default defineConfig(async ({ command }) => {
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "client", "src"),
-        "@shared": path.resolve(import.meta.dirname, "shared"),
         "@assets": path.resolve(import.meta.dirname, "attached_assets"),
       },
     },
