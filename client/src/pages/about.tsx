@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
-import { appPublicUrl } from "@/lib/appUrl";
+import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Heart, Shield, Sparkles, ArrowRight } from "lucide-react";
 import aboutImage from "@assets/stock_images/diverse_women_skinca_4f516423.jpg";
@@ -123,12 +123,12 @@ export default function About() {
             Ready to experience skincare intelligence that actually works for you?
           </p>
           <MarketingButtonLink
-            href={appPublicUrl}
+            href={marketingCtaHref}
             size="lg"
             className="text-lg px-8"
             data-testid="button-about-cta"
           >
-            Get Started
+            {hasPublicApp ? "Get Started" : "Contact us"}
             <ArrowRight className="ml-2 h-5 w-5" />
           </MarketingButtonLink>
         </div>

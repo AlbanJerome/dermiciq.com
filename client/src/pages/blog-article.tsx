@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
-import { appPublicUrl } from "@/lib/appUrl";
+import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { blogPosts } from "./blog";
@@ -168,12 +168,12 @@ export default function BlogArticle() {
               Put what you've learned into practice with personalized ingredient analysis.
             </p>
             <MarketingButtonLink
-              href={appPublicUrl}
+              href={marketingCtaHref}
               size="lg"
               className="text-lg px-8"
               data-testid="button-article-cta"
             >
-              Get Started Free
+              {hasPublicApp ? "Get Started Free" : "Contact us"}
               <ArrowRight className="ml-2 h-5 w-5" />
             </MarketingButtonLink>
           </div>

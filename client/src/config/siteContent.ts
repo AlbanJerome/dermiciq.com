@@ -1,4 +1,4 @@
-import { appPublicUrl } from "@/lib/appUrl";
+import { hasPublicApp, marketingCtaHref } from "@/lib/appUrl";
 
 export const siteContent = {
   brand: {
@@ -21,13 +21,19 @@ export const siteContent = {
       { label: "Partners", href: "/partners" },
       { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Open app", href: appPublicUrl },
+    cta: {
+      label: hasPublicApp ? "Open app" : "Contact",
+      href: marketingCtaHref,
+    },
   },
 
   hero: {
     headline: "Stop Guessing. Start Knowing.",
     subheadline: "The first skincare intelligence platform that understands your unique biology—not just universal scores.",
-    primaryCta: { label: "Get Started", href: appPublicUrl },
+    primaryCta: {
+      label: hasPublicApp ? "Get Started" : "Contact us",
+      href: marketingCtaHref,
+    },
     secondaryCta: { label: "Learn How It Works", href: "/science" },
     trustBadge: "Sovereign Neutral Technology",
   },
@@ -121,7 +127,7 @@ export const siteContent = {
     cta: {
       headline: "See the Difference",
       subheadline: "Try Dermiciq and discover what your skincare is really doing for your skin.",
-      buttonLabel: "Get Started",
+      buttonLabel: hasPublicApp ? "Get Started" : "Contact us",
     },
     howItWorks: {
       headline: "How It Works",
@@ -189,7 +195,7 @@ export const siteContent = {
     cta: {
       headline: "Trust Built on Transparency",
       subheadline: "Join the movement toward truly objective skincare intelligence.",
-      buttonLabel: "Get Started",
+      buttonLabel: hasPublicApp ? "Get Started" : "Contact us",
     },
     commitments: [
       {
@@ -330,7 +336,7 @@ export const siteContent = {
   cta: {
     headline: "Ready to Stop Guessing?",
     subheadline: "Join thousands who have discovered the power of personalized ingredient intelligence.",
-    buttonLabel: "Get Started",
+    buttonLabel: hasPublicApp ? "Get Started" : "Contact us",
   },
 
   notFound: {

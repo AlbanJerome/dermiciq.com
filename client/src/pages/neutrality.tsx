@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { siteContent } from "@/config/siteContent";
 import { Shield, CheckCircle2, Scale, ArrowRight } from "lucide-react";
-import { appPublicUrl } from "@/lib/appUrl";
+import { marketingCtaHref } from "@/lib/appUrl";
 import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 
 export default function Neutrality() {
@@ -115,7 +115,7 @@ export default function Neutrality() {
             {neutrality.cta.subheadline}
           </p>
           <MarketingButtonLink
-            href={appPublicUrl}
+            href={marketingCtaHref}
             size="lg"
             className="text-lg px-8"
             data-testid="button-neutrality-cta"

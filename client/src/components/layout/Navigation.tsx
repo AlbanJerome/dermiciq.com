@@ -65,9 +65,13 @@ export function Navigation() {
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
           <Button asChild data-testid="button-open-app">
-            <a href={href} target="_blank" rel="noopener noreferrer">
-              {label}
-            </a>
+            {href.startsWith("http") ? (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {label}
+              </a>
+            ) : (
+              <Link href={href}>{label}</Link>
+            )}
           </Button>
         </div>
 
@@ -109,9 +113,13 @@ export function Navigation() {
                 <ThemeToggle />
               </div>
               <Button asChild className="w-full" data-testid="button-mobile-open-app">
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                  {label}
-                </a>
+                {href.startsWith("http") ? (
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    {label}
+                  </a>
+                ) : (
+                  <Link href={href}>{label}</Link>
+                )}
               </Button>
             </div>
           </nav>
