@@ -1,7 +1,7 @@
 import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { readFileSync } from "fs";
+import { readFileSync, copyFileSync, existsSync } from "fs";
 
 function productionBaseFromHomepage(): string {
   try {
@@ -40,6 +40,19 @@ export default defineConfig(async ({ command }) => {
     } catch {
       /* optional Replit dev plugins */
     }
+  }
+
+  if (command === "build") {
+    plugins.push({
+      name: "github-pages-spa-fallback",
+      closeBundle() {
+        const outDir = path.resolve(import.meta.dirname, "dist/public");
+        const indexHtml = path.join(outDir, "index.html");
+        if (existsSync(indexHtml)) {
+          copyFileSync(indexHtml, path.join(outDir, "404.html"));
+        }
+      },
+    });
   }
 
   return {
