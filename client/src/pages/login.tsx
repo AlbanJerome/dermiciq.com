@@ -8,6 +8,7 @@ import { siteContent } from "@/config/siteContent";
 import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 import { SiGoogle } from "react-icons/si";
+import { publicAsset } from "@/lib/publicAsset";
 
 export default function Login() {
   const { login } = siteContent;
@@ -44,7 +45,7 @@ export default function Login() {
           <Card className="max-w-md mx-auto p-8" data-testid="card-login">
             <div className="text-center mb-8">
               <img
-                src="/logo.png"
+                src={publicAsset("logo.png")}
                 alt={siteContent.brand.name}
                 className="h-16 w-16 mx-auto mb-4 rounded-xl"
               />

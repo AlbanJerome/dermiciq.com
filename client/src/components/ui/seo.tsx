@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { siteContent } from "@/config/siteContent";
+import { publicAsset } from "@/lib/publicAsset";
 
 interface SEOProps {
   title?: string;
@@ -18,6 +19,10 @@ export function SEO({
   const pageTitle = title || meta.defaultTitle;
   const pageDescription = description || meta.defaultDescription;
   const url = `https://dermiciq.com${path}`;
+  const logoAbsolute =
+    typeof window !== "undefined"
+      ? new URL(publicAsset("logo.png"), window.location.origin).href
+      : "https://dermiciq.com/logo.png";
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -25,7 +30,7 @@ export function SEO({
     name: brand.name,
     description: brand.description,
     url: "https://dermiciq.com",
-    logo: "https://dermiciq.com/logo.png",
+    logo: logoAbsolute,
     sameAs: [],
     address: {
       "@type": "PostalAddress",
@@ -59,13 +64,13 @@ export function SEO({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
-      <meta property="og:image" content="https://dermiciq.com/logo.png" />
+      <meta property="og:image" content={logoAbsolute} />
       <meta property="og:site_name" content={brand.name} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
-      <meta name="twitter:image" content="https://dermiciq.com/logo.png" />
+      <meta name="twitter:image" content={logoAbsolute} />
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}

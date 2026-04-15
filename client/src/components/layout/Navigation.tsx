@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/siteContent";
 import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { publicAsset } from "@/lib/publicAsset";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export function Navigation() {
       <nav className="container-content flex items-center justify-between h-16 lg:h-18">
         <Link href="/" className="flex items-center gap-2" data-testid="link-logo">
           <img
-            src="/logo.png"
+            src={publicAsset("logo.png")}
             alt={siteContent.brand.name}
             className="h-10 w-10 rounded-lg"
           />

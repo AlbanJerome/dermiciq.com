@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
+import { publicAsset } from "@/lib/publicAsset";
 
 export function Footer() {
   const { footer, brand } = siteContent;
@@ -24,7 +25,7 @@ export function Footer() {
               data-testid="link-footer-logo"
             >
               <img
-                src="/logo.png"
+                src={publicAsset("logo.png")}
                 alt={brand.name}
                 className="h-10 w-10 rounded-lg"
               />
