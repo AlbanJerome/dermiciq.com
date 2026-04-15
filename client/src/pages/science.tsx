@@ -4,8 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { siteContent } from "@/config/siteContent";
 import { Microscope, CheckCircle2, XCircle, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { appPublicUrl } from "@/lib/appUrl";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 
 export default function Science() {
   const { science } = siteContent;
@@ -126,12 +126,15 @@ export default function Science() {
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             {science.cta.subheadline}
           </p>
-          <Link href="/login">
-            <Button size="lg" className="text-lg px-8" data-testid="button-science-cta">
-              {science.cta.buttonLabel}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <MarketingButtonLink
+            href={appPublicUrl}
+            size="lg"
+            className="text-lg px-8"
+            data-testid="button-science-cta"
+          >
+            {science.cta.buttonLabel}
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </MarketingButtonLink>
         </div>
       </section>
     </Layout>

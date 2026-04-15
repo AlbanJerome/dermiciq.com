@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { siteContent } from "@/config/siteContent";
 import { MessageSquare, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest } from "@/lib/apiRequest";
 import { hasBackendApi } from "@/lib/apiOrigin";
 
 export default function Contact() {

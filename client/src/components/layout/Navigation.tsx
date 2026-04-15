@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/siteContent";
-import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { publicAsset } from "@/lib/publicAsset";
 
@@ -11,7 +10,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
-  const { isAuthenticated, isLoading } = useAuth();
+  const { label, href } = siteContent.navigation.cta;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,17 +64,11 @@ export function Navigation() {
 
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
-          {!isLoading && (
-            isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button data-testid="button-dashboard">Dashboard</Button>
-              </Link>
-            ) : (
-              <Link href={siteContent.navigation.cta.href}>
-                <Button data-testid="button-login">{siteContent.navigation.cta.label}</Button>
-              </Link>
-            )
-          )}
+          <Button asChild data-testid="button-open-app">
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {label}
+            </a>
+          </Button>
         </div>
 
         <Button
@@ -115,21 +108,11 @@ export function Navigation() {
                 <span className="text-muted-foreground">Theme</span>
                 <ThemeToggle />
               </div>
-              {!isLoading && (
-                isAuthenticated ? (
-                  <Link href="/dashboard">
-                    <Button className="w-full" data-testid="button-mobile-dashboard">
-                      Dashboard
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link href={siteContent.navigation.cta.href}>
-                    <Button className="w-full" data-testid="button-mobile-login">
-                      {siteContent.navigation.cta.label}
-                    </Button>
-                  </Link>
-                )
-              )}
+              <Button asChild className="w-full" data-testid="button-mobile-open-app">
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {label}
+                </a>
+              </Button>
             </div>
           </nav>
         </div>

@@ -2,8 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { appPublicUrl } from "@/lib/appUrl";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import blogImage1 from "@assets/stock_images/woman_reading_produc_9efadd18.jpg";
 import blogImage2 from "@assets/stock_images/diverse_women_skinca_552bf2ef.jpg";
@@ -275,12 +276,15 @@ export default function Blog() {
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Put what you've learned into practice with personalized ingredient analysis.
           </p>
-          <Link href="/login" data-testid="link-blog-cta">
-            <Button size="lg" className="text-lg px-8" data-testid="button-blog-cta">
-              Get Started Free
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <MarketingButtonLink
+            href={appPublicUrl}
+            size="lg"
+            className="text-lg px-8"
+            data-testid="button-blog-cta"
+          >
+            Get Started Free
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </MarketingButtonLink>
         </div>
       </section>
     </Layout>

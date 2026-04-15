@@ -1,5 +1,4 @@
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { siteContent } from "@/config/siteContent";
 import { ArrowRight } from "lucide-react";
 
@@ -21,12 +20,15 @@ export function CTASection() {
         <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
           {cta.subheadline}
         </p>
-        <Link href={hero.primaryCta.href}>
-          <Button size="lg" className="text-lg px-8" data-testid="button-cta-primary">
-            {cta.buttonLabel}
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </Link>
+        <MarketingButtonLink
+          href={hero.primaryCta.href}
+          size="lg"
+          className="text-lg px-8"
+          data-testid="button-cta-primary"
+        >
+          {cta.buttonLabel}
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </MarketingButtonLink>
       </div>
     </section>
   );

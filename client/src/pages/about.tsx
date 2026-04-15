@@ -1,8 +1,8 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { appPublicUrl } from "@/lib/appUrl";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Heart, Shield, Sparkles, ArrowRight } from "lucide-react";
 import aboutImage from "@assets/stock_images/diverse_women_skinca_4f516423.jpg";
 
@@ -122,12 +122,15 @@ export default function About() {
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Ready to experience skincare intelligence that actually works for you?
           </p>
-          <Link href="/login" data-testid="link-about-cta">
-            <Button size="lg" className="text-lg px-8" data-testid="button-about-cta">
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <MarketingButtonLink
+            href={appPublicUrl}
+            size="lg"
+            className="text-lg px-8"
+            data-testid="button-about-cta"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </MarketingButtonLink>
         </div>
       </section>
     </Layout>

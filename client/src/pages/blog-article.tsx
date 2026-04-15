@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
+import { appPublicUrl } from "@/lib/appUrl";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { blogPosts } from "./blog";
 
@@ -165,12 +167,15 @@ export default function BlogArticle() {
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Put what you've learned into practice with personalized ingredient analysis.
             </p>
-            <Link href="/login" data-testid="link-article-cta">
-              <Button size="lg" className="text-lg px-8" data-testid="button-article-cta">
-                Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            <MarketingButtonLink
+              href={appPublicUrl}
+              size="lg"
+              className="text-lg px-8"
+              data-testid="button-article-cta"
+            >
+              Get Started Free
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </MarketingButtonLink>
           </div>
         </section>
       </article>

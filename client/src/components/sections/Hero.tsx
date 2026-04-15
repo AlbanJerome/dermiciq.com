@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { Badge } from "@/components/ui/badge";
 import { siteContent } from "@/config/siteContent";
 import { ShieldCheck } from "lucide-react";
@@ -45,11 +46,14 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={hero.primaryCta.href}>
-                <Button size="lg" className="w-full sm:w-auto text-lg px-8" data-testid="button-hero-primary">
-                  {hero.primaryCta.label}
-                </Button>
-              </Link>
+              <MarketingButtonLink
+                href={hero.primaryCta.href}
+                size="lg"
+                className="w-full sm:w-auto text-lg px-8"
+                data-testid="button-hero-primary"
+              >
+                {hero.primaryCta.label}
+              </MarketingButtonLink>
               <Link href={hero.secondaryCta.href}>
                 <Button
                   variant="outline"

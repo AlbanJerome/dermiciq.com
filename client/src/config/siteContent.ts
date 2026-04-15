@@ -1,3 +1,5 @@
+import { appPublicUrl } from "@/lib/appUrl";
+
 export const siteContent = {
   brand: {
     name: "Dermiciq",
@@ -19,13 +21,13 @@ export const siteContent = {
       { label: "Partners", href: "/partners" },
       { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Login", href: "/login" },
+    cta: { label: "Open app", href: appPublicUrl },
   },
 
   hero: {
     headline: "Stop Guessing. Start Knowing.",
     subheadline: "The first skincare intelligence platform that understands your unique biology—not just universal scores.",
-    primaryCta: { label: "Get Started", href: "/login" },
+    primaryCta: { label: "Get Started", href: appPublicUrl },
     secondaryCta: { label: "Learn How It Works", href: "/science" },
     trustBadge: "Sovereign Neutral Technology",
   },
@@ -296,32 +298,6 @@ export const siteContent = {
     info: {
       email: "contact@dermiciq.com",
       location: "Toronto, Canada",
-    },
-  },
-
-  login: {
-    meta: {
-      title: "Login | Dermiciq Technologies",
-      description: "Sign in to access your personalized Dermiciq dashboard.",
-    },
-    headline: "Welcome Back",
-    subheadline: "Sign in to access your personalized ingredient intelligence.",
-    googleButton: "Continue with Google",
-    divider: "or continue with email",
-    comingSoon: "Full email authentication coming soon.",
-    staticPreviewHint:
-      "This public preview has no authentication server. Email contact@dermiciq.com for access.",
-  },
-
-  dashboard: {
-    meta: {
-      title: "Dashboard | Dermiciq Technologies",
-      description: "Your personalized Dermiciq dashboard.",
-    },
-    headline: "Welcome to Dermiciq",
-    comingSoon: {
-      title: "Dashboard Coming Soon",
-      description: "We're building something incredible. Your personalized ingredient intelligence dashboard is under development.",
     },
   },
 
