@@ -10,7 +10,6 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
-  const { label, href } = siteContent.navigation.cta;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,15 +63,6 @@ export function Navigation() {
 
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
-          <Button asChild data-testid="button-login">
-            {href.startsWith("http") ? (
-              <a href={href} target="_blank" rel="noopener noreferrer">
-                {label}
-              </a>
-            ) : (
-              <Link href={href}>{label}</Link>
-            )}
-          </Button>
         </div>
 
         <Button
@@ -112,15 +102,6 @@ export function Navigation() {
                 <span className="text-muted-foreground">Theme</span>
                 <ThemeToggle />
               </div>
-              <Button asChild className="w-full" data-testid="button-mobile-login">
-                {href.startsWith("http") ? (
-                  <a href={href} target="_blank" rel="noopener noreferrer">
-                    {label}
-                  </a>
-                ) : (
-                  <Link href={href}>{label}</Link>
-                )}
-              </Button>
             </div>
           </nav>
         </div>

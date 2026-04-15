@@ -21,7 +21,6 @@ export const siteContent = {
       { label: "Partners", href: "/partners" },
       { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Login", href: marketingCtaHref },
   },
 
   hero: {
