@@ -9,11 +9,14 @@ import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 import { SiGoogle } from "react-icons/si";
 import { publicAsset } from "@/lib/publicAsset";
+import { hasBackendApi, apiUrl } from "@/lib/apiOrigin";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Login() {
   const { login } = siteContent;
   const { isAuthenticated, isLoading } = useAuth();
   const [, setLocation] = useLocation();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
@@ -22,7 +25,14 @@ export default function Login() {
   }, [isAuthenticated, isLoading, setLocation]);
 
   const handleGoogleLogin = () => {
-    window.location.href = "/api/login";
+    if (!hasBackendApi) {
+      toast({
+        title: "Preview site",
+        description: login.staticPreviewHint,
+      });
+      return;
+    }
+    window.location.href = apiUrl("/api/login");
   };
 
   if (isLoading) {

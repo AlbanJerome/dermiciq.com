@@ -290,6 +290,8 @@ export const siteContent = {
       submit: "Send Message",
       success: "Thank you! Your message has been sent successfully.",
       error: "Something went wrong. Please try again.",
+      staticPreviewHint:
+        "This preview cannot reach our servers. We will open your email app with your message.",
     },
     info: {
       email: "contact@dermiciq.com",
@@ -307,6 +309,8 @@ export const siteContent = {
     googleButton: "Continue with Google",
     divider: "or continue with email",
     comingSoon: "Full email authentication coming soon.",
+    staticPreviewHint:
+      "This public preview has no authentication server. Email contact@dermiciq.com for access.",
   },
 
   dashboard: {

@@ -11,6 +11,7 @@ import { siteContent } from "@/config/siteContent";
 import { MessageSquare, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { hasBackendApi } from "@/lib/apiOrigin";
 
 export default function Contact() {
   const { contact } = siteContent;
@@ -26,6 +27,23 @@ export default function Contact() {
     const formData = new FormData(form);
 
     try {
+      if (!hasBackendApi) {
+        const email = siteContent.contact.info.email;
+        const name = String(formData.get("name") ?? "");
+        const userEmail = String(formData.get("email") ?? "");
+        const org = String(formData.get("organization") ?? "");
+        const message = String(formData.get("message") ?? "");
+        const body = `Name: ${name}\nEmail: ${userEmail}\nOrganization: ${org}\n\n${message}`;
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent("Dermiciq — contact form")}&body=${encodeURIComponent(body)}`;
+        setIsSubmitted(true);
+        toast({
+          title: "Email",
+          description: contact.form.staticPreviewHint,
+        });
+        form.reset();
+        return;
+      }
+
       const response = await apiRequest("POST", "/api/contact", {
         name: formData.get("name"),
         email: formData.get("email"),

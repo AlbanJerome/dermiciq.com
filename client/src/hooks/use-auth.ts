@@ -1,8 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { User } from "@shared/models/auth";
+import { apiUrl, hasBackendApi } from "@/lib/apiOrigin";
 
 async function fetchUser(): Promise<User | null> {
-  const response = await fetch("/api/auth/user", {
+  if (!hasBackendApi) return null;
+
+  const response = await fetch(apiUrl("/api/auth/user"), {
     credentials: "include",
   });
 
@@ -18,7 +21,8 @@ async function fetchUser(): Promise<User | null> {
 }
 
 async function logout(): Promise<void> {
-  window.location.href = "/api/logout";
+  if (!hasBackendApi) return;
+  window.location.href = apiUrl("/api/logout");
 }
 
 export function useAuth() {
