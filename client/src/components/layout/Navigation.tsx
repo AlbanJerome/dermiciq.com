@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MarketingButtonLink } from "@/components/marketing/MarketingButtonLink";
 import { siteContent } from "@/config/siteContent";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { marketingCtaHref } from "@/lib/appUrl";
 import { publicAsset } from "@/lib/publicAsset";
 
 export function Navigation() {
@@ -63,6 +65,13 @@ export function Navigation() {
 
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
+          <MarketingButtonLink
+            href={marketingCtaHref}
+            className="px-6"
+            data-testid="button-nav-login"
+          >
+            Login
+          </MarketingButtonLink>
         </div>
 
         <Button
@@ -102,6 +111,13 @@ export function Navigation() {
                 <span className="text-muted-foreground">Theme</span>
                 <ThemeToggle />
               </div>
+              <MarketingButtonLink
+                href={marketingCtaHref}
+                className="w-full"
+                data-testid="button-mobile-login"
+              >
+                Login
+              </MarketingButtonLink>
             </div>
           </nav>
         </div>
