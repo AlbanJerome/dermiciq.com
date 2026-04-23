@@ -6,12 +6,12 @@ export default function Privacy() {
   return (
     <Layout>
       <SEO
-        title="Privacy Policy | Dermiciq Technologies"
-        description="Learn how Dermiciq protects your personal information and skin sensitivity data."
+        title="Privacy Policy | Dermiciq Technologies Inc."
+        description="How Dermiciq Technologies Inc. handles information collected through this website."
         path="/privacy"
       />
 
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-dermiciq-softMint/30 via-background to-background">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-secondary/50 via-background to-background">
         <div className="container-content">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-hero-mobile lg:text-hero mb-6 text-foreground" data-testid="text-privacy-headline">
@@ -27,11 +27,12 @@ export default function Privacy() {
       <section className="py-16 lg:py-24 bg-background">
         <div className="container-content max-w-4xl">
           <Card className="p-8 lg:p-12">
-            <div className="prose prose-slate dark:prose-invert max-w-none space-y-8">
+            <div className="prose prose-slate max-w-none space-y-8">
               <div>
-                <h2 className="text-2xl font-semibold text-foreground mb-4">Your Privacy Matters</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-4">Your privacy matters</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  At Dermiciq, we take your privacy seriously. Your skin sensitivity data is personal, and we treat it with the utmost care. This policy explains what information we collect, how we use it, and your rights.
+                  Dermiciq Technologies Inc. (“Dermiciq”) respects your privacy. This policy describes information we may
+                  collect when you use this website, how we use it, and your choices.
                 </p>
               </div>
 
@@ -51,7 +52,7 @@ export default function Privacy() {
                   <li>To personalize your ingredient analysis and recommendations</li>
                   <li>To improve our detection of hidden ingredient triggers</li>
                   <li>To send you important updates about your account</li>
-                  <li>To make Dermiciq smarter and more helpful over time</li>
+                  <li>To improve our website and communications</li>
                 </ul>
               </div>
 
@@ -68,7 +69,8 @@ export default function Privacy() {
               <div>
                 <h2 className="text-2xl font-semibold text-foreground mb-4">Your Rights</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  You can request access to, correction of, or deletion of your personal data at any time. Simply contact us at contact@dermiciq.com and we'll respond within 30 days.
+                  You can request access to, correction of, or deletion of your personal data where applicable by
+                  contacting hello@dermiciq.com.
                 </p>
               </div>
 
@@ -82,7 +84,7 @@ export default function Privacy() {
               <div>
                 <h2 className="text-2xl font-semibold text-foreground mb-4">Contact Us</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  If you have questions about this privacy policy or your data, please reach out to us at contact@dermiciq.com.
+                  Questions about this policy may be directed to hello@dermiciq.com.
                 </p>
               </div>
             </div>

@@ -3,7 +3,6 @@ import tailwindcssAnimate from "tailwindcss-animate";
 import tailwindTypography from "@tailwindcss/typography";
 
 export default {
-  darkMode: ["class"],
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -62,31 +61,16 @@ export default {
           "4": "hsl(var(--chart-4) / <alpha-value>)",
           "5": "hsl(var(--chart-5) / <alpha-value>)",
         },
-        sidebar: {
-          ring: "hsl(var(--sidebar-ring) / <alpha-value>)",
-          DEFAULT: "hsl(var(--sidebar) / <alpha-value>)",
-          foreground: "hsl(var(--sidebar-foreground) / <alpha-value>)",
-          border: "hsl(var(--sidebar-border) / <alpha-value>)",
+        footer: {
+          DEFAULT: "hsl(var(--footer-bg) / <alpha-value>)",
+          foreground: "hsl(var(--footer-fg) / <alpha-value>)",
+          link: "hsl(var(--footer-link) / <alpha-value>)",
+          muted: "hsl(var(--footer-muted) / <alpha-value>)",
         },
-        "sidebar-primary": {
-          DEFAULT: "hsl(var(--sidebar-primary) / <alpha-value>)",
-          foreground: "hsl(var(--sidebar-primary-foreground) / <alpha-value>)",
-          border: "var(--sidebar-primary-border)",
-        },
-        "sidebar-accent": {
-          DEFAULT: "hsl(var(--sidebar-accent) / <alpha-value>)",
-          foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
-          border: "var(--sidebar-accent-border)",
-        },
-        status: {
-          online: "rgb(34 197 94)",
-          away: "rgb(245 158 11)",
-          busy: "rgb(239 68 68)",
-          offline: "rgb(156 163 175)",
-        },
+        /** Official Dermiciq™ brand hex (use with `bg-dermiciq-*` etc.) */
         dermiciq: {
           turquoise: "#6AEEE8",
-          mint: "#F8FFFE",
+          mintBg: "#F8FFFE",
           teal: "#005F5B",
           softMint: "#C8F2EB",
           charcoal: "#223331",
@@ -94,24 +78,19 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
-        "hero": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
-        "hero-mobile": ["3rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
-        "section": ["3.5rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
-        "section-mobile": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
-        "subsection": ["2rem", { lineHeight: "1.3", fontWeight: "600" }],
-        "subsection-mobile": ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
+        hero: ["3.25rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "hero-lg": ["3.75rem", { lineHeight: "1.08", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "hero-mobile": ["2.5rem", { lineHeight: "1.12", letterSpacing: "-0.02em", fontWeight: "700" }],
+        section: ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "section-lg": ["2.75rem", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
-        "body": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
-        "caption": ["0.875rem", { lineHeight: "1.5", fontWeight: "500" }],
-      },
-      spacing: {
-        "18": "4.5rem",
-        "22": "5.5rem",
+        body: ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
+        caption: ["0.875rem", { lineHeight: "1.5", fontWeight: "500" }],
       },
       maxWidth: {
         "8xl": "88rem",
@@ -126,24 +105,14 @@ export default {
           to: { height: "0" },
         },
         "fade-up": {
-          from: { opacity: "0", transform: "translateY(20px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        "count-up": {
-          from: { opacity: "0", transform: "translateY(10px)" },
+          from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.5s ease-out forwards",
-        "fade-in": "fade-in 0.3s ease-out forwards",
-        "count-up": "count-up 0.5s ease-out forwards",
+        "fade-up": "fade-up 0.55s ease-out forwards",
       },
     },
   },

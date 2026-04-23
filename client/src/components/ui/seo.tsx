@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { siteContent } from "@/config/siteContent";
 import { publicAsset } from "@/lib/publicAsset";
+import { siteOrigin } from "@/lib/site";
 
 interface SEOProps {
   title?: string;
@@ -18,43 +19,46 @@ export function SEO({
   const { meta, brand } = siteContent;
   const pageTitle = title || meta.defaultTitle;
   const pageDescription = description || meta.defaultDescription;
-  const url = `https://dermiciq.com${path}`;
-  const logoAbsolute =
-    typeof window !== "undefined"
-      ? new URL(publicAsset("logo.png"), window.location.origin).href
-      : "https://dermiciq.com/logo.png";
+  const url = `${siteOrigin.replace(/\/$/, "")}${path === "/" ? "" : path}`;
+  const logoPath = publicAsset("logo.png");
+  const ogImage = `${siteOrigin.replace(/\/$/, "")}${logoPath.startsWith("/") ? logoPath : `/${logoPath}`}`;
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: brand.name,
     description: brand.description,
-    url: "https://dermiciq.com",
-    logo: logoAbsolute,
+    url: siteOrigin,
+    logo: ogImage,
     sameAs: [],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Toronto",
-      addressCountry: "CA",
-    },
   };
 
-  const serviceSchema = {
+  const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: brand.name,
+    name: `${brand.shortName} platform`,
     description: brand.description,
-    applicationCategory: "HealthApplication",
+    applicationCategory: "LifestyleApplication",
     operatingSystem: "Web",
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "CAD",
+      priceCurrency: "USD",
     },
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: brand.name,
+    url: siteOrigin,
+    description: brand.description,
+    publisher: { "@type": "Organization", name: brand.name },
   };
 
   return (
     <Helmet>
+      <html lang="en" />
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
       <meta name="keywords" content={meta.keywords} />
@@ -64,20 +68,17 @@ export function SEO({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
-      <meta property="og:image" content={logoAbsolute} />
-      <meta property="og:site_name" content={brand.name} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:site_name" content={brand.shortName} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
-      <meta name="twitter:image" content={logoAbsolute} />
+      <meta name="twitter:image" content={ogImage} />
 
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(serviceSchema)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(softwareSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
     </Helmet>
   );
 }

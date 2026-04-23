@@ -1,92 +1,86 @@
-import { useLocation } from "wouter";
+import { Link } from "wouter";
 import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
+import { homeSectionHref } from "@/lib/site";
 import { publicAsset } from "@/lib/publicAsset";
-import { hashHref } from "@/lib/hashHref";
 
 export function Footer() {
   const { footer, brand } = siteContent;
-  const [, setLocation] = useLocation();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "auto" });
-    setTimeout(() => setLocation(href), 0);
+  const resolveHref = (link: { href: string; hash?: string }) => {
+    if (link.href.startsWith("http")) return link.href;
+    if (link.hash) return homeSectionHref(link.hash);
+    return link.href;
   };
 
   return (
-    <footer className="bg-card border-t border-border" data-testid="footer">
+    <footer className="bg-footer text-footer-foreground" data-testid="footer">
       <div className="container-content py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
-            <a 
-              href={hashHref("/")}
-              onClick={(e) => handleNavClick(e, "/")}
-              className="flex items-center gap-2 mb-4" 
-              data-testid="link-footer-logo"
-            >
+            <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
               <img
                 src={publicAsset("logo.png")}
-                alt={brand.name}
-                className="h-10 w-10 rounded-lg"
+                alt=""
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-2xl object-cover shadow-md shrink-0"
               />
-              <span className="text-xl font-semibold text-foreground">
-                {brand.name}
+              <span className="flex flex-col">
+                <span className="text-lg font-bold text-footer-foreground leading-tight">{brand.shortName}</span>
+                <span className="text-xs text-footer-muted mt-0.5">Technologies Inc.</span>
               </span>
-            </a>
-            <p className="text-muted-foreground text-body mb-4">
-              {footer.tagline}
-            </p>
-            <div className="flex items-center gap-2 text-muted-foreground text-caption">
-              <MapPin className="h-4 w-4" />
+            </Link>
+            <p className="text-footer-muted text-sm leading-relaxed mb-4">{footer.tagline}</p>
+            <div className="flex items-center gap-2 text-footer-muted text-sm">
+              <MapPin className="h-4 w-4 shrink-0" aria-hidden />
               <span>{footer.location}</span>
             </div>
           </div>
 
           {footer.columns.map((column) => (
             <div key={column.title}>
-              <h3 className="font-semibold text-foreground mb-4">
-                {column.title}
-              </h3>
+              <h3 className="font-semibold text-footer-foreground mb-4">{column.title}</h3>
               <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={hashHref(link.href)}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-muted-foreground hover:text-foreground transition-colors text-body cursor-pointer"
-                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {column.links.map((link) => {
+                  const href = resolveHref(link);
+                  const isExternal = href.startsWith("http");
+                  const className = "text-sm text-footer-link hover:text-footer-foreground transition-colors";
+                  return (
+                    <li key={link.label}>
+                      {isExternal ? (
+                        <a href={href} className={className} target="_blank" rel="noopener noreferrer">
+                          {link.label}
+                        </a>
+                      ) : link.href.startsWith("/") && !("hash" in link && link.hash) ? (
+                        <Link href={link.href} className={className}>
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a href={href} className={className}>
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-caption text-muted-foreground">
-            {footer.copyright}
-          </p>
+        <div className="mt-12 pt-8 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-footer-muted">{footer.copyright}</p>
           <div className="flex items-center gap-6">
-            <a
-              href={hashHref("/privacy")}
-              onClick={(e) => handleNavClick(e, "/privacy")}
-              className="text-caption text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-              data-testid="link-footer-privacy"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href={hashHref("/terms")}
-              onClick={(e) => handleNavClick(e, "/terms")}
-              className="text-caption text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-              data-testid="link-footer-terms"
-            >
-              Terms of Service
-            </a>
+            <Link href="/privacy" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
+              Terms
+            </Link>
+            <Link href="/cookies" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

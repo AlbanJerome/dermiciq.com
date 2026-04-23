@@ -7,32 +7,27 @@ import { Home, ArrowLeft } from "lucide-react";
 import { siteContent } from "@/config/siteContent";
 
 export default function NotFound() {
-  const { notFound } = siteContent;
+  const { notFound, brand } = siteContent;
 
   return (
     <Layout>
       <SEO
-        title={`${notFound.headline} | Dermiciq Technologies`}
+        title={`${notFound.headline} | ${brand.shortName}`}
         description={notFound.description}
         path="/404"
       />
 
-      <section className="min-h-[80vh] flex items-center justify-center py-16 bg-gradient-to-br from-dermiciq-softMint/30 via-background to-background">
+      <section className="min-h-[80vh] flex items-center justify-center py-16 bg-gradient-to-br from-secondary/50 via-background to-background">
         <div className="container-content">
-          <Card className="max-w-md mx-auto p-12 text-center" data-testid="card-404">
-            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-dermiciq-turquoise/20 to-primary/10 rounded-full flex items-center justify-center">
+          <Card className="max-w-md mx-auto p-12 text-center border-border shadow-md" data-testid="card-404">
+            <div className="w-24 h-24 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
               <span className="text-4xl font-bold text-primary">404</span>
             </div>
 
-            <h1
-              className="text-2xl font-bold text-foreground mb-4"
-              data-testid="text-404-headline"
-            >
+            <h1 className="text-2xl font-bold text-foreground mb-4" data-testid="text-404-headline">
               {notFound.headline}
             </h1>
-            <p className="text-muted-foreground mb-8">
-              {notFound.description}
-            </p>
+            <p className="text-muted-foreground mb-8">{notFound.description}</p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/">
@@ -41,11 +36,7 @@ export default function NotFound() {
                   {notFound.homeButton}
                 </Button>
               </Link>
-              <Button
-                variant="outline"
-                onClick={() => window.history.back()}
-                data-testid="button-go-back"
-              >
+              <Button variant="outline" onClick={() => window.history.back()} data-testid="button-go-back">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 {notFound.backButton}
               </Button>

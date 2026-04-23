@@ -1,36 +1,26 @@
 import { Switch, Route, Router } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
-import { ThemeProvider } from "@/components/theme-provider";
 import Home from "@/pages/home";
-import Science from "@/pages/science";
-import Neutrality from "@/pages/neutrality";
-import Partners from "@/pages/partners";
-import Contact from "@/pages/contact";
+import HowItWorks from "@/pages/how-it-works";
+import About from "@/pages/about";
+import ForSensitiveSkin from "@/pages/for-sensitive-skin";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import Cookies from "@/pages/cookies";
-import About from "@/pages/about";
-import Blog from "@/pages/blog";
-import BlogArticle from "@/pages/blog-article";
 import NotFound from "@/pages/not-found";
+
+const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
 function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/science" component={Science} />
-      <Route path="/neutrality" component={Neutrality} />
-      <Route path="/partners" component={Partners} />
-      <Route path="/contact" component={Contact} />
+      <Route path="/how-it-works" component={HowItWorks} />
+      <Route path="/about" component={About} />
+      <Route path="/for-sensitive-skin" component={ForSensitiveSkin} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route path="/cookies" component={Cookies} />
-      <Route path="/about" component={About} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={BlogArticle} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -39,14 +29,9 @@ function Routes() {
 function App() {
   return (
     <HelmetProvider>
-      <ThemeProvider defaultTheme="light" storageKey="dermiciq-theme">
-        <TooltipProvider>
-          <Router hook={useHashLocation}>
-            <Toaster />
-            <Routes />
-          </Router>
-        </TooltipProvider>
-      </ThemeProvider>
+      <Router base={routerBase}>
+        <Routes />
+      </Router>
     </HelmetProvider>
   );
 }

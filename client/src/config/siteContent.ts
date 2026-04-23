@@ -1,375 +1,368 @@
-import { marketingCtaHref } from "@/lib/appUrl";
+/**
+ * Single source of truth: DERMICIQ TECHNOLOGIES INC. (business plan PDF).
+ * Same facts and key messages as the PDF — wording tuned to sound human, warm, and conversational.
+ */
+
+import { siteOrigin } from "@/lib/site";
 
 export const siteContent = {
   brand: {
-    name: "Dermiciq",
-    tagline: "Personal Relevance Intelligence",
-    description: "The first skincare intelligence platform that understands your unique biology.",
+    name: "Dermiciq Technologies Inc.",
+    shortName: "Dermiciq™",
+    productName: "Dermiciq™",
+    tagline: "Cosmetic ingredients, explained for your skin—not for a scorecard.",
+    description:
+      "Dermiciq™ is a personalized cosmetic-ingredient platform. It helps you see how ingredients line up with what you already know about your skin—your sensitivities, what you prefer to skip, and what you’ve actually lived through—not a single “clean” or “toxic” label for everyone.",
   },
 
   meta: {
-    defaultTitle: "Dermiciq Technologies | Personalized Skincare Intelligence",
-    defaultDescription: "Stop guessing. Start knowing. Dermiciq replaces binary 'safe vs. toxic' scoring with context-aware, personalized ingredient intelligence for your unique skin.",
-    keywords: "skincare analysis, ingredient checker, sensitive skin, eczema, rosacea, contact dermatitis, Health Canada 2025, personalized skincare, ingredient intelligence",
+    defaultTitle: "Dermiciq™ | Ingredients that make sense for your skin",
+    defaultDescription:
+      "Skip the one-size-fits-all scores. Dermiciq™ is neutral, educational, and built around one question: Is this ingredient relevant to me?",
+    keywords:
+      "Dermiciq, cosmetic ingredients, INCI, sensitive skin, contact dermatitis, personalization, ingredient scanner, clean beauty, transparency, allergy-aware skincare",
+    siteUrl: siteOrigin,
   },
 
   navigation: {
     links: [
       { label: "Home", href: "/" },
-      { label: "The Science", href: "/science" },
-      { label: "Sovereign Neutrality", href: "/neutrality" },
-      { label: "Partners", href: "/partners" },
-      { label: "Contact", href: "/contact" },
+      { label: "How it works", href: "/how-it-works" },
+      { label: "About", href: "/about" },
+      { label: "For sensitive skin", href: "/for-sensitive-skin" },
     ],
+    contactEmail: "hello@dermiciq.com",
   },
 
-  hero: {
-    headline: "Stop Guessing. Start Knowing.",
-    subheadline: "The first skincare intelligence platform that understands your unique biology—not just universal scores.",
-    primaryCta: { label: "Get Started", href: marketingCtaHref },
-    secondaryCta: { label: "Learn How It Works", href: "/science" },
-    trustBadge: "Sovereign Neutral Technology",
-  },
-
-  problem: {
-    headline: "Binary Apps Are Failing You",
-    subheadline: "Current ingredient checkers use universal 'safe vs. toxic' scores that ignore your unique biology.",
-    points: [
-      {
-        title: "The Misleading 'Safe' Label",
-        description: "Ingredients broadly categorized as 'safe' can trigger severe reactions in sensitive populations.",
-      },
-      {
-        title: "The Cost of False Positives",
-        description: "Ingredients labeled as 'bad' may be perfectly suitable—or even beneficial—for your skin.",
-      },
-      {
-        title: "No Personalization",
-        description: "For millions managing eczema, rosacea, or contact dermatitis, current tools offer zero meaningful personalization.",
-      },
-    ],
-  },
-
-  pillars: {
-    headline: "Skincare That Knows You",
-    subheadline: "We do the ingredient research so you don't have to. Finally, skincare advice that's actually about your skin.",
-    items: [
-      {
-        title: "Your Skin, Your Profile",
-        description: "Tell us about your sensitivities once, and we'll remember. Every product check is personalized to you.",
-        icon: "Dna",
-      },
-      {
-        title: "Hidden Ingredient Detection",
-        description: "Coconut-free but still reacting? We catch the 50+ hidden derivatives that other apps miss completely.",
-        icon: "Network",
-      },
-      {
-        title: "Real-World Risk, Not Scare Tactics",
-        description: "We consider how much of an ingredient is actually in your serum—not just that it exists.",
-        icon: "ShieldCheck",
-      },
-      {
-        title: "No Paid Endorsements. Ever.",
-        description: "Brands can't pay us for good ratings. Your trust matters more than their money.",
-        icon: "Scale",
-      },
-      {
-        title: "Backed by New Regulations",
-        description: "Canada's new ingredient transparency laws are coming. We're ready to decode them for you.",
-        icon: "FileCheck",
-      },
-      {
-        title: "Gets Smarter With You",
-        description: "Track what works (and what doesn't). Your profile learns from your experience over time.",
-        icon: "Brain",
-      },
-    ],
-  },
-
-  regulatory: {
-    badge: "The 2026 Shift",
-    headline: "Health Canada's New Era of Transparency",
-    subheadline: "Starting 2025-2026, detailed fragrance allergen disclosure becomes mandatory. Dermiciq is built to translate this complex chemical data into personalized health insights.",
-    timeline: [
-      { year: "2024", label: "Framework Announced", status: "complete" },
-      { year: "2025", label: "Phase 1 Implementation", status: "current" },
-      { year: "2026", label: "Full Disclosure Required", status: "upcoming" },
-    ],
-    cta: { label: "Prepare Your Organization", href: "/partners" },
-  },
-
-  stats: {
-    items: [
-      { value: 44.6, suffix: "%", label: "of North Americans report sensitive skin" },
-      { value: 90, suffix: "%", label: "of occupational skin diseases are contact dermatitis" },
-      { value: 500, prefix: "$", suffix: "B", label: "global beauty market operating on flawed paradigms" },
-    ],
-  },
-
-  science: {
-    meta: {
-      title: "The Science | Dermiciq Technologies",
-      description: "Learn how Dermiciq finds hidden ingredient triggers that other apps miss completely.",
-    },
+  home: {
     hero: {
-      headline: "How We Find What Others Miss",
-      subheadline: "The smart technology behind truly personalized ingredient checking",
-      badge: "The Technology",
+      id: "home",
+      headline: "Is this ingredient actually right for me?",
+      subhead:
+        "Dermiciq™ finally looks at cosmetic ingredients through the lens of your own skin — your sensitivities, your preferences, and your real experiences. No more one-size-fits-all “clean” or “toxic” scores.",
+      eyebrow: "Dermiciq Technologies Inc.",
+      imageSrc:
+        "https://images.unsplash.com/photo-1631729432532-d1cfada35afe?auto=format&fit=crop&w=2000&q=80",
+      /** Decorative full-bleed hero; headline + subhead carry meaning—empty alt avoids browsers showing alt if the image fails to load. */
+      imageAlt: "",
     },
-    cta: {
-      headline: "See the Difference",
-      subheadline: "Try Dermiciq and discover what your skincare is really doing for your skin.",
-      buttonLabel: "Get Started",
+
+    executiveSummary: {
+      id: "summary",
+      title: "Why we’re building this",
+      paragraphs: [
+        "Cosmetics today come with a lot of ingredient transparency. You can scan, search, and read a label in seconds. That part is wonderful. What’s broken is what happens next: most tools still sort ingredients into universal buckets—“good,” “bad,” “clean,” or “toxic”—as if every skin type reacted the same way. Biology doesn’t work like that.",
+        "Dermiciq™ is a personalized cosmetic-ingredient platform. We’re not here to hand down a verdict on a whole bottle for everyone. We’re here to help you see how an ingredient lines up with you—your sensitivities, what you prefer to avoid, and what you’ve already learned about your own skin.",
+        "If you deal with fragrance sensitivity, contact dermatitis, eczema, rosacea, acne-prone skin, or a known cosmetic allergy, you already know the problem. A single “safety” score can miss the mark in both directions. Something people tolerate easily might still sting you. Something that sounds scary on an app might be fine for your routine.",
+        "We care less about moral labels and more about a practical question: Is this ingredient relevant to me? You set what matters. We keep the tone calm and educational. The goal is simple: help you stand between a product label and your real skin—with room for all the diversity skin actually has.",
+      ],
     },
-    howItWorks: {
-      headline: "How It Works",
+
+    missionVision: {
+      id: "mission",
+      title: "What we believe",
+      mission:
+        "To empower individuals with clear, neutral, and personalized understanding of cosmetic ingredients.",
+      coreInsight: "Ingredients are not universally good or bad—skin responses are personal.",
+      visionLead:
+        "Dermiciq aims to become a neutral, trustworthy bridge between cosmetic products and individual skin diversity.",
+      visionBody:
+        "By rejecting fear-based narratives and embracing personalization, Dermiciq seeks to redefine how consumers understand ingredients—shifting the conversation from “good versus bad” to informed, individual relevance. In doing so, Dermiciq supports a more ethical, educated, and inclusive future for cosmetic transparency.",
+      ctaAbout: { label: "Read our full mission & vision", href: "/about" },
+    },
+
+    problemSolution: {
+      id: "solution",
+      title: "What’s broken today — and what we’re doing instead",
+      problemTitle: "Why one score for everyone doesn’t work",
+      problemIntro:
+        "Ingredient scanners and “clean beauty” lists are everywhere now. Most still share the same habits:",
+      problemBullets: [
+        "Universal scoring systems (e.g., clean/dirty, safe/unsafe)",
+        "Ingredient blacklists applied equally to all users",
+        "Simplified risk ratings detached from formulation context",
+        "Alarmist or fear-based language",
+      ],
+      problemClosing:
+        "A lot of them sound like the last word on safety. Cosmetic science—and your skin—are more complicated than that.",
+      solutionTitle: "What Dermiciq does",
+      solutionLead: "Dermiciq gives you ingredient context—not a single “good” or “bad” stamp for the whole world.",
+      traditionalQuestion: "Most apps ask: Is this ingredient bad?",
+      dermiciqQuestion: "Dermiciq asks: Is this ingredient relevant to your sensitivities?",
+      solutionClosing:
+        "What an ingredient does depends on the formula, how much is there, how you use it—and, most of all, on you.",
+      ctaSensitive: { label: "Sensitive skin? Here’s the fuller picture", href: "/for-sensitive-skin" },
+    },
+
+    keyDifferentiators: {
+      id: "differentiators",
+      title: "What makes Dermiciq different",
+      items: [
+        {
+          kind: "bullets" as const,
+          title: "Personal sensitivity matching",
+          bullets: [
+            "You choose what counts as a sensitivity or a preference",
+            "No one default blacklist for every account",
+            "Your profile can grow as you learn more about your skin",
+          ],
+        },
+        {
+          kind: "examples" as const,
+          title: "Context over judgment",
+          intro: "We steer clear of absolute language. You’ll see phrasing more like:",
+          examples: [
+            "“Commonly associated with irritation in some sensitive users”",
+            "“Generally well tolerated, but flagged due to your profile settings”",
+            "“Functional ingredient used primarily for preservation or texture”",
+          ],
+          closing: "Science has nuance. Skin has nuance. Your labels should, too.",
+        },
+        {
+          kind: "bullets" as const,
+          title: "Education-first design",
+          bullets: [
+            "We explain what an ingredient is doing in a formula—not just whether it “sounds” scary",
+            "We lean on formulation science, not buzzwords",
+            "We don’t play doctor: no medical claims, diagnoses, or treatment advice",
+          ],
+          footer: "We’re here to inform—not to set your hair on fire.",
+        },
+      ],
+    },
+
+    howPreview: {
+      id: "how-preview",
+      title: "How Dermiciq works",
+      intro: "Four simple beats, start to finish. The wording stays plain the whole way through.",
       steps: [
         {
-          number: 1,
-          title: "Scan Your Products",
-          description: "Snap a photo or search by name. We identify every ingredient—including the tricky ones brands hide under scientific names.",
+          n: 1,
+          title: "Personal profile creation",
+          body: "You tell us what to watch for—known allergens, whole families of ingredients you’d rather skip, or specific names you want flagged.",
         },
         {
-          number: 2,
-          title: "Uncover Hidden Ingredients",
-          description: "Many ingredients have 'family members' that can trigger the same reactions. We map these connections so nothing slips through.",
+          n: 2,
+          title: "Ingredient parsing",
+          body: "We read ingredient lists the way they’re written: standard INCI names, or everyday words when that’s what you have.",
         },
         {
-          number: 3,
-          title: "Match to Your Profile",
-          description: "Your sensitivities are unique. We cross-check every ingredient against what we know about your skin.",
+          n: 3,
+          title: "Relevance matching",
+          body: "We line each ingredient up with your profile. You’re looking for personal relevance—not a universal risk score.",
         },
         {
-          number: 4,
-          title: "Get Real Answers",
-          description: "Not just 'good' or 'bad'—we tell you why something might not work for you, based on how much is in the product and how you'll use it.",
+          n: 4,
+          title: "Neutral presentation",
+          body: "You get context, a clear sense of what matters for you, and short explanations in normal language.",
         },
+      ],
+      disclaimer:
+        "Dermiciq does not diagnose conditions or predict outcomes; it provides clarity and context to support informed decision-making.",
+      cta: { label: "See the full walkthrough", href: "/how-it-works" },
+    },
+
+    targetUsers: {
+      id: "users",
+      title: "Who we’re for",
+      primaryTitle: "You might be a primary user if…",
+      primaryBullets: [
+        "Your skin is sensitive or quick to react",
+        "You already know you have a cosmetic or contact allergy",
+        "You’re tired of binary “clean beauty” apps that don’t feel like they know you",
+      ],
+      secondaryTitle: "You might also love Dermiciq if…",
+      secondaryBullets: [
+        "You’re a skincare nerd who wants calmer, clearer explanations",
+        "You’re a parent keeping track of someone else’s sensitivities",
+        "You work in beauty and want neutral language for ingredients",
       ],
     },
-    comparison: {
-      headline: "Other Apps vs. Dermiciq",
-      competitorLabel: "Other Apps",
-      dermiciqLabel: "Dermiciq",
-      dermiciq: [
-        "Personalized to your skin",
-        "Catches hidden ingredient forms",
-        "Considers actual amounts used",
-        "No fear-mongering tactics",
-        "Always up-to-date research",
+
+    productEthical: {
+      id: "scope",
+      title: "What the first version covers — and what it won’t",
+      mvpTitle: "Where we’re starting (MVP)",
+      mvpBullets: [
+        "Ingredient list scanning or manual lookup",
+        "User sensitivity profile creation",
+        "Personalized ingredient relevance flagging",
+        "Plain-language ingredient explanations",
       ],
-      competitors: [
-        "Same score for everyone",
-        "Misses ingredient variations",
-        "Ignores real-world usage",
-        "Designed to scare you",
-        "Outdated information",
+      exclusionsTitle: "What we’re not building (on purpose)",
+      exclusionsBullets: [
+        "No medical diagnosis or treatment recommendations",
+        "No product safety certification",
+        "No guarantees regarding suitability or outcomes",
       ],
+      exclusionsClosing: "That keeps the product honest, easier to trust, and simpler on the regulatory side.",
+      ethicalTitle: "How we think about ethics & rules",
+      ethicalIntro: "Dermiciq is an informational software platform.",
+      ethicalBullets: [
+        "It does not diagnose, treat, cure, or prevent medical conditions",
+        "It does not certify product safety or regulatory compliance",
+        "It relies on publicly available ingredient data and user-defined inputs",
+      ],
+      ethicalClosing:
+        "We stay inside those lines on purpose—less legal fog for you, more room to be upfront about what we can and can’t promise.",
+      businessTitle: "How we might grow later (high level)",
+      businessIntro: "Down the road, a few paths could make sense:",
+      businessBullets: [
+        "Freemium access: basic ingredient analysis free, advanced personalization paid",
+        "Subscription tiers: enhanced profiles, deeper explanations, historical tracking",
+        "Optional B2B insights: anonymized, aggregated trends for industry research",
+      ],
+      businessClosing: "Whatever we pick, privacy and ethical data use come first.",
+    },
+
+    contact: {
+      id: "contact",
+      title: "Want to say hello?",
+      body: "We’re a small team with a big respect for sensitive skin. General questions welcome:",
+      email: "hello@dermiciq.com",
     },
   },
 
-  neutrality: {
-    meta: {
-      title: "Sovereign Neutrality | Dermiciq Technologies",
-      description: "Our commitment to scientific integrity: zero pay-to-play certifications, pure objective analysis.",
+  pages: {
+    howItWorks: {
+      metaTitle: "How Dermiciq works | Dermiciq™",
+      metaDescription:
+        "Profile, parsing, matching, and calm explanations—without diagnoses or fear-based scores.",
+      headline: "How Dermiciq works",
+      intro:
+        "Dermiciq gives you ingredient context—not a thumbs-up or thumbs-down for the whole planet. Here’s the flow we’re building toward.",
+      stepsSectionTitle: "The four steps",
+      neutralSectionTitle: "How we talk about results",
+      neutralSectionBody:
+        "You’ll see context, a clear sense of what matters for your profile, and short explanations in everyday words—not a universal “toxic” or “clean” verdict.",
+      boundariesSectionTitle: "Hard boundaries (for clarity)",
+      boundariesSectionIntro:
+        "The first version of Dermiciq is intentionally narrow. That protects you and keeps expectations honest. Specifically, Dermiciq does not:",
     },
-    hero: {
-      headline: "Sovereign Neutrality",
-      subheadline: "Zero brand payments. Pure science.",
-      badge: "Our Commitment",
-    },
-    badge: {
-      title: "Sovereign Neutral",
-      subtitle: "Certified Independent Intelligence",
-    },
-    quote: "We refuse to sell certifications, endorse products, or accept payment from any brand. Your trust is our only currency.",
-    quoteAttribution: "— Dermiciq Founding Principle",
-    commitmentsHeadline: "Our Commitments",
-    cta: {
-      headline: "Trust Built on Transparency",
-      subheadline: "Join the movement toward truly objective skincare intelligence.",
-      buttonLabel: "Get Started",
-    },
-    commitments: [
-      {
-        title: "No Pay-to-Play Certifications",
-        description: "Brands cannot purchase favorable ratings or 'clean' badges from Dermiciq.",
-      },
-      {
-        title: "Open Methodology",
-        description: "Our scoring algorithms and data sources are documented and available for scientific review.",
-      },
-      {
-        title: "User-First Data Policy",
-        description: "Your sensitivity data is never sold to third parties or used for targeted advertising.",
-      },
-      {
-        title: "Independent Research",
-        description: "Our team collaborates with dermatologists and researchers without corporate sponsorship influence.",
-      },
-      {
-        title: "Continuous Audit",
-        description: "Regular third-party audits ensure our neutrality commitments are maintained.",
-      },
-    ],
-  },
 
-  partners: {
-    meta: {
-      title: "Partners & B2B | Dermiciq Technologies",
-      description: "Licensing opportunities for clinics, retailers, and healthcare providers seeking personalized ingredient intelligence.",
+    about: {
+      metaTitle: "About Dermiciq | Mission & vision",
+      metaDescription:
+        "Our mission, the insight that started it all, and where we hope everyday transparency can go.",
+      headline: "About Dermiciq Technologies Inc.",
+      sections: [
+        {
+          title: "Mission",
+          body: "To empower individuals with clear, neutral, and personalized understanding of cosmetic ingredients.",
+        },
+        {
+          title: "Core insight",
+          body: "Ingredients are not universally good or bad—skin responses are personal.",
+        },
+        {
+          title: "Vision",
+          paragraphs: [
+            "Dermiciq aims to become a neutral, trustworthy bridge between cosmetic products and individual skin diversity.",
+            "By rejecting fear-based narratives and embracing personalization, Dermiciq seeks to redefine how consumers understand ingredients—shifting the conversation from “good versus bad” to informed, individual relevance.",
+            "In doing so, Dermiciq supports a more ethical, educated, and inclusive future for cosmetic transparency.",
+          ],
+        },
+      ],
     },
-    hero: {
-      headline: "Partner With Dermiciq",
-      subheadline: "Bring personalized ingredient intelligence to your patients and customers.",
-    },
-    statsHeadline: "Market Opportunity",
-    logosSection: {
-      headline: "Trusted by Leading Healthcare Providers",
-      placeholder: "Partner",
-      comingSoon: "Partner logos coming soon",
-    },
-    cta: {
-      headline: "Ready to Partner?",
-      subheadline: "Contact us to learn how Dermiciq can enhance your patient experience.",
-    },
-    ctaButtonLabel: "Contact Sales",
-    benefits: [
-      {
-        title: "Clinical Integration",
-        description: "Embed Dermiciq intelligence into your patient consultation workflow.",
-        icon: "Stethoscope",
-      },
-      {
-        title: "White-Label Solutions",
-        description: "Offer Dermiciq-powered recommendations under your own brand.",
-        icon: "Palette",
-      },
-      {
-        title: "Data Licensing",
-        description: "Access our derivative mapping database for product development and reformulation.",
-        icon: "Database",
-      },
-    ],
-    stats: [
-      { value: 88, suffix: "%", label: "Gross margin on data licensing" },
-      { value: 18.5, suffix: "%", label: "CAGR in target market" },
-      { value: 1.5, prefix: "$", suffix: "B", label: "SAM by 2025" },
-    ],
-  },
 
-  contact: {
-    meta: {
-      title: "Contact Us | Dermiciq Technologies",
-      description: "Get in touch with the Dermiciq team for support, partnership inquiries, or general questions.",
-    },
-    hero: {
-      headline: "Get In Touch",
-      subheadline: "Questions about Dermiciq? We're here to help.",
-      badge: "Contact Us",
-    },
-    successState: {
-      headline: "Message Sent!",
-      sendAnother: "Send Another Message",
-    },
-    submitting: "Sending...",
-    toasts: {
-      successTitle: "Message sent!",
-      errorTitle: "Error",
-    },
-    infoCards: {
-      email: "Email",
-      location: "Location",
-    },
-    form: {
-      fields: {
-        name: { label: "Full Name", placeholder: "Your name" },
-        email: { label: "Work Email", placeholder: "you@company.com" },
-        organization: { label: "Organization", placeholder: "Your organization (optional)" },
-        message: { label: "Message", placeholder: "How can we help you?" },
-      },
-      submit: "Send Message",
-      success: "Thank you! Your message has been sent successfully.",
-      error: "Something went wrong. Please try again.",
-      staticPreviewHint:
-        "This preview cannot reach our servers. We will open your email app with your message.",
-    },
-    info: {
-      email: "contact@dermiciq.com",
-      location: "Toronto, Canada",
+    forSensitiveSkin: {
+      metaTitle: "For sensitive skin | Dermiciq™",
+      metaDescription:
+        "Why universal scores miss sensitive skin—and how “relevant to me” fills the gap.",
+      headline: "For sensitive skin",
+      subhead:
+        "If “safe” and “toxic” labels have ever felt wrong for your face, you’re not imagining it. Skin really is individual.",
+      currentLandscapeTitle: "What the landscape looks like right now",
+      currentLandscapeIntro:
+        "Ingredient scanners and “clean beauty” databases are easy to find. A lot of them still share the same habits:",
+      currentLandscapeBullets: [
+        "Universal scoring systems (e.g., clean/dirty, safe/unsafe)",
+        "Ingredient blacklists applied equally to all users",
+        "Simplified risk ratings detached from formulation context",
+        "Alarmist or fear-based language",
+      ],
+      whyFailsTitle: "Where that approach breaks down",
+      whyFailsBullets: [
+        "An ingredient labeled “bad” may be harmless or beneficial for many users",
+        "Ingredients labeled “safe” can still trigger irritation or allergic reactions",
+        "Users with known sensitivities receive no meaningful personalization",
+        "Consumers are encouraged to fear ingredients rather than understand them",
+      ],
+      whyFailsClosing:
+        "If you’re juggling eczema, dermatitis, fragrance sensitivity, or contact allergies, that leaves you with very little that feels actionable. It also doesn’t match how people actually live with their skin.",
+      gapTitle: "The gap we keep hearing about",
+      gapIntro: "Even with more transparency than ever, most mainstream consumer tools still don’t:",
+      gapBullets: [
+        "Let you define your own ingredient sensitivities",
+        "Match cosmetic ingredients against a personal sensitivity profile",
+        "Explain ingredients in neutral language—without moral or marketing spin",
+      ],
+      gapClosing:
+        "So millions of people are left guessing—with information that’s technically “there,” but not really about them.",
+      solutionTitle: "What Dermiciq does differently",
+      solutionParagraphs: [
+        "Dermiciq gives you ingredient context—not ingredient verdicts.",
+        "Traditional apps ask: Is this ingredient bad? Dermiciq asks: Is this ingredient relevant to your sensitivities?",
+        "That matters because impact depends on the formula, the concentration, how you use it—and, most of all, on you.",
+      ],
     },
   },
 
   faq: {
-    headline: "Frequently Asked Questions",
     items: [
       {
-        question: "How is Dermiciq different from apps like Yuka or Think Dirty?",
-        answer: "Those apps give everyone the same score. But what irritates your skin might be perfectly fine for someone else. Dermiciq learns about your unique sensitivities and gives you personalized results.",
+        question: "Does Dermiciq diagnose skin conditions?",
+        answer:
+          "No. Dermiciq doesn’t diagnose, treat, cure, or prevent medical conditions. It’s informational software—here to add context so you can make your own informed choices.",
       },
       {
-        question: "How do you catch 'hidden' ingredients?",
-        answer: "Many ingredients have dozens of variations that go by different names. If you're sensitive to coconut, for example, we'll flag over 50 coconut-derived ingredients that other apps miss completely.",
+        question: "Is Dermiciq a “clean beauty” or safety certification tool?",
+        answer:
+          "No. We don’t certify that a product is “safe,” and we don’t speak for regulators. We also don’t give everyone the same “good” or “bad” stamp. We focus on what’s relevant to the profile you chose.",
       },
       {
-        question: "Why should I trust your ratings?",
-        answer: "Brands can't pay us for good scores. Ever. We don't sell 'clean beauty' certifications or accept sponsorships. Your trust is worth more than their money.",
-      },
-      {
-        question: "Is my information safe?",
-        answer: "Absolutely. Your skin profile stays private and encrypted. We never sell your data or use it for ads. It's only used to give you better recommendations.",
-      },
-      {
-        question: "What's changing with ingredient labels in 2025?",
-        answer: "Canada is requiring brands to list fragrance ingredients in detail starting 2025-2026. We're ready to help you understand what all those new ingredient names actually mean for your skin.",
+        question: "How is Dermiciq different from apps that score every ingredient the same for everyone?",
+        answer:
+          "You define what matters to your skin. We match ingredients to that—not to a default blacklist for every user. The tone stays educational, not alarmist.",
       },
     ],
   },
 
-  cta: {
-    headline: "Ready to Stop Guessing?",
-    subheadline: "Join thousands who have discovered the power of personalized ingredient intelligence.",
-    buttonLabel: "Get Started",
-  },
-
   notFound: {
-    headline: "Page Not Found",
-    description: "The page you're looking for doesn't exist or has been moved.",
-    homeButton: "Go Home",
-    backButton: "Go Back",
+    headline: "Page not found",
+    description: "That page may have moved, or the link might be a little off.",
+    homeButton: "Back to home",
+    backButton: "Go back",
   },
 
   footer: {
-    tagline: "Personal Relevance Intelligence for Your Skin",
+    tagline: "Calm, personalized ingredient help—in plain language, without the pile-on.",
+    location: "Dermiciq Technologies Inc.",
+    copyright: `© ${new Date().getFullYear()} Dermiciq Technologies Inc. All rights reserved.`,
     columns: [
       {
         title: "Product",
         links: [
-          { label: "The Science", href: "/science" },
-          { label: "Sovereign Neutrality", href: "/neutrality" },
-          { label: "Partners", href: "/partners" },
-        ],
-      },
-      {
-        title: "Legal",
-        links: [
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Terms of Service", href: "/terms" },
-          { label: "Cookie Policy", href: "/cookies" },
+          { label: "How it works", href: "/how-it-works" },
+          { label: "For sensitive skin", href: "/for-sensitive-skin" },
+          { label: "Home overview", href: "/", hash: "summary" },
         ],
       },
       {
         title: "Company",
         links: [
-          { label: "About Us", href: "/about" },
-          { label: "Contact", href: "/contact" },
-          { label: "Blog", href: "/blog" },
+          { label: "About & mission", href: "/about" },
+          { label: "Contact", href: "/", hash: "contact" },
+        ],
+      },
+      {
+        title: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Cookies", href: "/cookies" },
         ],
       },
     ],
-    copyright: "© 2026 Dermiciq Technologies. All rights reserved.",
-    location: "Toronto, Canada",
   },
-};
-
-export type SiteContent = typeof siteContent;
+} as const;

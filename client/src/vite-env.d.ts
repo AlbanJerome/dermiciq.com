@@ -1,10 +1,10 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  /** e.g. https://app.dermiciq.com — omit for static-only builds */
-  readonly VITE_API_ORIGIN?: string;
-  /** Marketing CTAs target this URL (default https://app.dermiciq.com). */
-  readonly VITE_APP_URL?: string;
+  /** Canonical site URL for SEO (default https://dermiciq.com). */
+  readonly VITE_SITE_URL?: string;
+  /** Production base path override for Vite (`/` for apex, `/repo/` for GitHub Pages project sites). */
+  readonly VITE_BASE?: string;
 }
 
 interface ImportMeta {
