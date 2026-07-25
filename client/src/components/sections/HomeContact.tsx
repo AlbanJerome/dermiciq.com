@@ -12,10 +12,11 @@ export function HomeContact() {
         <p className="text-muted-foreground leading-relaxed mb-8">{contact.body}</p>
         <a
           href={`mailto:${email}`}
+          aria-label="Email us"
           className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-card px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-colors"
         >
           <Mail className="h-4 w-4" aria-hidden />
-          {email}
+          Email Us
         </a>
       </div>
     </section>

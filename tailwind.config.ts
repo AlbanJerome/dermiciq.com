@@ -67,8 +67,8 @@ export default {
           link: "hsl(var(--footer-link) / <alpha-value>)",
           muted: "hsl(var(--footer-muted) / <alpha-value>)",
         },
-        /** Official Dermiciq™ brand hex (use with `bg-dermiciq-*` etc.) */
-        dermiciq: {
+        /** Official DermicIQ™ brand hex (use with `bg-DermicIQ-*` etc.) */
+        DermicIQ: {
           turquoise: "#6AEEE8",
           mintBg: "#F8FFFE",
           teal: "#005F5B",

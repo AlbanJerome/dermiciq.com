@@ -1,9 +1,9 @@
 {
-  "name": "dermiciq-web",
+  "name": "DermicIQ-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://albanjerome.github.io/dermiciq.com",
+  "homepage": "https://albanjerome.github.io/DermicIQ.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

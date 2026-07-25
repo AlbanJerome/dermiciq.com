@@ -26,7 +26,7 @@ export function HomeProblemSolution() {
             <p className="text-foreground font-medium mb-6 leading-relaxed">{ps.solutionLead}</p>
             <div className="space-y-4 text-sm">
               <p className="text-muted-foreground italic border-l-2 border-border pl-4">{ps.traditionalQuestion}</p>
-              <p className="text-foreground font-semibold border-l-2 border-primary pl-4">{ps.dermiciqQuestion}</p>
+              <p className="text-foreground font-semibold border-l-2 border-primary pl-4">{ps.DermicIQQuestion}</p>
             </div>
             <p className="text-muted-foreground mt-6 leading-relaxed">{ps.solutionClosing}</p>
             <Button className="mt-8" variant="secondary" asChild>

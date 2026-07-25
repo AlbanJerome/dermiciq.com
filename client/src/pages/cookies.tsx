@@ -6,8 +6,8 @@ export default function Cookies() {
   return (
     <Layout>
       <SEO
-        title="Cookie Policy | Dermiciq Technologies Inc."
-        description="How Dermiciq Technologies Inc. uses cookies on this website."
+        title="Cookie Policy | DermicIQ Technologies Inc."
+        description="How DermicIQ Technologies Inc. uses cookies on this website."
         path="/cookies"
       />
 
@@ -58,7 +58,7 @@ export default function Cookies() {
               <div>
                 <h2 className="text-2xl font-semibold text-foreground mb-4">Questions</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Contact hello@dermiciq.com for questions about this policy.
+                  Contact hello@DermicIQ.com for questions about this policy.
                 </p>
               </div>
             </div>

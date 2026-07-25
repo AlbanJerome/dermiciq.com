@@ -3,15 +3,18 @@ import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
 import { homeSectionHref } from "@/lib/site";
 import { publicAsset } from "@/lib/publicAsset";
+import { openCookieSettings } from "@/components/CookieConsent";
 
 export function Footer() {
-  const { footer, brand } = siteContent;
+  const { footer, brand, navigation } = siteContent;
 
   const resolveHref = (link: { href: string; hash?: string }) => {
     if (link.href.startsWith("http")) return link.href;
     if (link.hash) return homeSectionHref(link.hash);
     return link.href;
   };
+
+  const isContactLink = (label: string) => label.toLowerCase() === "contact";
 
   return (
     <footer className="bg-footer text-footer-foreground" data-testid="footer">
@@ -43,9 +46,25 @@ export function Footer() {
               <h3 className="font-semibold text-footer-foreground mb-4">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map((link) => {
+                  const className =
+                    "text-sm text-footer-foreground hover:text-white transition-colors underline-offset-2 hover:underline";
+
+                  if (isContactLink(link.label)) {
+                    return (
+                      <li key={link.label}>
+                        <a
+                          href={`mailto:${navigation.contactEmail}`}
+                          className={className}
+                          aria-label="Email us"
+                        >
+                          Email Us
+                        </a>
+                      </li>
+                    );
+                  }
+
                   const href = resolveHref(link);
                   const isExternal = href.startsWith("http");
-                  const className = "text-sm text-footer-link hover:text-footer-foreground transition-colors";
                   return (
                     <li key={link.label}>
                       {isExternal ? (
@@ -71,16 +90,33 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-footer-muted">{footer.copyright}</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <Link
+              href="/privacy"
+              className="text-xs text-footer-foreground hover:text-white transition-colors"
+            >
               Privacy
             </Link>
-            <Link href="/terms" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
-              Terms
-            </Link>
-            <Link href="/cookies" className="text-xs text-footer-link hover:text-footer-foreground transition-colors">
+            <Link
+              href="/cookies"
+              className="text-xs text-footer-foreground hover:text-white transition-colors"
+            >
               Cookies
             </Link>
+            <a
+              href={`mailto:${navigation.contactEmail}`}
+              className="text-xs text-footer-foreground hover:text-white transition-colors"
+              aria-label="Email us"
+            >
+              Email Us
+            </a>
+            <button
+              type="button"
+              className="text-xs text-footer-foreground hover:text-white transition-colors cursor-pointer bg-transparent border-0 p-0 font-sans"
+              onClick={openCookieSettings}
+            >
+              Cookie Settings
+            </button>
           </div>
         </div>
       </div>

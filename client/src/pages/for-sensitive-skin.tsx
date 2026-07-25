@@ -62,7 +62,7 @@ export default function ForSensitiveSkinPage() {
           ))}
           <div className="mt-10 flex flex-wrap gap-4">
             <Button asChild>
-              <Link href="/how-it-works">How Dermiciq works</Link>
+              <Link href="/how-it-works">How DermicIQ works</Link>
             </Button>
             <Button variant="outline" className="border-primary/30" asChild>
               <Link href="/">Back to home</Link>
