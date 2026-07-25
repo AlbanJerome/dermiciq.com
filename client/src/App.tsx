@@ -1,13 +1,17 @@
+import { lazy, Suspense } from "react";
 import { Switch, Route, Router } from "wouter";
 import { HelmetProvider } from "react-helmet-async";
-import { CookieConsent } from "@/components/CookieConsent";
 import Home from "@/pages/home";
-import HowItWorks from "@/pages/how-it-works";
-import About from "@/pages/about";
-import ForSensitiveSkin from "@/pages/for-sensitive-skin";
-import Privacy from "@/pages/privacy";
-import Cookies from "@/pages/cookies";
-import NotFound from "@/pages/not-found";
+
+const CookieConsent = lazy(() =>
+  import("@/components/CookieConsent").then((m) => ({ default: m.CookieConsent })),
+);
+const HowItWorks = lazy(() => import("@/pages/how-it-works"));
+const About = lazy(() => import("@/pages/about"));
+const ForSensitiveSkin = lazy(() => import("@/pages/for-sensitive-skin"));
+const Privacy = lazy(() => import("@/pages/privacy"));
+const Cookies = lazy(() => import("@/pages/cookies"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
@@ -29,8 +33,12 @@ function App() {
   return (
     <HelmetProvider>
       <Router base={routerBase}>
-        <CookieConsent />
-        <Routes />
+        <Suspense fallback={null}>
+          <CookieConsent />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Routes />
+        </Suspense>
       </Router>
     </HelmetProvider>
   );

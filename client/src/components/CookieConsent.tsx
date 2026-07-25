@@ -4,10 +4,13 @@ import { Link } from "wouter";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  COOKIE_CONSENT_STORAGE_KEY,
+  openCookieSettings,
+  subscribeCookieSettingsOpen,
+} from "@/lib/cookieConsent";
 
-export const COOKIE_CONSENT_STORAGE_KEY = "cookieConsent";
-
-const CONSENT_EVENT = "cookie-consent:open" as const;
+export { openCookieSettings, COOKIE_CONSENT_STORAGE_KEY };
 
 type StoredConsent = {
   v: 1;
@@ -33,14 +36,6 @@ function writeConsent(all: boolean) {
   localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(payload));
 }
 
-/**
- * Reopens the cookie banner (e.g. from footer "Cookie settings").
- * Fires a window event; `CookieConsent` subscribes to it.
- */
-export function openCookieSettings() {
-  window.dispatchEvent(new CustomEvent(CONSENT_EVENT));
-}
-
 export function CookieConsent() {
   const titleId = useId();
   const [bannerOpen, setBannerOpen] = useState(false);
@@ -59,12 +54,10 @@ export function CookieConsent() {
   }, []);
 
   useEffect(() => {
-    const onOpen = () => {
+    return subscribeCookieSettingsOpen(() => {
       setBannerOpen(true);
       setModalOpen(false);
-    };
-    window.addEventListener(CONSENT_EVENT, onOpen);
-    return () => window.removeEventListener(CONSENT_EVENT, onOpen);
+    });
   }, []);
 
   useEffect(() => {

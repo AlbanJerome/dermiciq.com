@@ -45,13 +45,17 @@ export function Navigation() {
     >
       <nav className="container-content flex items-center justify-between h-16 lg:h-[4.25rem]">
         <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0" data-testid="link-logo">
-          <img
-            src={publicAsset("logo.png")}
-            alt={brand.shortName}
-            width={44}
-            height={44}
-            className="h-10 w-10 lg:h-11 lg:w-11 rounded-2xl object-cover shadow-sm shrink-0"
-          />
+          <picture>
+            <source type="image/webp" srcSet={publicAsset("logo-96.webp")} />
+            <img
+              src={publicAsset("logo-96.png")}
+              alt={brand.shortName}
+              width={44}
+              height={44}
+              className="h-10 w-10 lg:h-11 lg:w-11 rounded-2xl object-cover shadow-sm shrink-0"
+              decoding="async"
+            />
+          </picture>
           <span className="hidden sm:flex flex-col min-w-0 leading-tight">
             <span className="text-sm font-bold text-white tracking-tight truncate">{brand.shortName}</span>
             <span className="text-[10px] font-semibold text-white/75 uppercase tracking-[0.14em]">

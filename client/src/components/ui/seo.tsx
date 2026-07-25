@@ -20,7 +20,7 @@ export function SEO({
   const pageTitle = title || meta.defaultTitle;
   const pageDescription = description || meta.defaultDescription;
   const url = `${siteOrigin.replace(/\/$/, "")}${path === "/" ? "" : path}`;
-  const logoPath = publicAsset("logo.png");
+  const logoPath = publicAsset("logo-192.png");
   const ogImage = `${siteOrigin.replace(/\/$/, "")}${logoPath.startsWith("/") ? logoPath : `/${logoPath}`}`;
 
   const organizationSchema = {

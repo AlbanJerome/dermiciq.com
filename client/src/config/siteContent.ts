@@ -41,8 +41,9 @@ export const siteContent = {
       subhead:
         "We look at INCI lists the way a thoughtful consult would: against your history, your avoid list, and what you already know stings (or works).",
       eyebrow: "DermicIQ Technologies Inc.",
-      imageSrc: "images/hero-image.jpg",
-      imageAlt: "Close-up of healthy skin in soft light",
+      /** Prefer responsive WebP/JPEG in HomeHero; kept for reference / fallbacks. */
+      imageSrc: "images/hero-1200.jpg",
+      imageAlt: "",
       cta: { label: "Set up your profile", href: "https://app.dermiciq.com/" },
     },
 

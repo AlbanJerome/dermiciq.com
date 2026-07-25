@@ -3,7 +3,7 @@ import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
 import { homeSectionHref } from "@/lib/site";
 import { publicAsset } from "@/lib/publicAsset";
-import { openCookieSettings } from "@/components/CookieConsent";
+import { openCookieSettings } from "@/lib/cookieConsent";
 
 export function Footer() {
   const { footer, brand, navigation } = siteContent;
@@ -22,13 +22,18 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
-              <img
-                src={publicAsset("logo.png")}
-                alt=""
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-2xl object-cover shadow-md shrink-0"
-              />
+              <picture>
+                <source type="image/webp" srcSet={publicAsset("logo-96.webp")} />
+                <img
+                  src={publicAsset("logo-96.png")}
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 rounded-2xl object-cover shadow-md shrink-0"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <span className="flex flex-col">
                 <span className="text-lg font-bold text-footer-foreground leading-tight">{brand.shortName}</span>
                 <span className="text-xs text-footer-muted mt-0.5">Technologies Inc.</span>
