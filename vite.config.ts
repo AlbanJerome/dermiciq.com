@@ -45,6 +45,8 @@ export default defineConfig(({ command }) => {
   return {
     base: command === "serve" ? "/" : productionBase(),
     plugins,
+    // App source lives in client/, but keep .env at the repo root.
+    envDir: path.resolve(import.meta.dirname),
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "client", "src"),
