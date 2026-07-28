@@ -11,6 +11,7 @@ const About = lazy(() => import("@/pages/about"));
 const ForSensitiveSkin = lazy(() => import("@/pages/for-sensitive-skin"));
 const Privacy = lazy(() => import("@/pages/privacy"));
 const Cookies = lazy(() => import("@/pages/cookies"));
+const Contact = lazy(() => import("@/pages/contact"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
@@ -24,6 +25,7 @@ function Routes() {
       <Route path="/for-sensitive-skin" component={ForSensitiveSkin} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/cookies" component={Cookies} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );

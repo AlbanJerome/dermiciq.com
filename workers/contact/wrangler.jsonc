@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "dermiciq-contact",
+  "main": "src/index.ts",
+  // Set to today's date when creating; bump periodically.
+  "compatibility_date": "2026-07-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  // Same-origin route on the dermiciq.com zone (GitHub Pages behind CF proxy).
+  // Uncomment after the zone is confirmed on this Cloudflare account:
+  // "routes": [
+  //   { "pattern": "dermiciq.com/api/contact*", "zone_name": "dermiciq.com" }
+  // ],
+  "vars": {
+    // Must be a sender on a domain verified in Resend (e.g. dermiciq.com).
+    "CONTACT_FROM": "DermicIQ <noreply@dermiciq.com>",
+    "CONTACT_TO": "support@dermiciq.com"
+  },
+  // Cloudflare Rate Limiting binding (GA). Period must be 10 or 60 seconds —
+  // we use 5 requests / 60s per IP as a close, stricter-burst stand-in for
+  // "~5 / 10 min". See README for details.
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      // Unique integer namespace id within your Cloudflare account.
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
+}

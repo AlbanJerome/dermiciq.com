@@ -32,13 +32,13 @@ export default function ForSensitiveSkinPage() {
 
         <div className="container-content max-w-3xl">
           <Card className="p-8 border-border/80 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground mb-4">{p.whyFailsTitle}</h2>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+            <h2 className="text-2xl font-semibold text-primary mb-4">{p.whyFailsTitle}</h2>
+            <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6 leading-relaxed">
               {p.whyFailsBullets.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
-            <p className="text-sm text-muted-foreground leading-relaxed">{p.whyFailsClosing}</p>
+            <p className="text-muted-foreground leading-relaxed">{p.whyFailsClosing}</p>
           </Card>
         </div>
 

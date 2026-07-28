@@ -75,7 +75,8 @@ export default function Privacy() {
             <ul className="list-disc space-y-2 pl-5 text-muted-foreground leading-relaxed">
               <li>
                 <span className="text-foreground font-medium">Account and contact details: </span>
-                such as your name and email when you create or manage an account.
+                such as your name and email when you create or manage an account, and name, email, phone
+                (if provided), subject, and message when you use our contact form.
               </li>
               <li>
                 <span className="text-foreground font-medium">Profile and skin-related information: </span>
@@ -112,6 +113,7 @@ export default function Privacy() {
                 recommendations and the product can get better the longer you use it, unless you ask us to close your
                 account and delete the data in line with this policy and our systems.</li>
               <li>Send service messages (for example about security, your account, or product changes) when needed.</li>
+              <li>Respond to messages you send through our contact form.</li>
               <li>Maintain safety and integrity, for example to detect abuse, protect our systems, and follow the law.
               </li>
               <li>Measure and improve our product, including through analytics that show how the site and app are used
@@ -134,7 +136,9 @@ export default function Privacy() {
                 <span className="text-foreground font-medium">Service providers. </span>
                 We work with vetted companies that help us run the product, for example hosting, infrastructure, email
                 delivery, and analytics. They only receive what they need to do the job, and we expect them to protect
-                your data and use it only on our instructions, under contract where appropriate.
+                your data and use it only on our instructions, under contract where appropriate. Our marketing-site
+                contact form uses Cloudflare Turnstile to help reduce spam and abuse; Cloudflare may process technical
+                data related to that check as described in their own privacy materials.
               </li>
               <li>
                 <span className="text-foreground font-medium">Legal and safety. </span>

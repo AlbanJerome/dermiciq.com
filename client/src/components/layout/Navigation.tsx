@@ -75,9 +75,9 @@ export function Navigation() {
             className="font-semibold bg-white text-primary hover:bg-white/90 border-0"
             asChild
           >
-            <a href={`mailto:${navigation.contactEmail}`} aria-label="Email us">
-              Email Us
-            </a>
+            <Link href="/contact" aria-label="Contact us">
+              Contact
+            </Link>
           </Button>
         </div>
 
@@ -105,9 +105,9 @@ export function Navigation() {
                 className="w-full font-semibold bg-white text-primary hover:bg-white/90"
                 asChild
               >
-                <a href={`mailto:${navigation.contactEmail}`} aria-label="Email us">
-                  Email Us
-                </a>
+                <Link href="/contact" aria-label="Contact us">
+                  Contact
+                </Link>
               </Button>
             </div>
           </nav>

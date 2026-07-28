@@ -55,8 +55,8 @@ export default function HowItWorksPage() {
                         </div>
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
-                        <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{step.body}</p>
+                        <h3 className="text-lg font-semibold text-primary mb-2">{step.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{step.body}</p>
                       </div>
                     </div>
                   </Card>
@@ -68,14 +68,14 @@ export default function HowItWorksPage() {
           <section className="mt-16 max-w-3xl space-y-4">
             <h2 className="text-2xl font-semibold text-foreground">{p.resultsSectionTitle}</h2>
             <p className="text-muted-foreground leading-relaxed">{p.resultsSectionBody}</p>
-            <p className="text-sm text-muted-foreground border-l-2 border-primary/30 pl-4 leading-relaxed">{p.disclaimer}</p>
+            <p className="text-muted-foreground border-l-2 border-primary/30 pl-4 leading-relaxed">{p.disclaimer}</p>
           </section>
 
           <section className="mt-12 max-w-3xl">
             <h2 className="text-2xl font-semibold text-foreground mb-3">{p.boundariesSectionTitle}</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">{p.boundariesSectionIntro}</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed">
-              {siteContent.home.productEthical.exclusionsBullets.map((b) => (
+              {p.boundariesBullets.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>

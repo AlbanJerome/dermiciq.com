@@ -6,15 +6,13 @@ import { publicAsset } from "@/lib/publicAsset";
 import { openCookieSettings } from "@/lib/cookieConsent";
 
 export function Footer() {
-  const { footer, brand, navigation } = siteContent;
+  const { footer, brand } = siteContent;
 
   const resolveHref = (link: { href: string; hash?: string }) => {
     if (link.href.startsWith("http")) return link.href;
     if (link.hash) return homeSectionHref(link.hash);
     return link.href;
   };
-
-  const isContactLink = (label: string) => label.toLowerCase() === "contact";
 
   return (
     <footer className="bg-footer text-footer-foreground" data-testid="footer">
@@ -53,21 +51,6 @@ export function Footer() {
                 {column.links.map((link) => {
                   const className =
                     "text-sm text-footer-foreground hover:text-white transition-colors underline-offset-2 hover:underline";
-
-                  if (isContactLink(link.label)) {
-                    return (
-                      <li key={link.label}>
-                        <a
-                          href={`mailto:${navigation.contactEmail}`}
-                          className={className}
-                          aria-label="Email us"
-                        >
-                          Email Us
-                        </a>
-                      </li>
-                    );
-                  }
-
                   const href = resolveHref(link);
                   const isExternal = href.startsWith("http");
                   return (
@@ -108,13 +91,13 @@ export function Footer() {
             >
               Cookies
             </Link>
-            <a
-              href={`mailto:${navigation.contactEmail}`}
+            <Link
+              href="/contact"
               className="text-xs text-footer-foreground hover:text-white transition-colors"
-              aria-label="Email us"
+              aria-label="Contact us"
             >
-              Email Us
-            </a>
+              Contact
+            </Link>
             <button
               type="button"
               className="text-xs text-footer-foreground hover:text-white transition-colors cursor-pointer bg-transparent border-0 p-0 font-sans"

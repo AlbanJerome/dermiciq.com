@@ -19,12 +19,14 @@ export function HomeHowPreview() {
               <span className="absolute top-4 left-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 {step.n}
               </span>
-              <h3 className="text-base font-semibold text-foreground mb-2 mt-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.body}</p>
+              <h3 className="text-lg font-semibold text-primary mb-2 mt-2">{step.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{step.body}</p>
             </li>
           ))}
         </ol>
-        <p className="text-sm text-muted-foreground max-w-3xl mb-8 border-l-2 border-primary/30 pl-4">{h.disclaimer}</p>
+        <p className="text-muted-foreground max-w-3xl mb-8 border-l-2 border-primary/30 pl-4 leading-relaxed">
+          {h.disclaimer}
+        </p>
         <Button asChild>
           <Link href={h.cta.href}>{h.cta.label}</Link>
         </Button>

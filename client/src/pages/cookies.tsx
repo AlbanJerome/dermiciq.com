@@ -38,7 +38,9 @@ export default function Cookies() {
                 <h2 className="text-2xl font-semibold text-foreground mb-4">How we use cookies</h2>
                 <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                   <li>
-                    <strong>Essential cookies:</strong> required for core site functionality and security.
+                    <strong>Essential cookies:</strong> required for core site functionality and security. When you use
+                    the contact form, Cloudflare Turnstile may set cookies or similar technologies as part of that
+                    security check (bot protection). Those are treated as essential for submitting the form.
                   </li>
                   <li>
                     <strong>Analytics cookies (optional):</strong> help us understand aggregate traffic patterns so we

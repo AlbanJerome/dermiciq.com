@@ -69,11 +69,11 @@ export default function AboutPage() {
               className="border border-border/80 bg-card/80 p-6 shadow-sm sm:p-8"
               aria-labelledby="about-team-heading"
             >
-              <h2 id="about-team-heading" className="text-2xl font-semibold text-foreground mb-4">
+              <h2 id="about-team-heading" className="text-2xl font-semibold text-primary mb-4">
                 {p.teamTitle}
               </h2>
               <p className="text-muted-foreground leading-relaxed sm:text-lg mb-4">{p.teamBody}</p>
-              <p className="text-sm text-muted-foreground/90 leading-relaxed border-l-2 border-primary/25 pl-4">
+              <p className="text-muted-foreground leading-relaxed border-l-2 border-primary/25 pl-4">
                 {p.teamFootnote}
               </p>
             </Card>

@@ -5,6 +5,10 @@ interface ImportMetaEnv {
   readonly VITE_SITE_URL?: string;
   /** Production base path override for Vite (`/` for apex, `/repo/` for GitHub Pages project sites). */
   readonly VITE_BASE?: string;
+  /** Cloudflare Turnstile site key (public) for the contact form widget. */
+  readonly VITE_TURNSTILE_SITE_KEY?: string;
+  /** Contact form API endpoint (default `/api/contact`). */
+  readonly VITE_CONTACT_API_URL?: string;
 }
 
 interface ImportMeta {
