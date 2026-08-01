@@ -15,8 +15,8 @@ export function Footer() {
 
   return (
     <footer className="bg-footer text-footer-foreground" data-testid="footer">
-      <div className="container-content py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="container-content py-10 lg:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
               <picture>
@@ -75,8 +75,9 @@ export function Footer() {
           ))}
         </div>
 
-        <p className="mt-12 text-xs text-footer-muted">{footer.copyright}</p>
-        <div className="mt-6 border-t border-white/15" aria-hidden />
+        <div className="mt-8 border-t border-white/15 pt-6">
+          <p className="text-xs text-footer-muted">{footer.copyright}</p>
+        </div>
       </div>
     </footer>
   );

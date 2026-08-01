@@ -5,8 +5,8 @@ export function HomeProductEthical() {
   const { productEthical: p } = siteContent.home;
 
   return (
-    <section id={p.id} className="py-20 lg:py-28 bg-background">
-      <div className="container-content max-w-4xl space-y-12">
+    <section id={p.id} className="py-12 lg:py-16 bg-background">
+      <div className="container-content max-w-4xl space-y-8">
         <h2 className="text-section lg:text-section-lg text-foreground">{p.title}</h2>
 
         <div className="grid gap-8 lg:grid-cols-2">

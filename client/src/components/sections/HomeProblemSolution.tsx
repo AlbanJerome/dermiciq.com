@@ -7,10 +7,10 @@ export function HomeProblemSolution() {
   const { problemSolution: ps } = siteContent.home;
 
   return (
-    <section id={ps.id} className="py-20 lg:py-28 bg-background">
+    <section id={ps.id} className="py-12 lg:py-16 bg-background">
       <div className="container-content">
-        <h2 className="text-section lg:text-section-lg text-foreground mb-12 max-w-3xl">{ps.title}</h2>
-        <div className="grid gap-10 lg:grid-cols-2">
+        <h2 className="text-section lg:text-section-lg text-foreground mb-8 max-w-3xl">{ps.title}</h2>
+        <div className="grid gap-8 lg:grid-cols-2">
           <Card className="p-8 border-border/80 shadow-sm">
             <h3 className="text-xl font-semibold text-primary mb-4">{ps.problemTitle}</h3>
             <p className="text-muted-foreground mb-4 leading-relaxed">{ps.problemIntro}</p>

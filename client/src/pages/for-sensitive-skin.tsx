@@ -12,14 +12,14 @@ export default function ForSensitiveSkinPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/for-sensitive-skin" />
 
-      <header className="py-16 lg:py-24 bg-gradient-to-br from-accent/25 via-background to-secondary/40 border-b border-border/60">
+      <header className="py-10 lg:py-14 bg-gradient-to-br from-accent/25 via-background to-secondary/40 border-b border-border/60">
         <div className="container-content max-w-3xl">
           <h1 className="text-section lg:text-section-lg text-foreground mb-6">{p.headline}</h1>
           <p className="text-body-lg text-muted-foreground leading-relaxed">{p.subhead}</p>
         </div>
       </header>
 
-      <div className="py-16 lg:py-24 bg-background space-y-16">
+      <div className="py-10 lg:py-14 bg-background space-y-10">
         <div className="container-content max-w-3xl">
           <h2 className="text-2xl font-semibold text-foreground mb-4">{p.currentLandscapeTitle}</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">{p.currentLandscapeIntro}</p>

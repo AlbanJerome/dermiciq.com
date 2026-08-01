@@ -18,7 +18,7 @@ export function HomeHero() {
       id={hero.id}
       className={cn(
         "relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden",
-        "pt-20 pb-16 sm:pt-24 sm:pb-20"
+        "pt-16 pb-12 sm:pt-20 sm:pb-14"
       )}
     >
       <picture>

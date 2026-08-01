@@ -6,9 +6,9 @@ export function HomeMissionVision() {
   const { missionVision: m } = siteContent.home;
 
   return (
-    <section id={m.id} className="py-20 lg:py-28 bg-secondary/50 border-y border-border/60">
+    <section id={m.id} className="py-12 lg:py-16 bg-secondary/50 border-y border-border/60">
       <div className="container-content max-w-4xl">
-        <h2 className="text-section lg:text-section-lg text-foreground mb-10">{m.title}</h2>
+        <h2 className="text-section lg:text-section-lg text-foreground mb-8">{m.title}</h2>
         <div className="space-y-8">
           <blockquote className="border-l-4 border-primary pl-6 py-1">
             <p className="text-lg font-semibold text-primary mb-2">Mission</p>

@@ -121,7 +121,7 @@ export default function ContactPage() {
         className={cn(
           "border-b border-border/60",
           "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24",
+          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14",
         )}
       >
         <div className="container-content max-w-3xl">
@@ -134,7 +134,7 @@ export default function ContactPage() {
         </div>
       </header>
 
-      <section className="bg-background py-16 lg:py-24">
+      <section className="bg-background py-10 lg:py-14">
         <div className="container-content max-w-2xl">
           <Card className="border border-border/80 bg-card/80 p-6 shadow-sm sm:p-8">
             {succeeded ? (

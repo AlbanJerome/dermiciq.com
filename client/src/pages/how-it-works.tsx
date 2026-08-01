@@ -19,16 +19,16 @@ export default function HowItWorksPage() {
         className={cn(
           "relative border-b border-border/60",
           "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24"
+          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
         )}
       >
         <div className="container-content max-w-3xl">
-          <h1 className="text-section text-balance text-foreground lg:text-section-lg mb-6">{p.headline}</h1>
+          <h1 className="text-section text-balance text-foreground lg:text-section-lg mb-4">{p.headline}</h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{p.intro}</p>
         </div>
       </header>
 
-      <div className="py-16 lg:py-24 bg-background">
+      <div className="py-10 lg:py-14 bg-background">
         <div className="container-content max-w-5xl">
           <h2 className="sr-only">{p.processSectionTitle}</h2>
           <ol className="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2">
@@ -65,13 +65,13 @@ export default function HowItWorksPage() {
             })}
           </ol>
 
-          <section className="mt-16 max-w-3xl space-y-4">
+          <section className="mt-10 max-w-3xl space-y-4">
             <h2 className="text-2xl font-semibold text-foreground">{p.resultsSectionTitle}</h2>
             <p className="text-muted-foreground leading-relaxed">{p.resultsSectionBody}</p>
             <p className="text-muted-foreground border-l-2 border-primary/30 pl-4 leading-relaxed">{p.disclaimer}</p>
           </section>
 
-          <section className="mt-12 max-w-3xl">
+          <section className="mt-8 max-w-3xl">
             <h2 className="text-2xl font-semibold text-foreground mb-3">{p.boundariesSectionTitle}</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">{p.boundariesSectionIntro}</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ export default function HowItWorksPage() {
         </div>
       </div>
 
-      <section className="pb-20 lg:pb-28 bg-background">
+      <section className="pb-12 lg:pb-16 bg-background">
         <div className="container-content max-w-3xl">
           <div
             className={cn(

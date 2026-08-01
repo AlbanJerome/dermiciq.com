@@ -6,11 +6,11 @@ export function HomeHowPreview() {
   const { howPreview: h } = siteContent.home;
 
   return (
-    <section id={h.id} className="scroll-mt-24 py-20 lg:py-28 bg-background">
+    <section id={h.id} className="scroll-mt-24 py-12 lg:py-16 bg-background">
       <div className="container-content">
         <h2 className="text-section lg:text-section-lg text-foreground mb-4">{h.title}</h2>
-        <p className="text-muted-foreground text-lg max-w-3xl mb-12 leading-relaxed">{h.intro}</p>
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-10">
+        <p className="text-muted-foreground text-lg max-w-3xl mb-8 leading-relaxed">{h.intro}</p>
+        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
           {h.steps.map((step) => (
             <li
               key={step.n}

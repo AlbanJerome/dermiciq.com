@@ -5,9 +5,9 @@ export function HomeKeyDifferentiators() {
   const { keyDifferentiators: k } = siteContent.home;
 
   return (
-    <section id={k.id} className="py-20 lg:py-28 bg-secondary/40">
+    <section id={k.id} className="py-12 lg:py-16 bg-secondary/40">
       <div className="container-content">
-        <h2 className="text-section lg:text-section-lg text-foreground mb-12 text-center max-w-2xl mx-auto">
+        <h2 className="text-section lg:text-section-lg text-foreground mb-8 text-center max-w-2xl mx-auto">
           {k.title}
         </h2>
         <div className="grid gap-8 md:grid-cols-3">
