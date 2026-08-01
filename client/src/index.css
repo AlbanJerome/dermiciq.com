@@ -14,7 +14,6 @@
 */
 :root {
   --button-outline: rgba(34, 51, 49, 0.12);
-  --badge-outline: rgba(34, 51, 49, 0.06);
   --opaque-button-border-intensity: -8;
   --elevate-1: rgba(34, 51, 49, 0.04);
   --elevate-2: rgba(34, 51, 49, 0.08);
