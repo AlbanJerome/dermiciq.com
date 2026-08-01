@@ -3,7 +3,6 @@ import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
 import { homeSectionHref } from "@/lib/site";
 import { publicAsset } from "@/lib/publicAsset";
-import { openCookieSettings } from "@/lib/cookieConsent";
 
 export function Footer() {
   const { footer, brand } = siteContent;
@@ -76,16 +75,8 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-footer-muted">{footer.copyright}</p>
-          <button
-            type="button"
-            className="text-xs text-footer-foreground hover:text-white transition-colors cursor-pointer bg-transparent border-0 p-0 font-sans"
-            onClick={openCookieSettings}
-          >
-            Cookie Settings
-          </button>
-        </div>
+        <p className="mt-12 text-xs text-footer-muted">{footer.copyright}</p>
+        <div className="mt-6 border-t border-white/15" aria-hidden />
       </div>
     </footer>
   );

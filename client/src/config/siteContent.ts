@@ -416,7 +416,6 @@ export const siteContent = {
         links: [
           { label: "How it works", href: "/how-it-works" },
           { label: "For sensitive skin", href: "/for-sensitive-skin" },
-          { label: "Home overview", href: "/", hash: "summary" },
         ],
       },
       {
