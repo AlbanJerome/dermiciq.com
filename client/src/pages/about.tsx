@@ -109,15 +109,6 @@ export default function AboutPage() {
               >
                 {p.cta.sublinkLabel}
               </Link>
-              <span className="mx-2" aria-hidden>
-                ·
-              </span>
-              <Link
-                className="font-semibold text-primary underline-offset-2 hover:underline"
-                href={p.cta.backHref}
-              >
-                {p.cta.backLabel}
-              </Link>
             </p>
           </section>
         </div>

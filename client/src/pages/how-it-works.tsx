@@ -108,14 +108,6 @@ export default function HowItWorksPage() {
                 {p.ctaStart.label}
               </a>
             </Button>
-            <p className="mt-6 text-sm text-muted-foreground">
-              <a
-                className="font-semibold text-primary underline-offset-2 hover:underline"
-                href="/"
-              >
-                {p.ctaStart.backLabel}
-              </a>
-            </p>
           </div>
         </div>
       </section>

@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Button } from "@/components/ui/button";
@@ -149,9 +148,6 @@ export default function ContactPage() {
                     onClick={() => setSucceeded(false)}
                   >
                     {p.sendAnotherLabel}
-                  </Button>
-                  <Button variant="outline" className="min-h-11 rounded-full px-6 font-semibold" asChild>
-                    <Link href="/">{p.backHomeLabel}</Link>
                   </Button>
                 </div>
               </div>

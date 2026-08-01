@@ -280,7 +280,6 @@ export const siteContent = {
         subtext: "When you are ready, continue in the DermicIQ app, no extra steps on this site.",
         label: "Start Free Analysis",
         href: "https://app.dermiciq.com/",
-        backLabel: "Back to home",
       },
     },
 
@@ -315,8 +314,6 @@ export const siteContent = {
         href: "https://app.dermiciq.com/",
         sublinkLabel: "How it works",
         sublinkHref: "/how-it-works",
-        backLabel: "Back to home",
-        backHref: "/",
       },
     },
 
@@ -375,7 +372,6 @@ export const siteContent = {
       successTitle: "Message sent",
       successBody: "Thanks for writing. We’ll get back to you as soon as we can.",
       sendAnotherLabel: "Send another message",
-      backHomeLabel: "Back to home",
       privacyNote:
         "This form is protected by Cloudflare Turnstile. See our Privacy and Cookie policies for how we handle submissions.",
     },

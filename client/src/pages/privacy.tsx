@@ -261,12 +261,6 @@ export default function Privacy() {
               data subject related, the email above is the right lane.
             </p>
           </section>
-
-          <p className="pt-2 text-sm text-muted-foreground">
-            <Link className="font-medium text-primary underline-offset-2 hover:underline" href="/">
-              Back to home
-            </Link>
-          </p>
         </article>
       </div>
     </Layout>

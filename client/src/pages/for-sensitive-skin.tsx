@@ -64,9 +64,6 @@ export default function ForSensitiveSkinPage() {
             <Button asChild>
               <Link href="/how-it-works">How DermicIQ works</Link>
             </Button>
-            <Button variant="outline" className="border-primary/30" asChild>
-              <Link href="/">Back to home</Link>
-            </Button>
           </div>
         </div>
       </div>
