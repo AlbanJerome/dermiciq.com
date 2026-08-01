@@ -78,34 +78,13 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-footer-muted">{footer.copyright}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <Link
-              href="/privacy"
-              className="text-xs text-footer-foreground hover:text-white transition-colors"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-xs text-footer-foreground hover:text-white transition-colors"
-            >
-              Cookies
-            </Link>
-            <Link
-              href="/contact"
-              className="text-xs text-footer-foreground hover:text-white transition-colors"
-              aria-label="Contact us"
-            >
-              Contact
-            </Link>
-            <button
-              type="button"
-              className="text-xs text-footer-foreground hover:text-white transition-colors cursor-pointer bg-transparent border-0 p-0 font-sans"
-              onClick={openCookieSettings}
-            >
-              Cookie Settings
-            </button>
-          </div>
+          <button
+            type="button"
+            className="text-xs text-footer-foreground hover:text-white transition-colors cursor-pointer bg-transparent border-0 p-0 font-sans"
+            onClick={openCookieSettings}
+          >
+            Cookie Settings
+          </button>
         </div>
       </div>
     </footer>
