@@ -7,7 +7,7 @@ export function HomeProblemSolution() {
   const { problemSolution: ps } = siteContent.home;
 
   return (
-    <section id={ps.id} className="py-12 lg:py-16 bg-background">
+    <section id={ps.id} className="section-band bg-background">
       <div className="container-content">
         <h2 className="text-section lg:text-section-lg text-foreground mb-8 max-w-3xl">{ps.title}</h2>
         <div className="grid gap-8 lg:grid-cols-2">

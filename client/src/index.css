@@ -112,6 +112,31 @@
     @apply max-w-7xl mx-auto px-6 lg:px-8;
   }
 
+  /* Site-default content page rhythm (from tightened legal pages) */
+  .page-header {
+    @apply border-b border-border/60 pt-12 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12;
+  }
+
+  .page-header-wash {
+    @apply bg-gradient-to-b from-secondary/50 via-background to-background;
+  }
+
+  .page-body {
+    @apply py-8 lg:py-10;
+  }
+
+  .page-body-wash {
+    @apply bg-gradient-to-b from-background via-secondary/15 to-background;
+  }
+
+  .page-stack {
+    @apply space-y-7 sm:space-y-8;
+  }
+
+  .section-band {
+    @apply py-8 lg:py-10;
+  }
+
   .hover-elevate:not(.no-default-hover-elevate)::after,
   .active-elevate:not(.no-default-active-elevate)::after,
   .hover-elevate-2:not(.no-default-hover-elevate)::after,

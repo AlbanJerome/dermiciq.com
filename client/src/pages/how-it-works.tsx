@@ -1,4 +1,5 @@
 import { ListChecks, RefreshCw, ScanLine, UserRound } from "lucide-react";
+import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { siteContent } from "@/config/siteContent";
@@ -15,21 +16,12 @@ export default function HowItWorksPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/how-it-works" />
 
-      <header
-        className={cn(
-          "relative border-b border-border/60",
-          "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
-        )}
-      >
-        <div className="container-content max-w-3xl">
-          <h1 className="text-section text-balance text-foreground lg:text-section-lg mb-4">{p.headline}</h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{p.intro}</p>
-        </div>
-      </header>
+      <ContentPageHeader title={p.headline}>
+        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{p.intro}</p>
+      </ContentPageHeader>
 
-      <div className="py-10 lg:py-14 bg-background">
-        <div className="container-content max-w-5xl">
+      <ContentPageBody as="div" contentClassName="max-w-5xl">
+        <div>
           <h2 className="sr-only">{p.processSectionTitle}</h2>
           <ol className="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2">
             {p.steps.map((step, i) => {
@@ -64,35 +56,33 @@ export default function HowItWorksPage() {
               );
             })}
           </ol>
-
-          <section className="mt-10 max-w-3xl space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">{p.resultsSectionTitle}</h2>
-            <p className="text-muted-foreground leading-relaxed">{p.resultsSectionBody}</p>
-            <p className="text-muted-foreground border-l-2 border-primary/30 pl-4 leading-relaxed">{p.disclaimer}</p>
-          </section>
-
-          <section className="mt-8 max-w-3xl">
-            <h2 className="text-2xl font-semibold text-foreground mb-3">{p.boundariesSectionTitle}</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">{p.boundariesSectionIntro}</p>
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed">
-              {p.boundariesBullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-          </section>
         </div>
-      </div>
 
-      <section className="pb-12 lg:pb-16 bg-background">
-        <div className="container-content max-w-3xl">
+        <section className="max-w-3xl space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">{p.resultsSectionTitle}</h2>
+          <p className="text-muted-foreground leading-relaxed">{p.resultsSectionBody}</p>
+          <p className="text-muted-foreground border-l-2 border-primary/30 pl-4 leading-relaxed">{p.disclaimer}</p>
+        </section>
+
+        <section className="max-w-3xl">
+          <h2 className="text-2xl font-semibold text-foreground mb-3">{p.boundariesSectionTitle}</h2>
+          <p className="text-muted-foreground mb-4 leading-relaxed">{p.boundariesSectionIntro}</p>
+          <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed">
+            {p.boundariesBullets.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="max-w-3xl">
           <div
             className={cn(
               "rounded-2xl border border-border/70 bg-gradient-to-br from-secondary/40 via-background to-background",
-              "px-6 py-10 sm:px-10 sm:py-12 text-center shadow-sm"
+              "px-6 py-8 sm:px-8 sm:py-9 text-center shadow-sm"
             )}
           >
             <h2 className="text-lg font-semibold text-foreground mb-2">{p.ctaStart.title}</h2>
-            <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto leading-relaxed">
               {p.ctaStart.subtext}
             </p>
             <Button
@@ -109,8 +99,8 @@ export default function HowItWorksPage() {
               </a>
             </Button>
           </div>
-        </div>
-      </section>
+        </section>
+      </ContentPageBody>
     </Layout>
   );
 }

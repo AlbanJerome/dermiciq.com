@@ -6,7 +6,7 @@ export function HomeContact() {
   const { contact } = siteContent.home;
 
   return (
-    <section id={contact.id} className="py-12 lg:py-16 bg-secondary/30 border-t border-border/60">
+    <section id={contact.id} className="section-band bg-secondary/30 border-t border-border/60">
       <div className="container-content max-w-2xl text-center">
         <h2 className="text-section lg:text-section-lg text-foreground mb-4">{contact.title}</h2>
         <p className="text-muted-foreground leading-relaxed mb-8">{contact.body}</p>

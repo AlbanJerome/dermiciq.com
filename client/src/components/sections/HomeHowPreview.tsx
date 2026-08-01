@@ -6,7 +6,7 @@ export function HomeHowPreview() {
   const { howPreview: h } = siteContent.home;
 
   return (
-    <section id={h.id} className="scroll-mt-24 py-12 lg:py-16 bg-background">
+    <section id={h.id} className="scroll-mt-24 section-band bg-background">
       <div className="container-content">
         <h2 className="text-section lg:text-section-lg text-foreground mb-4">{h.title}</h2>
         <p className="text-muted-foreground text-lg max-w-3xl mb-8 leading-relaxed">{h.intro}</p>

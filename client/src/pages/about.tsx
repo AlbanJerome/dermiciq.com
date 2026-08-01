@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Check } from "lucide-react";
+import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { siteContent } from "@/config/siteContent";
@@ -16,25 +17,13 @@ export default function AboutPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/about" />
 
-      <header
-        className={cn(
-          "border-b border-border/60",
-          "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14",
-        )}
-      >
-        <div className="container-content max-w-3xl">
-          <h1 className="text-balance text-foreground text-section mb-3 sm:mb-4 lg:text-section-lg">
-            {p.headline}
-          </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {p.intro}
-          </p>
-        </div>
-      </header>
+      <ContentPageHeader title={p.headline}>
+        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          {p.intro}
+        </p>
+      </ContentPageHeader>
 
-      <article className="bg-background py-10 lg:py-14">
-        <div className="container-content max-w-3xl space-y-10">
+      <ContentPageBody>
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold text-foreground">{p.missionTitle}</h2>
             {p.missionParagraphs.map((para, i) => (
@@ -111,8 +100,7 @@ export default function AboutPage() {
               </Link>
             </p>
           </section>
-        </div>
-      </article>
+      </ContentPageBody>
     </Layout>
   );
 }

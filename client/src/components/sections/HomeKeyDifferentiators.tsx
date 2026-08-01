@@ -5,7 +5,7 @@ export function HomeKeyDifferentiators() {
   const { keyDifferentiators: k } = siteContent.home;
 
   return (
-    <section id={k.id} className="py-12 lg:py-16 bg-secondary/40">
+    <section id={k.id} className="section-band bg-secondary/40">
       <div className="container-content">
         <h2 className="text-section lg:text-section-lg text-foreground mb-8 text-center max-w-2xl mx-auto">
           {k.title}

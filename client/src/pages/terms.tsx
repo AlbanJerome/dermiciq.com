@@ -1,7 +1,7 @@
 import { Link } from "wouter";
+import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
-import { cn } from "@/lib/utils";
 
 const LAST_UPDATED = "April 27, 2026";
 
@@ -16,26 +16,11 @@ export default function Terms() {
         path="/terms"
       />
 
-      <header
-        className={cn(
-          "border-b border-border/60",
-          "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
-        )}
-      >
-        <div className="container-content max-w-3xl">
-          <h1
-            className="text-balance text-foreground text-section mb-3 lg:text-section-lg"
-            data-testid="text-terms-headline"
-          >
-            Terms of Service
-          </h1>
-          <p className="text-sm text-muted-foreground">Effective Date: {LAST_UPDATED}</p>
-        </div>
-      </header>
+      <ContentPageHeader title="Terms of Service" titleTestId="text-terms-headline">
+        <p className="text-sm text-muted-foreground">Effective Date: {LAST_UPDATED}</p>
+      </ContentPageHeader>
 
-      <article className="bg-gradient-to-b from-background via-secondary/15 to-background py-10 lg:py-14">
-        <div className="container-content max-w-3xl space-y-8 sm:space-y-10">
+      <ContentPageBody>
           <section className="space-y-3">
             <p className="text-muted-foreground leading-relaxed">
               Welcome to DermicIQ! These Terms of Service (&quot;Terms&quot;) govern your access to and use of the
@@ -300,8 +285,7 @@ export default function Terms() {
               responsibility, and helping you achieve healthier skin.
             </p>
           </section>
-        </div>
-      </article>
+      </ContentPageBody>
     </Layout>
   );
 }

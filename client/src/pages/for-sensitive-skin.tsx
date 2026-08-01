@@ -1,3 +1,4 @@
+import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { siteContent } from "@/config/siteContent";
@@ -12,26 +13,26 @@ export default function ForSensitiveSkinPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/for-sensitive-skin" />
 
-      <header className="py-10 lg:py-14 bg-gradient-to-br from-accent/25 via-background to-secondary/40 border-b border-border/60">
-        <div className="container-content max-w-3xl">
-          <h1 className="text-section lg:text-section-lg text-foreground mb-6">{p.headline}</h1>
-          <p className="text-body-lg text-muted-foreground leading-relaxed">{p.subhead}</p>
-        </div>
-      </header>
+      <ContentPageHeader
+        title={p.headline}
+        washClassName="bg-gradient-to-br from-accent/25 via-background to-secondary/40"
+      >
+        <p className="text-body-lg text-muted-foreground leading-relaxed">{p.subhead}</p>
+      </ContentPageHeader>
 
-      <div className="py-10 lg:py-14 bg-background space-y-10">
-        <div className="container-content max-w-3xl">
+      <ContentPageBody>
+        <section>
           <h2 className="text-2xl font-semibold text-foreground mb-4">{p.currentLandscapeTitle}</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">{p.currentLandscapeIntro}</p>
-          <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+          <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
             {p.currentLandscapeBullets.map((b) => (
               <li key={b}>{b}</li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div className="container-content max-w-3xl">
-          <Card className="p-8 border-border/80 shadow-sm">
+        <section>
+          <Card className="p-6 sm:p-8 border-border/80 shadow-sm">
             <h2 className="text-2xl font-semibold text-primary mb-4">{p.whyFailsTitle}</h2>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6 leading-relaxed">
               {p.whyFailsBullets.map((b) => (
@@ -40,9 +41,9 @@ export default function ForSensitiveSkinPage() {
             </ul>
             <p className="text-muted-foreground leading-relaxed">{p.whyFailsClosing}</p>
           </Card>
-        </div>
+        </section>
 
-        <div className="container-content max-w-3xl">
+        <section>
           <h2 className="text-2xl font-semibold text-foreground mb-4">{p.gapTitle}</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">{p.gapIntro}</p>
           <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
@@ -51,22 +52,22 @@ export default function ForSensitiveSkinPage() {
             ))}
           </ul>
           <p className="text-muted-foreground leading-relaxed">{p.gapClosing}</p>
-        </div>
+        </section>
 
-        <div className="container-content max-w-3xl">
-          <h2 className="text-2xl font-semibold text-foreground mb-6">{p.solutionTitle}</h2>
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-4">{p.solutionTitle}</h2>
           {p.solutionParagraphs.map((para, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed mb-4 last:mb-0">
               {para}
             </p>
           ))}
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-6 flex flex-wrap gap-4">
             <Button asChild>
               <Link href="/how-it-works">How DermicIQ works</Link>
             </Button>
           </div>
-        </div>
-      </div>
+        </section>
+      </ContentPageBody>
     </Layout>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Button } from "@/components/ui/button";
@@ -117,25 +118,13 @@ export default function ContactPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/contact" />
 
-      <header
-        className={cn(
-          "border-b border-border/60",
-          "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14",
-        )}
-      >
-        <div className="container-content max-w-3xl">
-          <h1 className="text-balance text-foreground text-section mb-4 sm:mb-5 lg:text-section-lg">
-            {p.headline}
-          </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            {p.intro}
-          </p>
-        </div>
-      </header>
+      <ContentPageHeader title={p.headline}>
+        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          {p.intro}
+        </p>
+      </ContentPageHeader>
 
-      <section className="bg-background py-10 lg:py-14">
-        <div className="container-content max-w-2xl">
+      <ContentPageBody as="section" contentClassName="max-w-2xl">
           <Card className="border border-border/80 bg-card/80 p-6 shadow-sm sm:p-8">
             {succeeded ? (
               <div className="space-y-4 text-center sm:py-6" role="status" aria-live="polite">
@@ -304,8 +293,7 @@ export default function ContactPage() {
               </form>
             )}
           </Card>
-        </div>
-      </section>
+      </ContentPageBody>
     </Layout>
   );
 }

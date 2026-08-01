@@ -15,7 +15,7 @@ export function Footer() {
 
   return (
     <footer className="bg-footer text-footer-foreground" data-testid="footer">
-      <div className="container-content py-10 lg:py-12">
+      <div className="container-content section-band">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
