@@ -1,12 +1,6 @@
-/** Request body accepted by POST /api/contact. */
-export type ContactPayload = {
-  name: string;
-  email: string;
-  phone?: string;
-  subject: string;
-  message: string;
-  turnstileToken: string;
-};
+import type { ContactPayload } from "../../../shared/contact/contract";
+
+export type { ContactPayload };
 
 export type Env = {
   TURNSTILE_SECRET: string;

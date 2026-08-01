@@ -51,6 +51,7 @@ export default defineConfig(({ command }) => {
       alias: {
         "@": path.resolve(import.meta.dirname, "client", "src"),
         "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+        "@shared": path.resolve(import.meta.dirname, "shared"),
       },
     },
     root: path.resolve(import.meta.dirname, "client"),
@@ -61,6 +62,11 @@ export default defineConfig(({ command }) => {
     server: {
       fs: {
         strict: true,
+        allow: [
+          path.resolve(import.meta.dirname, "client"),
+          path.resolve(import.meta.dirname, "shared"),
+          path.resolve(import.meta.dirname, "attached_assets"),
+        ],
         deny: ["**/.*"],
       },
     },

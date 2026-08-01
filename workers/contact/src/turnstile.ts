@@ -1,7 +1,21 @@
+import { isPlainObject } from "../../../shared/json";
+
 type SiteverifyResult = {
   success: boolean;
   "error-codes"?: string[];
 };
+
+function isSiteverifyResult(value: unknown): value is SiteverifyResult {
+  if (!isPlainObject(value) || typeof value.success !== "boolean") {
+    return false;
+  }
+  if (!("error-codes" in value)) return true;
+  const codes = value["error-codes"];
+  return (
+    codes === undefined ||
+    (Array.isArray(codes) && codes.every((code) => typeof code === "string"))
+  );
+}
 
 /**
  * Canonical Turnstile Siteverify call.
@@ -36,10 +50,15 @@ export async function verifyTurnstile(options: {
       return { ok: false, error: "Turnstile verification failed" };
     }
 
-    const result = (await response.json()) as SiteverifyResult;
-    if (result.success !== true) {
+    const raw: unknown = await response.json();
+    if (!isSiteverifyResult(raw)) {
+      console.error("turnstile_siteverify_malformed");
+      return { ok: false, error: "Turnstile verification failed" };
+    }
+
+    if (raw.success !== true) {
       console.error("turnstile_siteverify_rejected", {
-        errorCodes: result["error-codes"] ?? [],
+        errorCodes: raw["error-codes"] ?? [],
       });
       return { ok: false, error: "Turnstile verification failed" };
     }

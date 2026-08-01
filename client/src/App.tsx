@@ -16,6 +16,18 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
+function RouteFallback() {
+  return (
+    <div
+      className="flex min-h-[40vh] items-center justify-center px-4"
+      role="status"
+      aria-live="polite"
+    >
+      <p className="text-sm text-muted-foreground">Loading…</p>
+    </div>
+  );
+}
+
 function Routes() {
   return (
     <Switch>
@@ -38,7 +50,7 @@ function App() {
         <Suspense fallback={null}>
           <CookieConsent />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense fallback={<RouteFallback />}>
           <Routes />
         </Suspense>
       </Router>

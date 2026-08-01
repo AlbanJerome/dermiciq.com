@@ -1,12 +1,12 @@
-/** Contact form API payload — must match the Worker contract. */
-export type ContactFormPayload = {
-  name: string;
-  email: string;
-  phone?: string;
-  subject: string;
-  message: string;
-  turnstileToken: string;
-};
+import {
+  CONTACT_EMAIL_RE,
+  CONTACT_LIMITS,
+  type ContactFormFields,
+  type ContactPayload,
+} from "@shared/contact/contract";
+import { getStringProp, isPlainObject } from "@shared/json";
+
+export type { ContactFormFields, ContactPayload as ContactFormPayload };
 
 export type ContactSubmitResult =
   | { ok: true }
@@ -29,28 +29,17 @@ function messageForStatus(status: number, bodyMessage?: string): string {
   if (status === 400) {
     return "We could not send your message. Check your details and the security check, then try again.";
   }
+  if (status === 502 || status === 503) {
+    return "Something went wrong sending your message. Please try again later.";
+  }
   return "Something went wrong sending your message. Please try again later.";
 }
 
 async function readErrorMessage(response: Response): Promise<string | undefined> {
   try {
     const data: unknown = await response.json();
-    if (
-      typeof data === "object" &&
-      data !== null &&
-      "error" in data &&
-      typeof (data as { error: unknown }).error === "string"
-    ) {
-      return (data as { error: string }).error;
-    }
-    if (
-      typeof data === "object" &&
-      data !== null &&
-      "message" in data &&
-      typeof (data as { message: unknown }).message === "string"
-    ) {
-      return (data as { message: string }).message;
-    }
+    if (!isPlainObject(data)) return undefined;
+    return getStringProp(data, "error") ?? getStringProp(data, "message");
   } catch {
     // Non-JSON body — fall through to status defaults.
   }
@@ -59,12 +48,14 @@ async function readErrorMessage(response: Response): Promise<string | undefined>
 
 /** POST contact form to the Worker API. Presentation stays in the page component. */
 export async function submitContactForm(
-  payload: ContactFormPayload,
+  payload: ContactPayload,
+  options?: { signal?: AbortSignal },
 ): Promise<ContactSubmitResult> {
   const response = await fetch(getContactApiUrl(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    signal: options?.signal,
   });
 
   if (response.ok) {
@@ -79,14 +70,6 @@ export async function submitContactForm(
   };
 }
 
-export type ContactFormFields = {
-  name: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-};
-
 export function validateContactFields(
   fields: ContactFormFields,
 ): Partial<Record<keyof ContactFormFields, string>> {
@@ -97,24 +80,30 @@ export function validateContactFields(
   const message = fields.message.trim();
 
   if (!name) errors.name = "Name is required.";
-  else if (name.length > 120) errors.name = "Name is too long.";
+  else if (name.length > CONTACT_LIMITS.name.max) {
+    errors.name = "Name is too long.";
+  }
 
   if (!email) errors.email = "Email is required.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  else if (!CONTACT_EMAIL_RE.test(email)) {
     errors.email = "Enter a valid email address.";
-  } else if (email.length > 254) {
+  } else if (email.length > CONTACT_LIMITS.email.max) {
     errors.email = "Email is too long.";
   }
 
-  if (fields.phone.trim().length > 40) {
+  if (fields.phone.trim().length > CONTACT_LIMITS.phone.max) {
     errors.phone = "Phone number is too long.";
   }
 
   if (!subject) errors.subject = "Subject is required.";
-  else if (subject.length > 200) errors.subject = "Subject is too long.";
+  else if (subject.length > CONTACT_LIMITS.subject.max) {
+    errors.subject = "Subject is too long.";
+  }
 
   if (!message) errors.message = "Message is required.";
-  else if (message.length > 5000) errors.message = "Message is too long.";
+  else if (message.length > CONTACT_LIMITS.message.max) {
+    errors.message = "Message is too long.";
+  }
 
   return errors;
 }
@@ -122,7 +111,7 @@ export function validateContactFields(
 export function toContactPayload(
   fields: ContactFormFields,
   turnstileToken: string,
-): ContactFormPayload {
+): ContactPayload {
   const phone = fields.phone.trim();
   return {
     name: fields.name.trim(),
@@ -133,3 +122,5 @@ export function toContactPayload(
     turnstileToken,
   };
 }
+
+export { CONTACT_LIMITS };

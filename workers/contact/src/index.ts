@@ -69,7 +69,8 @@ async function handleContactPost(
     remoteIp: ip,
   });
   if (!email.ok) {
-    return jsonResponse(400, { error: email.error });
+    // Upstream provider failure — not a client validation error.
+    return jsonResponse(502, { error: email.error });
   }
 
   return jsonResponse(200, { ok: true });

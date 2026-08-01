@@ -1,16 +1,9 @@
-import type { ContactPayload } from "./types";
-
-const LIMITS = {
-  name: { min: 1, max: 100 },
-  email: { min: 3, max: 254 },
-  phone: { max: 40 },
-  subject: { min: 1, max: 200 },
-  message: { min: 1, max: 5000 },
-  turnstileToken: { min: 1, max: 2048 },
-} as const;
-
-// Practical email shape check (not full RFC 5322).
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import {
+  CONTACT_EMAIL_RE,
+  CONTACT_LIMITS,
+  type ContactPayload,
+} from "../../../shared/contact/contract";
+import { isPlainObject } from "../../../shared/json";
 
 function asTrimmedString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -24,70 +17,74 @@ function asTrimmedString(value: unknown): string | null {
 export function validateContactPayload(
   body: unknown,
 ): { ok: true; data: ContactPayload } | { ok: false; error: string } {
-  if (body === null || typeof body !== "object" || Array.isArray(body)) {
+  if (!isPlainObject(body)) {
     return { ok: false, error: "Request body must be a JSON object" };
   }
 
-  const raw = body as Record<string, unknown>;
-
-  const name = asTrimmedString(raw.name);
-  if (name === null || name.length < LIMITS.name.min) {
+  const name = asTrimmedString(body.name);
+  if (name === null || name.length < CONTACT_LIMITS.name.min) {
     return { ok: false, error: "Name is required" };
   }
-  if (name.length > LIMITS.name.max) {
-    return { ok: false, error: `Name must be at most ${LIMITS.name.max} characters` };
+  if (name.length > CONTACT_LIMITS.name.max) {
+    return {
+      ok: false,
+      error: `Name must be at most ${CONTACT_LIMITS.name.max} characters`,
+    };
   }
 
-  const email = asTrimmedString(raw.email);
-  if (email === null || email.length < LIMITS.email.min) {
+  const email = asTrimmedString(body.email);
+  if (email === null || email.length < CONTACT_LIMITS.email.min) {
     return { ok: false, error: "Email is required" };
   }
-  if (email.length > LIMITS.email.max || !EMAIL_RE.test(email)) {
+  if (email.length > CONTACT_LIMITS.email.max || !CONTACT_EMAIL_RE.test(email)) {
     return { ok: false, error: "Email is invalid" };
   }
 
   let phone: string | undefined;
-  if (raw.phone !== undefined && raw.phone !== null && raw.phone !== "") {
-    const phoneValue = asTrimmedString(raw.phone);
+  if (body.phone !== undefined && body.phone !== null && body.phone !== "") {
+    const phoneValue = asTrimmedString(body.phone);
     if (phoneValue === null) {
       return { ok: false, error: "Phone must be a string" };
     }
-    if (phoneValue.length > LIMITS.phone.max) {
+    if (phoneValue.length > CONTACT_LIMITS.phone.max) {
       return {
         ok: false,
-        error: `Phone must be at most ${LIMITS.phone.max} characters`,
+        error: `Phone must be at most ${CONTACT_LIMITS.phone.max} characters`,
       };
     }
     phone = phoneValue;
   }
 
-  const subject = asTrimmedString(raw.subject);
-  if (subject === null || subject.length < LIMITS.subject.min) {
+  const subject = asTrimmedString(body.subject);
+  if (subject === null || subject.length < CONTACT_LIMITS.subject.min) {
     return { ok: false, error: "Subject is required" };
   }
-  if (subject.length > LIMITS.subject.max) {
+  if (subject.length > CONTACT_LIMITS.subject.max) {
     return {
       ok: false,
-      error: `Subject must be at most ${LIMITS.subject.max} characters`,
+      error: `Subject must be at most ${CONTACT_LIMITS.subject.max} characters`,
     };
   }
 
-  const message = asTrimmedString(raw.message);
-  if (message === null || message.length < LIMITS.message.min) {
+  const message = asTrimmedString(body.message);
+  if (message === null || message.length < CONTACT_LIMITS.message.min) {
     return { ok: false, error: "Message is required" };
   }
-  if (message.length > LIMITS.message.max) {
+  if (message.length > CONTACT_LIMITS.message.max) {
     return {
       ok: false,
-      error: `Message must be at most ${LIMITS.message.max} characters`,
+      error: `Message must be at most ${CONTACT_LIMITS.message.max} characters`,
     };
   }
 
-  const turnstileToken = asTrimmedString(raw.turnstileToken);
-  if (turnstileToken === null || turnstileToken.length < LIMITS.turnstileToken.min) {
+  const turnstileToken = asTrimmedString(body.turnstileToken);
+  if (
+    turnstileToken === null ||
+    turnstileToken.length < CONTACT_LIMITS.turnstileToken.min
+  ) {
     return { ok: false, error: "Turnstile token is required" };
   }
-  if (turnstileToken.length > LIMITS.turnstileToken.max) {
+  if (turnstileToken.length > CONTACT_LIMITS.turnstileToken.max) {
     return { ok: false, error: "Turnstile token is invalid" };
   }
 

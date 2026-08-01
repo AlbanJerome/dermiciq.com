@@ -1,7 +1,6 @@
 /** Canonical public origin for SEO / Open Graph (override via Vite env if needed). */
-export const siteOrigin = (
-  import.meta.env.VITE_SITE_URL as string | undefined
-)?.replace(/\/$/, "") || "https://DermicIQ.com";
+export const siteOrigin =
+  import.meta.env.VITE_SITE_URL?.replace(/\/$/, "") || "https://DermicIQ.com";
 
 /** Link to a section on the home page (works with GitHub Pages `base`). */
 export function homeSectionHref(anchor: string): string {

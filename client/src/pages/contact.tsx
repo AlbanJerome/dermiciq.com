@@ -1,40 +1,21 @@
-import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ContactFormField } from "@/components/contact/ContactFormField";
 import { siteContent } from "@/config/siteContent";
+import { useTurnstileWidget } from "@/hooks/useTurnstileWidget";
 import { cn } from "@/lib/utils";
+import { readTurnstileResponseFromForm } from "@/lib/turnstile";
 import {
+  CONTACT_LIMITS,
   submitContactForm,
   toContactPayload,
   validateContactFields,
   type ContactFormFields,
 } from "@/lib/contactForm";
-
-const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-
-type TurnstileApi = {
-  render: (
-    container: HTMLElement,
-    options: {
-      sitekey: string;
-      callback: (token: string) => void;
-      "expired-callback"?: () => void;
-      "error-callback"?: () => void;
-      theme?: "light" | "dark" | "auto";
-    },
-  ) => string;
-  reset: (widgetId: string) => void;
-  remove: (widgetId: string) => void;
-};
-
-declare global {
-  interface Window {
-    turnstile?: TurnstileApi;
-  }
-}
 
 const emptyFields: ContactFormFields = {
   name: "",
@@ -43,38 +24,6 @@ const emptyFields: ContactFormFields = {
   subject: "",
   message: "",
 };
-
-function loadTurnstileScript(): Promise<TurnstileApi> {
-  if (window.turnstile) {
-    return Promise.resolve(window.turnstile);
-  }
-
-  const existing = document.querySelector<HTMLScriptElement>(
-    `script[src="${TURNSTILE_SCRIPT_SRC}"]`,
-  );
-  if (existing) {
-    return new Promise((resolve, reject) => {
-      existing.addEventListener("load", () => {
-        if (window.turnstile) resolve(window.turnstile);
-        else reject(new Error("Turnstile failed to load"));
-      });
-      existing.addEventListener("error", () => reject(new Error("Turnstile failed to load")));
-    });
-  }
-
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = TURNSTILE_SCRIPT_SRC;
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      if (window.turnstile) resolve(window.turnstile);
-      else reject(new Error("Turnstile failed to load"));
-    };
-    script.onerror = () => reject(new Error("Turnstile failed to load"));
-    document.head.appendChild(script);
-  });
-}
 
 export default function ContactPage() {
   const p = siteContent.pages.contact;
@@ -85,58 +34,24 @@ export default function ContactPage() {
   const [fieldErrors, setFieldErrors] = useState<
     Partial<Record<keyof ContactFormFields, string>>
   >({});
-  const [turnstileToken, setTurnstileToken] = useState("");
-  const [turnstileError, setTurnstileError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
+  const submitAbortRef = useRef<AbortController | null>(null);
 
-  const widgetHostRef = useRef<HTMLDivElement>(null);
-  const widgetIdRef = useRef<string | null>(null);
+  const {
+    widgetHostRef,
+    token: turnstileToken,
+    error: turnstileError,
+    setError: setTurnstileError,
+    reset: resetTurnstile,
+  } = useTurnstileWidget({ siteKey });
 
   useEffect(() => {
-    if (!siteKey || !widgetHostRef.current) return;
-
-    let cancelled = false;
-
-    loadTurnstileScript()
-      .then((turnstile) => {
-        if (cancelled || !widgetHostRef.current) return;
-        if (widgetIdRef.current) {
-          turnstile.remove(widgetIdRef.current);
-          widgetIdRef.current = null;
-        }
-        widgetIdRef.current = turnstile.render(widgetHostRef.current, {
-          sitekey: siteKey,
-          theme: "light",
-          callback: (token) => {
-            setTurnstileToken(token);
-            setTurnstileError(null);
-          },
-          "expired-callback": () => {
-            setTurnstileToken("");
-            setTurnstileError("Security check expired. Please complete it again.");
-          },
-          "error-callback": () => {
-            setTurnstileToken("");
-            setTurnstileError("Security check failed to load. Please refresh and try again.");
-          },
-        });
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setTurnstileError("Security check failed to load. Please refresh and try again.");
-        }
-      });
-
     return () => {
-      cancelled = true;
-      if (widgetIdRef.current && window.turnstile) {
-        window.turnstile.remove(widgetIdRef.current);
-        widgetIdRef.current = null;
-      }
+      submitAbortRef.current?.abort();
     };
-  }, [siteKey]);
+  }, []);
 
   const updateField = (key: keyof ContactFormFields, value: string) => {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -146,13 +61,6 @@ export default function ContactPage() {
       delete next[key];
       return next;
     });
-  };
-
-  const resetTurnstile = () => {
-    setTurnstileToken("");
-    if (widgetIdRef.current && window.turnstile) {
-      window.turnstile.reset(widgetIdRef.current);
-    }
   };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -169,22 +77,23 @@ export default function ContactPage() {
     }
 
     const token =
-      turnstileToken ||
-      (
-        event.currentTarget.querySelector(
-          'input[name="cf-turnstile-response"]',
-        ) as HTMLInputElement | null
-      )?.value?.trim() ||
-      "";
+      turnstileToken || readTurnstileResponseFromForm(event.currentTarget);
 
     if (!token) {
       setTurnstileError("Please complete the security check before sending.");
       return;
     }
 
+    submitAbortRef.current?.abort();
+    const abortController = new AbortController();
+    submitAbortRef.current = abortController;
+
     setSubmitting(true);
     try {
-      const result = await submitContactForm(toContactPayload(fields, token));
+      const result = await submitContactForm(toContactPayload(fields, token), {
+        signal: abortController.signal,
+      });
+      if (abortController.signal.aborted) return;
       if (result.ok) {
         setSucceeded(true);
         setFields(emptyFields);
@@ -193,21 +102,17 @@ export default function ContactPage() {
       }
       setSubmitError(result.message);
       resetTurnstile();
-    } catch {
+    } catch (error) {
+      if (abortController.signal.aborted) return;
+      if (error instanceof DOMException && error.name === "AbortError") return;
       setSubmitError("Something went wrong sending your message. Please try again later.");
       resetTurnstile();
     } finally {
-      setSubmitting(false);
+      if (!abortController.signal.aborted) {
+        setSubmitting(false);
+      }
     }
   };
-
-  const fieldClass = (hasError: boolean) =>
-    cn(
-      "mt-1.5 w-full rounded-md border bg-background px-3 py-2.5 text-sm text-foreground",
-      "placeholder:text-muted-foreground/70",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-      hasError ? "border-destructive" : "border-input",
-    );
 
   return (
     <Layout>
@@ -263,138 +168,103 @@ export default function ContactPage() {
                   required.
                 </p>
 
-                <div>
-                  <label htmlFor={`${formId}-name`} className="text-sm font-medium text-foreground">
-                    Name <span aria-hidden>*</span>
-                    <span className="sr-only">(required)</span>
-                  </label>
-                  <input
-                    id={`${formId}-name`}
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    maxLength={120}
-                    value={fields.name}
-                    onChange={(e) => updateField("name", e.target.value)}
-                    className={fieldClass(Boolean(fieldErrors.name))}
-                    aria-invalid={Boolean(fieldErrors.name)}
-                    aria-describedby={fieldErrors.name ? `${formId}-name-error` : undefined}
-                  />
-                  {fieldErrors.name ? (
-                    <p id={`${formId}-name-error`} className="mt-1.5 text-sm text-destructive-foreground">
-                      {fieldErrors.name}
-                    </p>
-                  ) : null}
-                </div>
+                <ContactFormField
+                  id={`${formId}-name`}
+                  label="Name"
+                  required
+                  error={fieldErrors.name}
+                >
+                  {(fieldProps) => (
+                    <input
+                      {...fieldProps}
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      maxLength={CONTACT_LIMITS.name.max}
+                      value={fields.name}
+                      onChange={(e) => updateField("name", e.target.value)}
+                    />
+                  )}
+                </ContactFormField>
 
-                <div>
-                  <label htmlFor={`${formId}-email`} className="text-sm font-medium text-foreground">
-                    Email <span aria-hidden>*</span>
-                    <span className="sr-only">(required)</span>
-                  </label>
-                  <input
-                    id={`${formId}-email`}
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    maxLength={254}
-                    value={fields.email}
-                    onChange={(e) => updateField("email", e.target.value)}
-                    className={fieldClass(Boolean(fieldErrors.email))}
-                    aria-invalid={Boolean(fieldErrors.email)}
-                    aria-describedby={fieldErrors.email ? `${formId}-email-error` : undefined}
-                  />
-                  {fieldErrors.email ? (
-                    <p id={`${formId}-email-error`} className="mt-1.5 text-sm text-destructive-foreground">
-                      {fieldErrors.email}
-                    </p>
-                  ) : null}
-                </div>
+                <ContactFormField
+                  id={`${formId}-email`}
+                  label="Email"
+                  required
+                  error={fieldErrors.email}
+                >
+                  {(fieldProps) => (
+                    <input
+                      {...fieldProps}
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      maxLength={CONTACT_LIMITS.email.max}
+                      value={fields.email}
+                      onChange={(e) => updateField("email", e.target.value)}
+                    />
+                  )}
+                </ContactFormField>
 
-                <div>
-                  <label htmlFor={`${formId}-phone`} className="text-sm font-medium text-foreground">
-                    Phone <span className="font-normal text-muted-foreground">(optional)</span>
-                  </label>
-                  <input
-                    id={`${formId}-phone`}
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    maxLength={40}
-                    value={fields.phone}
-                    onChange={(e) => updateField("phone", e.target.value)}
-                    className={fieldClass(Boolean(fieldErrors.phone))}
-                    aria-invalid={Boolean(fieldErrors.phone)}
-                    aria-describedby={fieldErrors.phone ? `${formId}-phone-error` : undefined}
-                  />
-                  {fieldErrors.phone ? (
-                    <p id={`${formId}-phone-error`} className="mt-1.5 text-sm text-destructive-foreground">
-                      {fieldErrors.phone}
-                    </p>
-                  ) : null}
-                </div>
+                <ContactFormField
+                  id={`${formId}-phone`}
+                  label="Phone"
+                  optionalHint="(optional)"
+                  error={fieldErrors.phone}
+                >
+                  {(fieldProps) => (
+                    <input
+                      {...fieldProps}
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      maxLength={CONTACT_LIMITS.phone.max}
+                      value={fields.phone}
+                      onChange={(e) => updateField("phone", e.target.value)}
+                    />
+                  )}
+                </ContactFormField>
 
-                <div>
-                  <label
-                    htmlFor={`${formId}-subject`}
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Subject <span aria-hidden>*</span>
-                    <span className="sr-only">(required)</span>
-                  </label>
-                  <input
-                    id={`${formId}-subject`}
-                    name="subject"
-                    type="text"
-                    required
-                    maxLength={200}
-                    value={fields.subject}
-                    onChange={(e) => updateField("subject", e.target.value)}
-                    className={fieldClass(Boolean(fieldErrors.subject))}
-                    aria-invalid={Boolean(fieldErrors.subject)}
-                    aria-describedby={fieldErrors.subject ? `${formId}-subject-error` : undefined}
-                  />
-                  {fieldErrors.subject ? (
-                    <p
-                      id={`${formId}-subject-error`}
-                      className="mt-1.5 text-sm text-destructive-foreground"
-                    >
-                      {fieldErrors.subject}
-                    </p>
-                  ) : null}
-                </div>
+                <ContactFormField
+                  id={`${formId}-subject`}
+                  label="Subject"
+                  required
+                  error={fieldErrors.subject}
+                >
+                  {(fieldProps) => (
+                    <input
+                      {...fieldProps}
+                      name="subject"
+                      type="text"
+                      required
+                      maxLength={CONTACT_LIMITS.subject.max}
+                      value={fields.subject}
+                      onChange={(e) => updateField("subject", e.target.value)}
+                    />
+                  )}
+                </ContactFormField>
 
-                <div>
-                  <label
-                    htmlFor={`${formId}-message`}
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Message <span aria-hidden>*</span>
-                    <span className="sr-only">(required)</span>
-                  </label>
-                  <textarea
-                    id={`${formId}-message`}
-                    name="message"
-                    required
-                    rows={6}
-                    maxLength={5000}
-                    value={fields.message}
-                    onChange={(e) => updateField("message", e.target.value)}
-                    className={cn(fieldClass(Boolean(fieldErrors.message)), "resize-y min-h-[9rem]")}
-                    aria-invalid={Boolean(fieldErrors.message)}
-                    aria-describedby={fieldErrors.message ? `${formId}-message-error` : undefined}
-                  />
-                  {fieldErrors.message ? (
-                    <p
-                      id={`${formId}-message-error`}
-                      className="mt-1.5 text-sm text-destructive-foreground"
-                    >
-                      {fieldErrors.message}
-                    </p>
-                  ) : null}
-                </div>
+                <ContactFormField
+                  id={`${formId}-message`}
+                  label="Message"
+                  required
+                  error={fieldErrors.message}
+                >
+                  {(fieldProps) => (
+                    <textarea
+                      {...fieldProps}
+                      name="message"
+                      required
+                      rows={6}
+                      maxLength={CONTACT_LIMITS.message.max}
+                      value={fields.message}
+                      onChange={(e) => updateField("message", e.target.value)}
+                      className={cn(fieldProps.className, "resize-y min-h-[9rem]")}
+                    />
+                  )}
+                </ContactFormField>
 
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-foreground">

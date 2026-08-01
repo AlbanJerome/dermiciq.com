@@ -10,6 +10,7 @@
     "build:apex": "VITE_BASE=/ vite build",
     "deploy:apex": "npm run build:apex && gh-pages -d dist/public",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit && npm --prefix workers/contact run check",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/public"

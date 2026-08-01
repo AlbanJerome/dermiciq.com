@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "wouter";
 import { X } from "lucide-react";
@@ -9,6 +9,7 @@ import {
   openCookieSettings,
   subscribeCookieSettingsOpen,
 } from "@/lib/cookieConsent";
+import { isPlainObject } from "@shared/json";
 
 export { openCookieSettings, COOKIE_CONSENT_STORAGE_KEY };
 
@@ -18,17 +19,28 @@ type StoredConsent = {
   updatedAt: number;
 };
 
-function getStoredConsent(): StoredConsent | null {
-  if (typeof window === "undefined") return null;
+function parseStoredConsent(raw: string): StoredConsent | null {
   try {
-    const raw = localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
-    if (!raw) return null;
-    const o = JSON.parse(raw) as StoredConsent;
-    if (o && typeof o === "object" && o.v === 1 && typeof o.all === "boolean") return o;
+    const value: unknown = JSON.parse(raw);
+    if (
+      isPlainObject(value) &&
+      value.v === 1 &&
+      typeof value.all === "boolean" &&
+      typeof value.updatedAt === "number"
+    ) {
+      return { v: 1, all: value.all, updatedAt: value.updatedAt };
+    }
   } catch {
-    /* ignore */
+    /* ignore corrupt storage */
   }
   return null;
+}
+
+function getStoredConsent(): StoredConsent | null {
+  if (typeof window === "undefined") return null;
+  const raw = localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
+  if (!raw) return null;
+  return parseStoredConsent(raw);
 }
 
 function writeConsent(all: boolean) {
@@ -41,10 +53,10 @@ export function CookieConsent() {
   const [bannerOpen, setBannerOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const closeAll = useCallback(() => {
+  const closeAll = () => {
     setBannerOpen(false);
     setModalOpen(false);
-  }, []);
+  };
 
   useEffect(() => {
     const t = window.setTimeout(() => {
@@ -69,15 +81,15 @@ export function CookieConsent() {
     return () => window.removeEventListener("keydown", onKey);
   }, [modalOpen]);
 
-  const acceptAll = useCallback(() => {
+  const acceptAll = () => {
     writeConsent(true);
     closeAll();
-  }, [closeAll]);
+  };
 
-  const acceptEssentialOnly = useCallback(() => {
+  const acceptEssentialOnly = () => {
     writeConsent(false);
     closeAll();
-  }, [closeAll]);
+  };
 
   if (!bannerOpen) return null;
 
