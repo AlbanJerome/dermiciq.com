@@ -20,7 +20,7 @@ export default function Privacy() {
         className={cn(
           "border-b border-border/60",
           "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-20 pb-12 sm:pt-24 sm:pb-14 lg:pt-28 lg:pb-16"
+          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14"
         )}
       >
         <div className="container-content max-w-3xl">
@@ -34,8 +34,8 @@ export default function Privacy() {
         </div>
       </header>
 
-      <div className="bg-background py-12 sm:py-16 lg:py-20">
-        <article className="container-content max-w-3xl space-y-12 sm:space-y-14">
+      <article className="bg-gradient-to-b from-background via-secondary/15 to-background py-10 lg:py-14">
+        <div className="container-content max-w-3xl space-y-8 sm:space-y-10">
           <section className="space-y-3">
             <p className="text-muted-foreground leading-relaxed">
               DermicIQ Technologies Inc. (&quot;DermicIQ,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)
@@ -269,8 +269,8 @@ export default function Privacy() {
               Thank you for trusting DermicIQ with your skincare journey. Your privacy is important to us.
             </p>
           </section>
-        </article>
-      </div>
+        </div>
+      </article>
     </Layout>
   );
 }
