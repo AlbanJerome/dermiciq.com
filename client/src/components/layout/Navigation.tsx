@@ -75,9 +75,14 @@ export function Navigation() {
             className="font-semibold bg-white text-primary hover:bg-white/90 border-0"
             asChild
           >
-            <Link href="/contact" aria-label="Contact us">
-              Contact
-            </Link>
+            <a
+              href={navigation.cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={navigation.cta.label}
+            >
+              {navigation.cta.label}
+            </a>
           </Button>
         </div>
 
@@ -105,9 +110,14 @@ export function Navigation() {
                 className="w-full font-semibold bg-white text-primary hover:bg-white/90"
                 asChild
               >
-                <Link href="/contact" aria-label="Contact us">
-                  Contact
-                </Link>
+                <a
+                  href={navigation.cta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={navigation.cta.label}
+                >
+                  {navigation.cta.label}
+                </a>
               </Button>
             </div>
           </nav>

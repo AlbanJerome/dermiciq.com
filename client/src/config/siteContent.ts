@@ -30,7 +30,9 @@ export const siteContent = {
       { label: "About", href: "/about" },
       { label: "How it works", href: "/how-it-works" },
       { label: "For sensitive skin", href: "/for-sensitive-skin" },
+      { label: "Contact", href: "/contact" },
     ],
+    cta: { label: "Start Free Analysis", href: "https://app.dermiciq.com/" },
     contactEmail: "hello@DermicIQ.com",
   },
 
@@ -310,7 +312,7 @@ export const siteContent = {
         subtext:
           "Open the home page and walk through your skin profile, or read how it all fits together first, whichever you prefer.",
         label: "Start Free Analysis",
-        href: "/#skin-analysis",
+        href: "https://app.dermiciq.com/",
         sublinkLabel: "How it works",
         sublinkHref: "/how-it-works",
         backLabel: "Back to home",

@@ -20,11 +20,11 @@ export default function AboutPage() {
         className={cn(
           "border-b border-border/60",
           "bg-gradient-to-b from-secondary/50 via-background to-background",
-          "pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24"
+          "pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14",
         )}
       >
         <div className="container-content max-w-3xl">
-          <h1 className="text-balance text-foreground text-section mb-4 sm:mb-5 lg:text-section-lg">
+          <h1 className="text-balance text-foreground text-section mb-3 sm:mb-4 lg:text-section-lg">
             {p.headline}
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -33,9 +33,9 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <article className="bg-background py-16 lg:py-24">
-        <div className="container-content max-w-3xl space-y-16">
-          <section className="space-y-4">
+      <article className="bg-background py-10 lg:py-14">
+        <div className="container-content max-w-3xl space-y-10">
+          <section className="space-y-3">
             <h2 className="text-2xl font-semibold text-foreground">{p.missionTitle}</h2>
             {p.missionParagraphs.map((para, i) => (
               <p key={i} className="text-lg leading-relaxed text-muted-foreground">
@@ -44,9 +44,9 @@ export default function AboutPage() {
             ))}
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-3">
             <h2 className="text-2xl font-semibold text-foreground">{p.differentTitle}</h2>
-            <ul className="space-y-4" role="list">
+            <ul className="space-y-3" role="list">
               {p.differentPoints.map((point, i) => (
                 <li
                   key={i}
@@ -66,31 +66,29 @@ export default function AboutPage() {
 
           <section>
             <Card
-              className="border border-border/80 bg-card/80 p-6 shadow-sm sm:p-8"
+              className="border border-border/80 bg-card/80 p-5 shadow-sm sm:p-6"
               aria-labelledby="about-team-heading"
             >
-              <h2 id="about-team-heading" className="text-2xl font-semibold text-primary mb-4">
+              <h2 id="about-team-heading" className="text-2xl font-semibold text-primary mb-3">
                 {p.teamTitle}
               </h2>
-              <p className="text-muted-foreground leading-relaxed sm:text-lg mb-4">{p.teamBody}</p>
+              <p className="text-muted-foreground leading-relaxed sm:text-lg mb-3">{p.teamBody}</p>
               <p className="text-muted-foreground leading-relaxed border-l-2 border-primary/25 pl-4">
                 {p.teamFootnote}
               </p>
             </Card>
           </section>
-        </div>
-      </article>
 
-      <section className="bg-background pb-20 lg:pb-28">
-        <div className="container-content max-w-3xl">
-          <div
+          <section
             className={cn(
               "rounded-2xl border border-border/70 bg-gradient-to-br from-secondary/40 via-background to-background",
-              "px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12"
+              "px-6 py-8 text-center shadow-sm sm:px-8 sm:py-9",
             )}
           >
             <h2 className="text-lg font-semibold text-foreground mb-2">{p.cta.title}</h2>
-            <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">{p.cta.subtext}</p>
+            <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto leading-relaxed">
+              {p.cta.subtext}
+            </p>
             <Button
               asChild
               size="lg"
@@ -104,7 +102,7 @@ export default function AboutPage() {
                 {p.cta.label}
               </a>
             </Button>
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-5 text-sm text-muted-foreground">
               <Link
                 className="font-semibold text-primary underline-offset-2 hover:underline"
                 href={p.cta.sublinkHref}
@@ -121,9 +119,9 @@ export default function AboutPage() {
                 {p.cta.backLabel}
               </Link>
             </p>
-          </div>
+          </section>
         </div>
-      </section>
+      </article>
     </Layout>
   );
 }
