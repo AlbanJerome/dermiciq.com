@@ -5,15 +5,17 @@
   // Set to today's date when creating; bump periodically.
   "compatibility_date": "2026-07-27",
   "compatibility_flags": ["nodejs_compat"],
+  // Pin DermicIQ so a Forjyn wrangler login cannot receive this deploy.
+  // CLI auth still comes from gitignored `.env` (CLOUDFLARE_API_TOKEN).
+  "account_id": "e190c374411aa5f93012ae51cb65c1b2",
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
   },
   // Same-origin route on the dermiciq.com zone (GitHub Pages behind CF proxy).
-  // Uncomment after the zone is confirmed on this Cloudflare account:
-  // "routes": [
-  //   { "pattern": "dermiciq.com/api/contact*", "zone_name": "dermiciq.com" }
-  // ],
+  "routes": [
+    { "pattern": "dermiciq.com/api/contact*", "zone_name": "dermiciq.com" }
+  ],
   "vars": {
     // Must be a sender on a domain verified in Resend (e.g. dermiciq.com).
     "CONTACT_FROM": "DermicIQ <noreply@dermiciq.com>",

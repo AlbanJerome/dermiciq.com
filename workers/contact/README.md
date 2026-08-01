@@ -22,6 +22,7 @@ Cloudflare Worker that accepts `POST /api/contact`, verifies Turnstile, rate-lim
 | 200 | `{ "ok": true }` |
 | 400 | `{ "error": "..." }` |
 | 429 | `{ "error": "..." }` |
+| 502 | `{ "error": "..." }` (email provider failure) |
 
 Intended route: same-origin `https://dermiciq.com/api/contact*` (no CORS).
 
@@ -31,12 +32,31 @@ Intended route: same-origin `https://dermiciq.com/api/contact*` (no CORS).
 2. **Resend** account with domain `dermiciq.com` verified, and an API key. The `CONTACT_FROM` address (default `DermicIQ <noreply@dermiciq.com>`) must be allowed on that verified domain.
 3. Zone `dermiciq.com` on Cloudflare (already true for DNS/proxy in front of GitHub Pages).
 
+## Multi-project Cloudflare auth (important)
+
+This Cursor machine may use **several Cloudflare accounts** (DermicIQ, Forjyn, …). Global `wrangler login` OAuth is shared across all repos and will deploy to whichever account you last logged into.
+
+**Do not use global `wrangler login` for deploys here.** Use a **project-local** `.env` instead:
+
+```bash
+cd workers/contact
+cp .env.example .env
+# Fill CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN for the DermicIQ account
+npm run whoami   # must list the DermicIQ account
+npm run deploy   # predeploy refuses to run without project .env
+```
+
+Wrangler prefers `CLOUDFLARE_API_TOKEN` over OAuth, so Forjyn’s login cannot hijack this deploy.
+
+Create the token in Cloudflare → My Profile → API Tokens (Workers Edit template is enough). Account ID is on Workers & Pages → Overview (sidebar).
+
 ## Secrets (never commit)
 
 ```bash
 cd workers/contact
 npm install
 
+# Requires project .env auth (see above)
 npx wrangler secret put TURNSTILE_SECRET
 npx wrangler secret put RESEND_API_KEY
 ```
@@ -46,7 +66,7 @@ Optional non-secret vars in `wrangler.jsonc`:
 - `CONTACT_FROM` — default `DermicIQ <noreply@dermiciq.com>` (Resend domain must be verified)
 - `CONTACT_TO` — default `support@dermiciq.com`
 
-Local dev: copy `.dev.vars.example` → `.dev.vars` and fill in secrets.
+Local runtime secrets for `wrangler dev`: copy `.dev.vars.example` → `.dev.vars`.
 
 ## Rate limiting
 
@@ -56,7 +76,8 @@ Cloudflare only allows periods of **10 or 60 seconds**, so this Worker uses **5 
 
 ## Deploy
 
-1. Enable the production route in `wrangler.jsonc` (uncomment `routes`):
+1. Create `workers/contact/.env` from `.env.example` with DermicIQ credentials (see Multi-project auth).
+2. Enable the production route in `wrangler.jsonc` (uncomment `routes`):
 
    ```jsonc
    "routes": [
@@ -64,15 +85,15 @@ Cloudflare only allows periods of **10 or 60 seconds**, so this Worker uses **5 
    ]
    ```
 
-2. Deploy:
+3. Deploy:
 
    ```bash
    cd workers/contact
    npm install
-   npx wrangler deploy
+   npm run deploy
    ```
 
-3. Confirm the route in the Cloudflare dashboard: Workers → `dermiciq-contact` → Triggers → Routes → `dermiciq.com/api/contact*`.
+4. Confirm the route in the Cloudflare dashboard: Workers → `dermiciq-contact` → Triggers → Routes → `dermiciq.com/api/contact*`.
 
 ## Local test
 
@@ -100,7 +121,9 @@ For Turnstile without a real widget, use [test keys](https://developers.cloudfla
 
 ```
 workers/contact/
+  .env.example        # CLOUDFLARE_* for this account only
   wrangler.jsonc      # name, vars, ratelimits, routes
+  scripts/            # deploy auth guard
   src/index.ts        # HTTP handler
   src/validate.ts     # field validation
   src/turnstile.ts    # siteverify
