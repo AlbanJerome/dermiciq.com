@@ -13,6 +13,7 @@ const Privacy = lazy(() => import("@/pages/privacy"));
 const Terms = lazy(() => import("@/pages/terms"));
 const Cookies = lazy(() => import("@/pages/cookies"));
 const Contact = lazy(() => import("@/pages/contact"));
+const BecomeAPartner = lazy(() => import("@/pages/become-a-partner"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
@@ -41,6 +42,7 @@ function Routes() {
       <Route path="/cookies" component={Cookies} />
 
       <Route path="/contact" component={Contact} />
+      <Route path="/become-a-partner" component={BecomeAPartner} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -31,6 +31,7 @@ export const siteContent = {
       { label: "How it works", href: "/how-it-works" },
       { label: "For sensitive skin", href: "/for-sensitive-skin" },
       { label: "Contact", href: "/contact" },
+      { label: "Become a Partner", href: "/become-a-partner" },
     ],
     cta: { label: "Start Free Analysis", href: "https://app.dermiciq.com/" },
     contactEmail: "hello@DermicIQ.com",
@@ -375,6 +376,96 @@ export const siteContent = {
       privacyNote:
         "This form is protected by Cloudflare Turnstile. See our Privacy and Cookie policies for how we handle submissions.",
     },
+
+    becomeAPartner: {
+      metaTitle: "Become a Partner | DermicIQ™",
+      metaDescription:
+        "Partner with DermicIQ to help your clients make more informed beauty decisions. Licensed beauty and aesthetic businesses can earn commission on eligible memberships.",
+      headline: "Help Your Clients Make More Informed Beauty Decisions",
+      intro:
+        "Become a DermicIQ Partner and give your clients access to a simpler way to understand cosmetic ingredients, explore products, and make more confident beauty and skincare choices.",
+      primaryCta: {
+        label: "Apply to Become a Partner",
+        href: "https://app.dermiciq.com/partner",
+      },
+      secondaryCta: {
+        label: "Learn How It Works",
+      },
+      overview: {
+        title: "Partner with DermicIQ",
+        paragraphs: [
+          "DermicIQ partners with licensed businesses in the beauty and aesthetic industry that value education, transparency, and personalized client care.",
+          "Approved partners receive a unique discount code to share with their clients. When clients use that code to purchase an eligible annual DermicIQ membership, the partner receives a fixed commission for each successful membership signup.",
+        ],
+      },
+      eligibility: {
+        title: "Is This Program Right for Your Business?",
+        intro:
+          "We are currently welcoming established, licensed businesses with an existing client base, including:",
+        bullets: [
+          "Medical aesthetic clinics",
+          "Aesthetics and skincare businesses",
+          "Spas and wellness clinics",
+          "Beauty salons and professional beauty studios",
+          "Cosmetic retailers and beauty boutiques",
+          "Other licensed businesses serving skincare, beauty, or aesthetic clients",
+        ],
+        closing:
+          "If your business regularly helps clients make decisions about beauty or personal-care products, we would love to learn more about you.",
+      },
+      benefits: {
+        title: "What Partners Receive",
+        items: [
+          {
+            title: "Earn commission",
+            body: "Receive a fixed commission for each eligible annual membership purchased using your unique partner discount code.",
+          },
+          {
+            title: "Receive training",
+            body: "Learn how to introduce DermicIQ and explain its features to your team and clients.",
+          },
+          {
+            title: "Access ready-to-use marketing materials",
+            body: "Receive in-store promotional materials and prepared social media graphics to help you promote the app.",
+          },
+          {
+            title: "Track your results",
+            body: "Monitor membership signups and earned commissions through your partner portal.",
+          },
+        ],
+      },
+      howItWorks: {
+        title: "How the Partnership Works",
+        steps: [
+          {
+            n: 1,
+            title: "Apply",
+            body: "Tell us about your licensed business, client base, and interest in DermicIQ.",
+          },
+          {
+            n: 2,
+            title: "Get approved",
+            body: "Our team reviews your application and contacts approved businesses with next steps.",
+          },
+          {
+            n: 3,
+            title: "Receive your partner tools",
+            body: "Approved partners receive a unique discount code, partner portal access, training, and promotional materials.",
+          },
+          {
+            n: 4,
+            title: "Share DermicIQ with your clients",
+            body: "Introduce your clients to DermicIQ through your business, in-store materials, social media, and other approved channels.",
+          },
+        ],
+      },
+      closingCta: {
+        title: "Interested in Becoming a DermicIQ Partner?",
+        body: "Complete the application form and tell us about your business. We will review your information and contact you if your business is selected for the program.",
+        label: "Apply Now",
+        href: "https://app.dermiciq.com/partner",
+      },
+    },
   },
 
   faq: {
@@ -421,6 +512,7 @@ export const siteContent = {
         links: [
           { label: "About & mission", href: "/about" },
           { label: "Contact", href: "/contact" },
+          { label: "Become a Partner", href: "/become-a-partner" },
         ],
       },
       {
