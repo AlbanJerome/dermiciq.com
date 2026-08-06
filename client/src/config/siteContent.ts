@@ -31,6 +31,7 @@ export const siteContent = {
       { label: "How it works", href: "/how-it-works" },
       { label: "For sensitive skin", href: "/for-sensitive-skin" },
       { label: "Contact", href: "/contact" },
+      { label: "Blog", href: "https://blog.dermiciq.com" },
       { label: "Become a Partner", href: "/become-a-partner" },
     ],
     cta: { label: "Start Free Analysis", href: "https://app.dermiciq.com/" },
@@ -512,6 +513,7 @@ export const siteContent = {
         links: [
           { label: "About & mission", href: "/about" },
           { label: "Contact", href: "/contact" },
+          { label: "Blog", href: "https://blog.dermiciq.com" },
           { label: "Become a Partner", href: "/become-a-partner" },
         ],
       },
