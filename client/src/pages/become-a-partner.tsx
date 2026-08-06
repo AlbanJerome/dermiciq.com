@@ -48,7 +48,7 @@ export default function BecomeAPartnerPage() {
       </ContentPageHeader>
 
       <ContentPageBody as="div" contentClassName="max-w-5xl">
-        <section className="max-w-3xl space-y-3">
+        <section className="mx-auto max-w-3xl space-y-3">
           <h2 className="text-2xl font-semibold text-foreground">{p.overview.title}</h2>
           {p.overview.paragraphs.map((para) => (
             <p key={para} className="text-lg leading-relaxed text-muted-foreground">
@@ -57,7 +57,7 @@ export default function BecomeAPartnerPage() {
           ))}
         </section>
 
-        <section className="max-w-3xl space-y-3">
+        <section className="mx-auto max-w-3xl space-y-3">
           <h2 className="text-2xl font-semibold text-foreground">{p.eligibility.title}</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">{p.eligibility.intro}</p>
           <ul className="space-y-3" role="list">
@@ -133,7 +133,7 @@ export default function BecomeAPartnerPage() {
           </ol>
         </section>
 
-        <section className="max-w-3xl">
+        <section className="mx-auto max-w-3xl">
           <div
             className={cn(
               "rounded-2xl border border-border/70 bg-gradient-to-br from-secondary/40 via-background to-background",
