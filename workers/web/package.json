@@ -1,0 +1,14 @@
+{
+  "name": "dermiciq-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predeploy": "node ../contact/scripts/assert-cloudflare-env.mjs",
+    "deploy": "wrangler deploy",
+    "whoami": "wrangler whoami"
+  },
+  "devDependencies": {
+    "wrangler": "^4.26.0"
+  }
+}

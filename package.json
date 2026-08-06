@@ -8,12 +8,13 @@
     "dev": "vite",
     "build": "vite build",
     "build:apex": "VITE_BASE=/ vite build",
-    "deploy:apex": "npm run build:apex && gh-pages -d dist/public",
+    "deploy:apex": "npm run build:apex && npm --prefix workers/web run deploy",
+    "deploy:pages": "npm run build:apex && gh-pages -d dist/public",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit && npm --prefix workers/contact run check",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/public"
+    "deploy": "npm run deploy:apex"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",

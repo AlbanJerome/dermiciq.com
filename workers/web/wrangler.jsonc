@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "dermiciq-web",
+  "compatibility_date": "2026-08-06",
+  // Pin DermicIQ so a Forjyn wrangler login cannot receive this deploy.
+  "account_id": "e190c374411aa5f93012ae51cb65c1b2",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    // Built by repo-root `npm run build:apex`
+    "directory": "../../dist/public",
+    "not_found_handling": "single-page-application"
+  },
+  // More-specific `dermiciq.com/api/contact*` on dermiciq-contact still wins.
+  "routes": [
+    { "pattern": "dermiciq.com/", "zone_name": "dermiciq.com" },
+    { "pattern": "dermiciq.com/*", "zone_name": "dermiciq.com" },
+    { "pattern": "www.dermiciq.com/", "zone_name": "dermiciq.com" },
+    { "pattern": "www.dermiciq.com/*", "zone_name": "dermiciq.com" }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}
