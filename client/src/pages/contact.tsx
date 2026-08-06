@@ -119,7 +119,7 @@ export default function ContactPage() {
       <SEO title={p.metaTitle} description={p.metaDescription} path="/contact" />
 
       <ContentPageHeader title={p.headline}>
-        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl lg:whitespace-nowrap">
           {p.intro}
         </p>
       </ContentPageHeader>

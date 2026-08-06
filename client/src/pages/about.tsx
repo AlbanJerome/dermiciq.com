@@ -18,7 +18,7 @@ export default function AboutPage() {
       <SEO title={p.metaTitle} description={p.metaDescription} path="/about" />
 
       <ContentPageHeader title={p.headline}>
-        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <p className="max-w-4xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
           {p.intro}
         </p>
       </ContentPageHeader>

@@ -5,6 +5,8 @@ type ContentPageHeaderProps = {
   title: string;
   children?: ReactNode;
   className?: string;
+  /** Optional classes merged onto the site container (e.g. extra spacing). */
+  contentClassName?: string;
   /** Override the default mint header wash when needed. */
   washClassName?: string;
   titleTestId?: string;
@@ -15,12 +17,14 @@ export function ContentPageHeader({
   title,
   children,
   className,
+  contentClassName,
   washClassName = "page-header-wash",
   titleTestId,
 }: ContentPageHeaderProps) {
   return (
     <header className={cn("page-header", washClassName, className)}>
-      <div className="container-content max-w-3xl">
+      {/* Same container as nav so title/lede share the left edge. */}
+      <div className={cn("container-content", contentClassName)}>
         <h1
           className="text-balance text-foreground text-section mb-3 lg:text-section-lg"
           data-testid={titleTestId}
@@ -52,8 +56,11 @@ export function ContentPageBody({
 }: ContentPageBodyProps) {
   return (
     <Tag className={cn("page-body", wash && "page-body-wash", className)}>
-      <div className={cn("container-content page-stack", contentClassName ?? "max-w-3xl")}>
-        {children}
+      {/* Outer container matches nav; inner max-width stays left-aligned (not centered). */}
+      <div className="container-content">
+        <div className={cn("page-stack", contentClassName ?? "max-w-3xl")}>
+          {children}
+        </div>
       </div>
     </Tag>
   );

@@ -17,7 +17,9 @@ export default function HowItWorksPage() {
       <SEO title={p.metaTitle} description={p.metaDescription} path="/how-it-works" />
 
       <ContentPageHeader title={p.headline}>
-        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{p.intro}</p>
+        <p className="max-w-4xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          {p.intro}
+        </p>
       </ContentPageHeader>
 
       <ContentPageBody as="div" contentClassName="max-w-5xl">
