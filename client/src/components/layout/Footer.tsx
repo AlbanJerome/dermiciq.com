@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { siteContent } from "@/config/siteContent";
 import { MapPin } from "lucide-react";
 import { homeSectionHref } from "@/lib/site";
-import { publicAsset } from "@/lib/publicAsset";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
 export function Footer() {
   const { footer, brand } = siteContent;
@@ -19,20 +19,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
-              <picture>
-                <source type="image/webp" srcSet={publicAsset("logo-96.webp")} />
-                <img
-                  src={publicAsset("logo-96.png")}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-2xl object-cover shadow-md shrink-0"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
+              <BrandLogo size="footer" decorative loading="lazy" />
               <span className="flex flex-col">
-                <span className="text-lg font-bold text-footer-foreground leading-tight">{brand.shortName}</span>
+                <span className="text-lg font-bold text-footer-foreground leading-tight">
+                  {brand.shortName}
+                </span>
                 <span className="text-xs text-footer-muted mt-0.5">Technologies Inc.</span>
               </span>
             </Link>
@@ -49,7 +40,7 @@ export function Footer() {
               <ul className="space-y-3">
                 {column.links.map((link) => {
                   const className =
-                    "text-sm text-footer-foreground hover:text-white transition-colors underline-offset-2 hover:underline";
+                    "text-sm text-footer-foreground hover:text-footer-foreground/90 transition-colors underline-offset-2 hover:underline";
                   const href = resolveHref(link);
                   const isExternal = href.startsWith("http");
                   return (
@@ -75,7 +66,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-white/15 pt-6">
+        <div className="mt-8 border-t border-footer-foreground/15 pt-6">
           <p className="text-xs text-footer-muted">{footer.copyright}</p>
         </div>
       </div>

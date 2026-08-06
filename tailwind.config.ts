@@ -7,11 +7,12 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem",
-        md: ".375rem",
-        sm: ".1875rem",
-        "2xl": "1rem",
-        "3xl": "1.5rem",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 0.5rem)",
+        "3xl": "calc(var(--radius) + 1rem)",
       },
       colors: {
         background: "hsl(var(--background) / <alpha-value>)",
@@ -67,15 +68,6 @@ export default {
           link: "hsl(var(--footer-link) / <alpha-value>)",
           muted: "hsl(var(--footer-muted) / <alpha-value>)",
         },
-        /** Official DermicIQ™ brand hex (use with `bg-DermicIQ-*` etc.) */
-        DermicIQ: {
-          turquoise: "#6AEEE8",
-          mintBg: "#F8FFFE",
-          teal: "#005F5B",
-          softMint: "#C8F2EB",
-          charcoal: "#223331",
-          coral: "#FF9E9E",
-        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
@@ -91,6 +83,10 @@ export default {
         "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
         body: ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
         caption: ["0.875rem", { lineHeight: "1.5", fontWeight: "500" }],
+        "nav-caption": [
+          "0.625rem",
+          { lineHeight: "1.2", letterSpacing: "0.14em", fontWeight: "600" },
+        ],
       },
       maxWidth: {
         "8xl": "88rem",

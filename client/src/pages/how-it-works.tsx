@@ -16,8 +16,8 @@ export default function HowItWorksPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/how-it-works" />
 
-      <ContentPageHeader title={p.headline}>
-        <p className="max-w-4xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+      <ContentPageHeader title={p.headline} contentClassName="max-w-4xl">
+        <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
           {p.intro}
         </p>
       </ContentPageHeader>
@@ -87,11 +87,7 @@ export default function HowItWorksPage() {
             <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto leading-relaxed">
               {p.ctaStart.subtext}
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="min-h-12 rounded-full px-8 text-base font-semibold shadow-md"
-            >
+            <Button asChild size="pill">
               <a
                 href={p.ctaStart.href}
                 target="_blank"

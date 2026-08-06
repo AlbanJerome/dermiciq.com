@@ -126,17 +126,17 @@ export function CookieConsent() {
         <div className="flex flex-shrink-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-2">
           <Button
             type="button"
-            size="default"
-            className="h-10 rounded-full font-semibold sm:min-w-[7.5rem]"
+            size="pill-sm"
+            className="sm:min-w-[7.5rem]"
             onClick={acceptAll}
           >
             Accept All
           </Button>
           <Button
             type="button"
-            size="default"
+            size="pill-sm"
             variant="outline"
-            className="h-10 rounded-full font-semibold border-border/80 sm:min-w-[10rem]"
+            className="border-border/80 sm:min-w-[10rem]"
             onClick={() => setModalOpen(true)}
           >
             Manage Preferences
@@ -195,10 +195,10 @@ export function CookieConsent() {
             Open cookie &amp; privacy details →
           </Link>
           <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
-            <Button type="button" variant="outline" className="rounded-full" onClick={acceptEssentialOnly}>
+            <Button type="button" variant="outline" size="pill-sm" onClick={acceptEssentialOnly}>
               Essential only
             </Button>
-            <Button type="button" className="rounded-full font-semibold" onClick={acceptAll}>
+            <Button type="button" size="pill-sm" onClick={acceptAll}>
               Accept All
             </Button>
           </div>

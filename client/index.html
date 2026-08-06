@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fallback theme-color; React SEO sets brandThemeColor from config/brand.ts -->
     <meta name="theme-color" content="#005F5B" />
     <link rel="icon" type="image/png" href="./favicon-48.png" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
@@ -18,7 +19,7 @@
       imagesizes="100vw"
       fetchpriority="high"
     />
-    <!-- Limit to weights actually used; display=swap avoids invisible text. -->
+    <!-- Fonts: keep weights in sync with brandFonts in client/src/config/brand.ts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
       rel="stylesheet"

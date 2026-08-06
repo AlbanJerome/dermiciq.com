@@ -21,6 +21,9 @@ const buttonVariants = cva(
         secondary: "border bg-secondary text-secondary-foreground border border-secondary-border ",
         // Add a transparent border so that when someone toggles a border on later, it doesn't shift layout/size.
         ghost: "border border-transparent",
+        /** High-contrast CTA on primary/dark surfaces (nav header). */
+        inverse:
+          "bg-primary-foreground text-primary border-0 font-semibold hover:bg-primary-foreground/90",
       },
       // Heights are set as "min" heights, because sometimes Ai will place large amount of content
       // inside buttons. With a min-height they will look appropriate with small amounts of content,
@@ -30,6 +33,11 @@ const buttonVariants = cva(
         sm: "min-h-8 rounded-md px-3 text-xs",
         lg: "min-h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        /** Brand pill CTA used across marketing pages. */
+        pill: "min-h-12 rounded-full px-8 text-base font-semibold shadow-md",
+        "pill-sm": "h-10 rounded-full px-6 text-sm font-semibold",
+        "pill-lg":
+          "min-h-14 rounded-full px-8 text-base font-semibold shadow-lg sm:min-h-[3.5rem] sm:px-12 sm:text-lg",
       },
     },
     defaultVariants: {
@@ -50,7 +58,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size }), className)}
         ref={ref}
         {...props}
       />

@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
+import { brandThemeColor } from "@/config/brand";
+import { brandLogoUrl } from "@/config/brandAssets";
 import { siteContent } from "@/config/siteContent";
-import { publicAsset } from "@/lib/publicAsset";
 import { siteOrigin } from "@/lib/site";
 
 interface SEOProps {
@@ -20,7 +21,7 @@ export function SEO({
   const pageTitle = title || meta.defaultTitle;
   const pageDescription = description || meta.defaultDescription;
   const url = `${siteOrigin.replace(/\/$/, "")}${path === "/" ? "" : path}`;
-  const logoPath = publicAsset("logo-192.png");
+  const logoPath = brandLogoUrl("192", "png");
   const ogImage = `${siteOrigin.replace(/\/$/, "")}${logoPath.startsWith("/") ? logoPath : `/${logoPath}`}`;
 
   const organizationSchema = {
@@ -62,6 +63,7 @@ export function SEO({
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
       <meta name="keywords" content={meta.keywords} />
+      <meta name="theme-color" content={brandThemeColor} />
       <link rel="canonical" href={url} />
 
       <meta property="og:type" content={type} />

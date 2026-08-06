@@ -118,7 +118,7 @@ export default function ContactPage() {
     <Layout>
       <SEO title={p.metaTitle} description={p.metaDescription} path="/contact" />
 
-      <ContentPageHeader title={p.headline}>
+      <ContentPageHeader title={p.headline} contentClassName="max-w-5xl">
         <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl lg:whitespace-nowrap">
           {p.intro}
         </p>
@@ -133,7 +133,7 @@ export default function ContactPage() {
                 <div className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center">
                   <Button
                     type="button"
-                    className="min-h-11 rounded-full px-6 font-semibold"
+                    size="pill-sm"
                     onClick={() => setSucceeded(false)}
                   >
                     {p.sendAnotherLabel}
@@ -284,8 +284,8 @@ export default function ContactPage() {
 
                 <Button
                   type="submit"
-                  size="lg"
-                  className="min-h-12 w-full rounded-full px-8 text-base font-semibold shadow-md sm:w-auto"
+                  size="pill"
+                  className="w-full sm:w-auto"
                   disabled={submitting}
                 >
                   {submitting ? p.submittingLabel : p.submitLabel}

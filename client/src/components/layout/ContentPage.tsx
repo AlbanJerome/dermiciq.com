@@ -5,7 +5,7 @@ type ContentPageHeaderProps = {
   title: string;
   children?: ReactNode;
   className?: string;
-  /** Optional classes merged onto the site container (e.g. extra spacing). */
+  /** Override the default content max-width (centered within the site container). */
   contentClassName?: string;
   /** Override the default mint header wash when needed. */
   washClassName?: string;
@@ -23,15 +23,16 @@ export function ContentPageHeader({
 }: ContentPageHeaderProps) {
   return (
     <header className={cn("page-header", washClassName, className)}>
-      {/* Same container as nav so title/lede share the left edge. */}
-      <div className={cn("container-content", contentClassName)}>
-        <h1
-          className="text-balance text-foreground text-section mb-3 lg:text-section-lg"
-          data-testid={titleTestId}
-        >
-          {title}
-        </h1>
-        {children}
+      <div className="container-content">
+        <div className={cn("mx-auto", contentClassName ?? "max-w-3xl")}>
+          <h1
+            className="text-balance text-foreground text-section mb-3 lg:text-section-lg"
+            data-testid={titleTestId}
+          >
+            {title}
+          </h1>
+          {children}
+        </div>
       </div>
     </header>
   );
@@ -56,9 +57,8 @@ export function ContentPageBody({
 }: ContentPageBodyProps) {
   return (
     <Tag className={cn("page-body", wash && "page-body-wash", className)}>
-      {/* Outer container matches nav; inner max-width stays left-aligned (not centered). */}
       <div className="container-content">
-        <div className={cn("page-stack", contentClassName ?? "max-w-3xl")}>
+        <div className={cn("page-stack mx-auto", contentClassName ?? "max-w-3xl")}>
           {children}
         </div>
       </div>

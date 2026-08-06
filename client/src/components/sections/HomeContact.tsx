@@ -1,6 +1,7 @@
-import { Link } from "wouter";
-import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/siteContent";
+import { Mail } from "lucide-react";
+import { Link } from "wouter";
 
 export function HomeContact() {
   const { contact } = siteContent.home;
@@ -10,14 +11,17 @@ export function HomeContact() {
       <div className="container-content max-w-2xl text-center">
         <h2 className="text-section lg:text-section-lg text-foreground mb-4">{contact.title}</h2>
         <p className="text-muted-foreground leading-relaxed mb-8">{contact.body}</p>
-        <Link
-          href={contact.ctaHref}
-          aria-label="Contact us"
-          className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-card px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-colors"
+        <Button
+          asChild
+          variant="outline"
+          size="pill-sm"
+          className="border-primary/25 bg-card text-primary hover:bg-primary/5"
         >
-          <Mail className="h-4 w-4" aria-hidden />
-          {contact.ctaLabel}
-        </Link>
+          <Link href={contact.ctaHref} aria-label="Contact us">
+            <Mail className="h-4 w-4" aria-hidden />
+            {contact.ctaLabel}
+          </Link>
+        </Button>
       </div>
     </section>
   );

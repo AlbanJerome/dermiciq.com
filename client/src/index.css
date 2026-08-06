@@ -1,96 +1,8 @@
+@import "./styles/brand-tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*
-  DermicIQ™ brand palette (official guidelines):
-  Logo / recognition: #6AEEE8 (Vibrant Turquoise)
-  Base background:    #F8FFFE (Minty Off-White)
-  Primary / actions:  #005F5B (Deep Sea Teal)
-  Secondary / UI:     #C8F2EB (Soft Mint)
-  Body text:          #223331 (Deep Charcoal Teal)
-  Alert / warning:    #FF9E9E (Soft Coral)
-  + Montserrat typography
-*/
-:root {
-  --button-outline: rgba(34, 51, 49, 0.12);
-  --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(34, 51, 49, 0.04);
-  --elevate-2: rgba(34, 51, 49, 0.08);
-
-  /* Base background #F8FFFE */
-  --background: 168 100% 99%;
-  /* Text #223331 */
-  --foreground: 172 20% 17%;
-
-  --border: 169 35% 88%;
-  --card: 168 80% 99%;
-  --card-foreground: 172 20% 17%;
-  --card-border: 169 40% 92%;
-
-  --popover: 168 70% 99%;
-  --popover-foreground: 172 20% 17%;
-  --popover-border: 169 35% 90%;
-
-  /* Primary action #005F5B */
-  --primary: 177 100% 19%;
-  --primary-foreground: 168 100% 99%;
-
-  /* Secondary / cards, overlays #C8F2EB */
-  --secondary: 169 55% 87%;
-  --secondary-foreground: 172 20% 17%;
-
-  --muted: 169 40% 92%;
-  --muted-foreground: 172 14% 38%;
-
-  /* Logo / highlight turquoise #6AEEE8 */
-  --accent: 174 78% 67%;
-  --accent-foreground: 177 100% 16%;
-
-  /* Alert #FF9E9E */
-  --destructive: 0 100% 81%;
-  --destructive-foreground: 172 20% 17%;
-
-  --input: 169 35% 82%;
-  --ring: 177 100% 19%;
-
-  --chart-1: 177 100% 19%;
-  --chart-2: 174 78% 67%;
-  --chart-3: 169 55% 87%;
-  --chart-4: 172 20% 17%;
-  --chart-5: 0 100% 81%;
-
-  --font-sans: "Montserrat", system-ui, sans-serif;
-  --font-serif: "Montserrat", system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
-  --radius: 0.5rem;
-
-  --shadow-2xs: 0px 1px 0px 0px hsl(172 20% 17% / 0.02);
-  --shadow-xs: 0px 1px 2px 0px hsl(172 20% 17% / 0.04);
-  --shadow-sm: 0px 1px 2px 0px hsl(172 20% 17% / 0.05);
-  --shadow: 0px 2px 4px -1px hsl(172 20% 17% / 0.06);
-  --shadow-md: 0px 4px 6px -1px hsl(172 20% 17% / 0.07);
-  --shadow-lg: 0px 8px 12px -2px hsl(172 20% 17% / 0.08);
-  --shadow-xl: 0px 16px 24px -4px hsl(172 20% 17% / 0.1);
-  --shadow-2xl: 0px 24px 48px -8px hsl(172 20% 17% / 0.12);
-
-  /* Footer: deep sea teal family */
-  --footer-bg: 177 100% 16%;
-  --footer-fg: 168 100% 99%;
-  --footer-link: 169 55% 87%;
-  --footer-muted: 169 30% 72%;
-
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-}
 
 @layer base {
   * {
@@ -103,13 +15,23 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: var(--header-height-lg);
   }
 }
 
 @layer utilities {
   .container-content {
     @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .header-bar {
+    height: var(--header-height);
+  }
+
+  @media (min-width: 1024px) {
+    .header-bar {
+      height: var(--header-height-lg);
+    }
   }
 
   /* Site-default content page rhythm (from tightened legal pages) */

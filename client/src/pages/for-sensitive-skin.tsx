@@ -15,9 +15,10 @@ export default function ForSensitiveSkinPage() {
 
       <ContentPageHeader
         title={p.headline}
+        contentClassName="max-w-4xl"
         washClassName="bg-gradient-to-br from-accent/25 via-background to-secondary/40"
       >
-        <p className="max-w-4xl text-body-lg text-muted-foreground leading-relaxed">{p.subhead}</p>
+        <p className="text-body-lg text-muted-foreground leading-relaxed">{p.subhead}</p>
       </ContentPageHeader>
 
       <ContentPageBody>

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { siteContent } from "@/config/siteContent";
-import { publicAsset } from "@/lib/publicAsset";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,43 +22,35 @@ export function Navigation() {
   }, [location]);
 
   /**
-   * High-contrast nav text (#FFFFFF) on dark teal header for WCAG AA.
-   * Logo turquoise used as active indicator (bottom border), not as link fill color.
+   * High-contrast nav text on primary header for WCAG AA.
+   * Accent (logo turquoise) used as active indicator, not as link fill.
    */
   const navLinkClass = (path: string) =>
-    `text-sm font-semibold tracking-wide transition-colors text-white hover:text-white ${
+    `text-sm font-semibold tracking-wide transition-colors text-primary-foreground hover:text-primary-foreground ${
       location === path
-        ? "border-b-2 border-DermicIQ-turquoise pb-0.5"
+        ? "border-b-2 border-accent pb-0.5"
         : "border-b-2 border-transparent pb-0.5"
     }`;
 
   const mobileNavLinkClass = (path: string) =>
-    `text-lg font-semibold py-3 border-b transition-colors text-white hover:text-white ${
-      location === path ? "border-DermicIQ-turquoise" : "border-white/20"
+    `text-lg font-semibold py-3 border-b transition-colors text-primary-foreground hover:text-primary-foreground ${
+      location === path ? "border-accent" : "border-primary-foreground/20"
     }`;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/10 bg-primary ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-primary-foreground/10 bg-primary ${
         isScrolled ? "shadow-md" : ""
       }`}
     >
-      <nav className="container-content flex items-center justify-between h-16 lg:h-[4.25rem]">
+      <nav className="container-content flex items-center justify-between header-bar">
         <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0" data-testid="link-logo">
-          <picture>
-            <source type="image/webp" srcSet={publicAsset("logo-96.webp")} />
-            <img
-              src={publicAsset("logo-96.png")}
-              alt={brand.shortName}
-              width={44}
-              height={44}
-              className="h-10 w-10 lg:h-11 lg:w-11 rounded-2xl object-cover shadow-sm shrink-0"
-              decoding="async"
-            />
-          </picture>
+          <BrandLogo size="nav" />
           <span className="hidden sm:flex flex-col min-w-0 leading-tight">
-            <span className="text-sm font-bold text-white tracking-tight truncate">{brand.shortName}</span>
-            <span className="text-[10px] font-semibold text-white/75 uppercase tracking-[0.14em]">
+            <span className="text-sm font-bold text-primary-foreground tracking-tight truncate">
+              {brand.shortName}
+            </span>
+            <span className="text-nav-caption uppercase text-primary-foreground/75">
               Technologies Inc.
             </span>
           </span>
@@ -70,11 +62,7 @@ export function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Button
-            size="sm"
-            className="font-semibold bg-white text-primary hover:bg-white/90 border-0"
-            asChild
-          >
+          <Button size="sm" variant="inverse" asChild>
             <a
               href={navigation.cta.href}
               target="_blank"
@@ -89,7 +77,7 @@ export function Navigation() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden text-white hover:bg-white/10 hover:text-white"
+          className="lg:hidden text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
@@ -98,7 +86,7 @@ export function Navigation() {
       </nav>
 
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-16 bg-primary z-40 border-t border-white/10">
+        <div className="lg:hidden fixed inset-0 top-16 bg-primary z-40 border-t border-primary-foreground/10">
           <nav className="container-content flex flex-col gap-1 py-6">
             {navigation.links.map((link) => (
               <Link key={link.href} href={link.href} className={mobileNavLinkClass(link.href)}>
@@ -106,10 +94,7 @@ export function Navigation() {
               </Link>
             ))}
             <div className="pt-4">
-              <Button
-                className="w-full font-semibold bg-white text-primary hover:bg-white/90"
-                asChild
-              >
+              <Button className="w-full" variant="inverse" asChild>
                 <a
                   href={navigation.cta.href}
                   target="_blank"
