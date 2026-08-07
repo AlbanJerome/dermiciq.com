@@ -391,6 +391,7 @@ export const siteContent = {
       },
       secondaryCta: {
         label: "Learn How It Works",
+        href: "/affiliate-partner-agreement",
       },
       overview: {
         title: "Partner with DermicIQ",

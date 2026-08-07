@@ -5,6 +5,7 @@ import {
   LineChart,
   Megaphone,
 } from "lucide-react";
+import { Link } from "wouter";
 import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
@@ -35,15 +36,14 @@ export default function BecomeAPartnerPage() {
               {p.primaryCta.label}
             </a>
           </Button>
-          {/* Destination TBD — wire href when partner flow URL is confirmed. */}
           <Button
-            type="button"
+            asChild
             variant="outline"
             size="pill-sm"
             className="border-primary/30 text-foreground"
             style={{ backgroundColor: brandColors.mintBg }}
           >
-            {p.secondaryCta.label}
+            <Link href={p.secondaryCta.href}>{p.secondaryCta.label}</Link>
           </Button>
         </div>
       </ContentPageHeader>

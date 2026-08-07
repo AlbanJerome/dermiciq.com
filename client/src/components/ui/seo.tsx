@@ -9,6 +9,8 @@ interface SEOProps {
   description?: string;
   path?: string;
   type?: "website" | "article";
+  /** Hide from search engines (unlisted / partner-only pages). */
+  noIndex?: boolean;
 }
 
 export function SEO({
@@ -16,6 +18,7 @@ export function SEO({
   description,
   path = "/",
   type = "website",
+  noIndex = false,
 }: SEOProps) {
   const { meta, brand } = siteContent;
   const pageTitle = title || meta.defaultTitle;
@@ -64,6 +67,7 @@ export function SEO({
       <meta name="description" content={pageDescription} />
       <meta name="keywords" content={meta.keywords} />
       <meta name="theme-color" content={brandThemeColor} />
+      {noIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
       <link rel="canonical" href={url} />
 
       <meta property="og:type" content={type} />

@@ -1,7 +1,9 @@
-# DermicIQ™ Brand Aesthetics
+# DermicIQ Brand Aesthetics
 
 Shareable brand card for marketing site, product code, and blog repos.  
 Source of truth on the marketing site: `client/src/config/brand.ts` + `client/src/styles/brand-tokens.css`.
+
+Do **not** use ™ in wordmarks, tab titles, or logo alt text. Prefer **DermicIQ** (plain).
 
 ## Direction
 
@@ -12,18 +14,46 @@ Not purple/indigo gradients. Not cream + serif + terracotta. Not dark-mode-first
 
 | Role | Name | Hex | Use |
 |------|------|-----|-----|
-| Recognition | Light Cyan Aqua | `#76EEC6` | Logo highlight, subtle top-border accent, accent chips |
-| Header / Border | Bright Aqua Teal | `#40C0BA` | Lighter top header bar, top accent border, secondary badges |
-| Background | Minty Off-White | `#F8FFFE` | Page canvas |
-| Primary | Deep Sea Teal | `#005F5B` | CTAs, headings, primary links, theme-color |
-| Secondary | Soft Mint | `#C8F2EB` | Soft fills, section washes |
-| Text | Deep Charcoal Teal | `#223331` | Body copy |
+| Recognition | Light Cyan Aqua | `#76EEC6` | Logo highlight, accent chips |
+| Header / Border | Bright Aqua Teal | `#40C0BA` | Top header bar (all breakpoints), hero CTA fill |
+| Nav caption accent | Soft Aqua Mist | `#e2f7f4` | “Technologies Inc.” under wordmark (nav + footer) |
+| Background | Minty Off-White | `#F8FFFE` | Page canvas, DermicIQ wordmark on aqua header |
+| Primary | Deep Sea Teal | `#005F5B` | Primary CTAs, headings, links, theme-color, mobile menu text |
+| Secondary | Soft Mint | `#C8F2EB` | Soft fills, section washes, mobile menu panel, hero headline |
+| Text | Deep Charcoal Teal | `#223331` | Body copy, hero CTA label text |
 | Alert | Soft Coral | `#FF9E9E` | Errors / warnings |
 
+### Chrome & surfaces
+
 - **Theme / PWA chrome:** `#005F5B`
-- **Header background:** `#40C0BA` (replaces legacy dark forest green for a cohesive, lighter feel)
+- **Header background (all sizes):** `#40C0BA`
+- **Mobile hamburger menu panel only:** `#C8F2EB` (header stays `#40C0BA`)
 - **Footer background:** deeper teal `hsl(177 100% 16%)`
-- **Footer foreground:** `#F8FFFE`
+- **Footer foreground / wordmark:** DermicIQ `#F8FFFE`, Technologies Inc. `#e2f7f4`
+
+## Marketing surface rules (site-specific, mirror where useful)
+
+### Nav / footer wordmark
+
+- Line 1 **DermicIQ** — Montserrat 700, `text-sm`, color `#F8FFFE`
+- Line 2 **Technologies Inc.** — Montserrat 600, `0.625rem`, uppercase, tracking `0.14em`, color `#e2f7f4`
+- Logo mark sits left of the wordmark (`logo-96`, rounded-2xl)
+
+### Mobile nav (`< lg`)
+
+- Hamburger on the **right**
+- Opens a full-height **vertically scrollable** panel
+- Panel background `#C8F2EB`; link text Deep Sea Teal `#005F5B`
+- Header bar remains `#40C0BA` above the panel
+
+### Hero
+
+- Headline color: Soft Mint `#C8F2EB`
+- Primary CTA (“Set up your profile”): background `#40C0BA`, text `#223331`
+
+### Other marketing CTAs
+
+Outline / secondary marketing buttons that should feel quiet on mint washes (e.g. “Read our full mission…”, “Sensitive skin?…”, partner “Learn How It Works”) use background `#F8FFFE` with a light primary border.
 
 ## Typography
 
@@ -46,7 +76,7 @@ Not purple/indigo gradients. Not cream + serif + terracotta. Not dark-mode-first
 | Body large | `1.125rem` | 400 | line-height 1.7 |
 | Body | `1rem` | 400 | line-height 1.6 |
 | Caption | `0.875rem` | 500 | line-height 1.5 |
-| Nav caption | `0.625rem` | 600 | letter-spacing `0.14em` |
+| Nav caption | `0.625rem` | 600 | letter-spacing `0.14em`, uppercase |
 
 ## Shape & elevation
 
@@ -57,14 +87,14 @@ Not purple/indigo gradients. Not cream + serif + terracotta. Not dark-mode-first
 
 ## Semantic UI mapping
 
-Prefer semantic tokens in components — not raw hex.
+Prefer semantic tokens in components — not raw hex (except documented one-offs like `#e2f7f4` on the wordmark caption).
 
 | Token | Maps to |
 |-------|---------|
 | `primary` | Deep Sea Teal `#005F5B` |
 | `primary-foreground` | Minty Off-White `#F8FFFE` |
 | `accent` | Light Cyan Aqua `#76EEC6` |
-| `header` / `header-accent` | Bright Aqua Teal `#40C0BA` |
+| `header` | Bright Aqua Teal `#40C0BA` |
 | `header-foreground` | Deep Charcoal Teal `#223331` |
 | `secondary` | Soft Mint `#C8F2EB` |
 | `destructive` | Soft Coral `#FF9E9E` |
@@ -77,6 +107,7 @@ Prefer semantic tokens in components — not raw hex.
 :root {
   --brand-cyan-aqua: #76EEC6;
   --brand-header-bg: #40C0BA;
+  --brand-nav-caption: #e2f7f4;
   --brand-mint-bg: #F8FFFE;
   --brand-teal: #005F5B;
   --brand-soft-mint: #C8F2EB;
@@ -94,13 +125,16 @@ Prefer semantic tokens in components — not raw hex.
 
 - Mint washes and soft secondary fills
 - Teal for primary CTAs, headings, and links
-- Light cyan-aqua and bright aqua teal for cohesive, lighter top headers/borders
+- Aqua header `#40C0BA` on all breakpoints
+- Soft mint `#C8F2EB` for the mobile menu panel only
 - Left-border accents in primary teal
 - Light, airy layouts with calm hierarchy
+- Plain **DermicIQ** (no ™) in UI chrome and titles
 
 **Don’t**
 
-- Dark forest green or heavy contrast dark borders at top headers
+- Dark forest green headers
+- ™ in logos, wordmarks, or browser tab titles
 - Purple / indigo gradient themes
 - Cream background + high-contrast serif + terracotta
 - Dark mode as the default brand surface
@@ -108,17 +142,23 @@ Prefer semantic tokens in components — not raw hex.
 - Emoji decoration as brand language
 - Card-heavy heroes or dashboard clutter on marketing surfaces
 
-## Logo assets
+## Logo & favicon assets
 
-| Size | Files | Typical use |
-|------|-------|-------------|
-| 96px | `logo-96.png` / `logo-96.webp` | Nav (~44px), footer (~48px) |
-| 192px | `logo-192.png` / `logo-192.webp` | OG / PWA / larger marks |
+| Asset | Files | Typical use |
+|-------|-------|-------------|
+| Logo 96 | `logo-96.png` / `logo-96.webp` | Nav (~44px), footer (~48px) |
+| Logo 192 | `logo-192.png` / `logo-192.webp` | OG / larger marks |
+| Favicon 48 | `favicon-48.png` | Browser tab |
+| Favicon 96 | `favicon-96.png` | Higher-DPI tab icon |
+| Apple touch | `apple-touch-icon.png` (180) | iOS home screen |
+| PWA | `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`, `site.webmanifest` | Install / manifest |
 
-Display treatment: `rounded-2xl`, light shadow.
+Display treatment for logo mark: `rounded-2xl`, light shadow.  
+Mark is the cyan tile with dark-teal **dIQ** circle (no TM in the artwork).
 
 ## Keeping repos in sync
 
-1. Treat this file as the portable brand card for the marketing site.
-2. Keep `client/src/config/brand.ts` and `client/src/styles/brand-tokens.css` aligned with the hex values above.
-3. Platform (`dermiciq_code`) mirrors these hexes in `lib/design-system.ts` and its root `BRAND.md` — do not invent alternate teals.
+1. Treat this file as the portable brand card across marketing, app (`dermiciq_code`), and blog.
+2. Keep marketing `brand.ts` + `brand-tokens.css` aligned with the hex values above.
+3. Platform / blog should mirror these hexes — do not invent alternate teals.
+4. Product exception (if still required by app UX): near-black primary CTAs may remain app-only; marketing CTAs stay Deep Sea Teal / documented hero aqua as above.
