@@ -21,7 +21,7 @@ const buttonVariants = cva(
         secondary: "border bg-secondary text-secondary-foreground border border-secondary-border ",
         // Add a transparent border so that when someone toggles a border on later, it doesn't shift layout/size.
         ghost: "border border-transparent",
-        /** High-contrast CTA on primary/dark surfaces (nav header). */
+        /** High-contrast CTA on dark surfaces (e.g. footer). Prefer default on aqua header. */
         inverse:
           "bg-primary-foreground text-primary border-0 font-semibold hover:bg-primary-foreground/90",
       },

@@ -11,7 +11,7 @@ export default function Terms() {
   return (
     <Layout>
       <SEO
-        title="Terms of Service | DermicIQ™"
+        title="Terms of Service | DermicIQ"
         description="Terms of Service for DermicIQ Technologies Inc. website, app, and related services."
         path="/terms"
       />

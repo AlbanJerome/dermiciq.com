@@ -11,7 +11,7 @@ export default function Privacy() {
   return (
     <Layout>
       <SEO
-        title="Privacy Policy | DermicIQ™"
+        title="Privacy Policy | DermicIQ"
         description="How DermicIQ Technologies Inc. collects, uses, and protects personal information for dermiciq.com and the DermicIQ app."
         path="/privacy"
       />

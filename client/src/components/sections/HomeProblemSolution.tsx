@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { siteContent } from "@/config/siteContent";
+import { brandColors } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -33,7 +34,12 @@ export function HomeProblemSolution() {
               </p>
             </div>
             <p className="text-muted-foreground mt-6 leading-relaxed">{ps.solutionClosing}</p>
-            <Button className="mt-8" variant="secondary" asChild>
+            <Button
+              className="mt-8 border-primary/30"
+              variant="outline"
+              style={{ backgroundColor: brandColors.mintBg }}
+              asChild
+            >
               <Link href={ps.ctaSensitive.href}>{ps.ctaSensitive.label}</Link>
             </Button>
           </Card>

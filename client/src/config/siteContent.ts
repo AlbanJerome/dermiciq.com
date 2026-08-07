@@ -8,15 +8,15 @@ import { siteOrigin } from "@/lib/site";
 export const siteContent = {
   brand: {
     name: "DermicIQ Technologies Inc.",
-    shortName: "DermicIQ™",
-    productName: "DermicIQ™",
+    shortName: "DermicIQ",
+    productName: "DermicIQ",
     tagline: "Cosmetic ingredients explained for your skin, not for a scoreboard.",
     description:
       "DermicIQ™ is a tool that lines up product ingredients with what you already know about your skin: what irritates you, what you choose to avoid, and what you’ve learned from your own experience. It’s not another blanket “clean” or “toxic” stamp for everyone.",
   },
 
   meta: {
-    defaultTitle: "DermicIQ™ | Ingredient help that’s actually about you",
+    defaultTitle: "DermicIQ | Ingredient help that’s actually about you",
     defaultDescription:
       "DermicIQ is calm, clear, and built on one question: is this ingredient relevant to me? No universal safety score, no fear-first messaging.",
     keywords:
@@ -231,7 +231,7 @@ export const siteContent = {
 
   pages: {
     howItWorks: {
-      metaTitle: "How DermicIQ works | DermicIQ™",
+      metaTitle: "How DermicIQ works | DermicIQ",
       metaDescription:
         "A simple path from your skin details to clear ingredient context. No universal scores, no medical claims, no scare copy.",
       headline: "How DermicIQ Works",
@@ -286,7 +286,7 @@ export const siteContent = {
     },
 
     about: {
-      metaTitle: "About DermicIQ | DermicIQ™",
+      metaTitle: "About DermicIQ | DermicIQ",
       metaDescription:
         "A small team building calmer, personal ingredient help for people who are tired of one-size-fits-all scores. Our mission, what we do differently, and a note from us.",
       headline: "About DermicIQ",
@@ -320,7 +320,7 @@ export const siteContent = {
     },
 
     forSensitiveSkin: {
-      metaTitle: "For sensitive skin | DermicIQ™",
+      metaTitle: "For sensitive skin | DermicIQ",
       metaDescription:
         "When your skin is reactive, a green check from an app is cold comfort. DermicIQ matches an ingredient list to the history you already carry, without turning your face into a crowd default.",
       headline: "For sensitive skin",
@@ -363,7 +363,7 @@ export const siteContent = {
     },
 
     contact: {
-      metaTitle: "Contact | DermicIQ™",
+      metaTitle: "Contact | DermicIQ",
       metaDescription:
         "Get in touch with DermicIQ Technologies Inc. Send a message about the product, partnerships, or sensitive-skin questions.",
       headline: "Contact us",
@@ -379,7 +379,7 @@ export const siteContent = {
     },
 
     becomeAPartner: {
-      metaTitle: "Become a Partner | DermicIQ™",
+      metaTitle: "Become a Partner | DermicIQ",
       metaDescription:
         "Partner with DermicIQ to help your clients make more informed beauty decisions. Licensed beauty and aesthetic businesses can earn commission on eligible memberships.",
       headline: "Help Your Clients Make More Informed Beauty Decisions",
@@ -497,9 +497,7 @@ export const siteContent = {
   },
 
   footer: {
-    tagline: "Ingredient help that fits your skin, in plain language, no pile-on.",
-    location: "DermicIQ Technologies Inc.",
-    copyright: `© ${new Date().getFullYear()} DermicIQ Technologies Inc. All rights reserved.`,
+    copyright: "© 2026 DermicIQ Technologies Inc. | All rights reserved.",
     columns: [
       {
         title: "Product",

@@ -1,4 +1,5 @@
 import { siteContent } from "@/config/siteContent";
+import { brandColors } from "@/config/brand";
 import { publicAsset } from "@/lib/publicAsset";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -52,16 +53,22 @@ export function HomeHero() {
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center px-4 text-center sm:px-6 md:px-8">
         <h1
           className={cn(
-            "text-balance text-primary-foreground",
+            "text-balance",
             "text-hero-mobile sm:text-hero lg:text-hero-lg"
           )}
+          style={{ color: brandColors.softMint }}
         >
           {hero.headline}
         </h1>
         <p className="mt-5 max-w-2xl text-body-lg text-primary-foreground/90 sm:mt-6 sm:text-xl md:text-2xl md:leading-relaxed">
           {hero.subhead}
         </p>
-        <Button asChild size="pill-lg" className="mt-10 sm:mt-12">
+        <Button
+          asChild
+          size="pill-lg"
+          className="mt-10 border-transparent sm:mt-12"
+          style={{ backgroundColor: brandColors.headerBg, color: brandColors.charcoal }}
+        >
           <a
             href={href}
             target={openInNewTab ? "_blank" : undefined}

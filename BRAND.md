@@ -5,22 +5,23 @@ Source of truth on the marketing site: `client/src/config/brand.ts` + `client/sr
 
 ## Direction
 
-Clinical-calm mint and deep sea teal. Clean, trustworthy, light surfaces.
-
+Clinical-calm mint and bright aqua teal. Clean, trustworthy, light surfaces.  
 Not purple/indigo gradients. Not cream + serif + terracotta. Not dark-mode-first.
 
 ## Colors
 
 | Role | Name | Hex | Use |
 |------|------|-----|-----|
-| Recognition | Vibrant Turquoise | `#6AEEE8` | Logo highlight, accent chips |
+| Recognition | Light Cyan Aqua | `#76EEC6` | Logo highlight, subtle top-border accent, accent chips |
+| Header / Border | Bright Aqua Teal | `#40C0BA` | Lighter top header bar, top accent border, secondary badges |
 | Background | Minty Off-White | `#F8FFFE` | Page canvas |
-| Primary | Deep Sea Teal | `#005F5B` | CTAs, headings, links, theme-color |
+| Primary | Deep Sea Teal | `#005F5B` | CTAs, headings, primary links, theme-color |
 | Secondary | Soft Mint | `#C8F2EB` | Soft fills, section washes |
 | Text | Deep Charcoal Teal | `#223331` | Body copy |
 | Alert | Soft Coral | `#FF9E9E` | Errors / warnings |
 
 - **Theme / PWA chrome:** `#005F5B`
+- **Header background:** `#40C0BA` (replaces legacy dark forest green for a cohesive, lighter feel)
 - **Footer background:** deeper teal `hsl(177 100% 16%)`
 - **Footer foreground:** `#F8FFFE`
 
@@ -62,7 +63,9 @@ Prefer semantic tokens in components — not raw hex.
 |-------|---------|
 | `primary` | Deep Sea Teal `#005F5B` |
 | `primary-foreground` | Minty Off-White `#F8FFFE` |
-| `accent` | Vibrant Turquoise `#6AEEE8` |
+| `accent` | Light Cyan Aqua `#76EEC6` |
+| `header` / `header-accent` | Bright Aqua Teal `#40C0BA` |
+| `header-foreground` | Deep Charcoal Teal `#223331` |
 | `secondary` | Soft Mint `#C8F2EB` |
 | `destructive` | Soft Coral `#FF9E9E` |
 | `background` | Minty Off-White `#F8FFFE` |
@@ -72,7 +75,8 @@ Prefer semantic tokens in components — not raw hex.
 
 ```css
 :root {
-  --brand-turquoise: #6AEEE8;
+  --brand-cyan-aqua: #76EEC6;
+  --brand-header-bg: #40C0BA;
   --brand-mint-bg: #F8FFFE;
   --brand-teal: #005F5B;
   --brand-soft-mint: #C8F2EB;
@@ -90,12 +94,13 @@ Prefer semantic tokens in components — not raw hex.
 
 - Mint washes and soft secondary fills
 - Teal for primary CTAs, headings, and links
-- Turquoise sparingly for brand recognition
+- Light cyan-aqua and bright aqua teal for cohesive, lighter top headers/borders
 - Left-border accents in primary teal
 - Light, airy layouts with calm hierarchy
 
 **Don’t**
 
+- Dark forest green or heavy contrast dark borders at top headers
 - Purple / indigo gradient themes
 - Cream background + high-contrast serif + terracotta
 - Dark mode as the default brand surface
@@ -117,4 +122,3 @@ Display treatment: `rounded-2xl`, light shadow.
 1. Treat this file as the portable brand card for the marketing site.
 2. Keep `client/src/config/brand.ts` and `client/src/styles/brand-tokens.css` aligned with the hex values above.
 3. Platform (`dermiciq_code`) mirrors these hexes in `lib/design-system.ts` and its root `BRAND.md` — do not invent alternate teals.
-4. Product exception: the app keeps **near-black primary CTAs**; teal is accent-only there. Marketing CTAs stay Deep Sea Teal.

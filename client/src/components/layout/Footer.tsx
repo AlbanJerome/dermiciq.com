@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { siteContent } from "@/config/siteContent";
-import { MapPin } from "lucide-react";
+import { brandColors } from "@/config/brand";
 import { homeSectionHref } from "@/lib/site";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
@@ -20,18 +20,18 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4" data-testid="link-footer-logo">
               <BrandLogo size="footer" decorative loading="lazy" />
-              <span className="flex flex-col">
-                <span className="text-lg font-bold text-footer-foreground leading-tight">
+              <span className="flex flex-col min-w-0 leading-tight">
+                <span
+                  className="text-sm font-bold tracking-tight truncate"
+                  style={{ color: brandColors.mintBg }}
+                >
                   {brand.shortName}
                 </span>
-                <span className="text-xs text-footer-muted mt-0.5">Technologies Inc.</span>
+                <span className="text-nav-caption uppercase" style={{ color: "#e2f7f4" }}>
+                  Technologies Inc.
+                </span>
               </span>
             </Link>
-            <p className="text-footer-muted text-sm leading-relaxed mb-4">{footer.tagline}</p>
-            <div className="flex items-center gap-2 text-footer-muted text-sm">
-              <MapPin className="h-4 w-4 shrink-0" aria-hidden />
-              <span>{footer.location}</span>
-            </div>
           </div>
 
           {footer.columns.map((column) => (

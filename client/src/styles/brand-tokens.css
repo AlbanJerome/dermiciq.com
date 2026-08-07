@@ -4,7 +4,8 @@
 */
 :root {
   /* —— Brand primitives —— */
-  --brand-turquoise: #6aeee8;
+  --brand-cyan-aqua: #76eec6;
+  --brand-header-bg: #40c0ba;
   --brand-mint-bg: #f8fffe;
   --brand-teal: #005f5b;
   --brand-soft-mint: #c8f2eb;
@@ -47,9 +48,14 @@
   --muted: 169 40% 92%;
   --muted-foreground: 172 14% 38%;
 
-  /* Logo / highlight turquoise #6AEEE8 */
-  --accent: 174 78% 67%;
-  --accent-foreground: 177 100% 16%;
+  /* Logo / highlight — Light Cyan Aqua #76EEC6 */
+  --accent: 160 78% 70%;
+  --accent-foreground: 172 20% 17%;
+
+  /* Top header bar — Bright Aqua Teal #40C0BA */
+  --header: 177 50% 50%;
+  /* Charcoal on aqua for WCAG AA body/nav text */
+  --header-foreground: 172 20% 17%;
 
   /* Alert #FF9E9E */
   --destructive: 0 100% 81%;
@@ -59,7 +65,7 @@
   --ring: 177 100% 19%;
 
   --chart-1: 177 100% 19%;
-  --chart-2: 174 78% 67%;
+  --chart-2: 160 78% 70%;
   --chart-3: 169 55% 87%;
   --chart-4: 172 20% 17%;
   --chart-5: 0 100% 81%;
@@ -98,6 +104,10 @@
   --accent-border: hsl(var(--accent));
   --accent-border: hsl(
     from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+  --header-border: hsl(var(--header));
+  --header-border: hsl(
+    from hsl(var(--header)) h s calc(l + var(--opaque-button-border-intensity)) / alpha
   );
   --destructive-border: hsl(var(--destructive));
   --destructive-border: hsl(

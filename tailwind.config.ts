@@ -49,6 +49,11 @@ export default {
           foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
           border: "var(--accent-border)",
         },
+        header: {
+          DEFAULT: "hsl(var(--header) / <alpha-value>)",
+          foreground: "hsl(var(--header-foreground) / <alpha-value>)",
+          border: "var(--header-border)",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",

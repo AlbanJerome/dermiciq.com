@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { siteContent } from "@/config/siteContent";
+import { brandColors } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 
 export function HomeMissionVision() {
@@ -14,7 +15,10 @@ export function HomeMissionVision() {
             <p className="text-lg font-semibold text-primary mb-2">Mission</p>
             <p className="text-muted-foreground leading-relaxed text-lg">{m.mission}</p>
           </blockquote>
-          <div className="rounded-2xl bg-accent/35 border border-accent/40 px-6 py-5">
+          <div
+            className="rounded-2xl border border-accent/40 px-6 py-5"
+            style={{ backgroundColor: brandColors.mintBg }}
+          >
             <p className="text-sm font-bold uppercase tracking-widest text-primary mb-2">Core insight</p>
             <p className="text-xl font-semibold text-foreground leading-snug">{m.coreInsight}</p>
           </div>
@@ -23,7 +27,12 @@ export function HomeMissionVision() {
             <p className="text-muted-foreground leading-relaxed mb-4">{m.visionLead}</p>
             <p className="text-muted-foreground leading-relaxed">{m.visionBody}</p>
           </div>
-          <Button variant="outline" className="border-primary/30" asChild>
+          <Button
+            variant="outline"
+            className="border-primary/30"
+            style={{ backgroundColor: brandColors.mintBg }}
+            asChild
+          >
             <Link href={m.ctaAbout.href}>{m.ctaAbout.label}</Link>
           </Button>
         </div>

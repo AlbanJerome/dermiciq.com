@@ -8,6 +8,7 @@ import {
 import { ContentPageBody, ContentPageHeader } from "@/components/layout/ContentPage";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/ui/seo";
+import { brandColors } from "@/config/brand";
 import { siteContent } from "@/config/siteContent";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -34,13 +35,13 @@ export default function BecomeAPartnerPage() {
               {p.primaryCta.label}
             </a>
           </Button>
+          {/* Destination TBD — wire href when partner flow URL is confirmed. */}
           <Button
             type="button"
-            variant="ghost"
+            variant="outline"
             size="pill-sm"
-            disabled
-            aria-disabled="true"
-            className="text-muted-foreground"
+            className="border-primary/30 text-foreground"
+            style={{ backgroundColor: brandColors.mintBg }}
           >
             {p.secondaryCta.label}
           </Button>

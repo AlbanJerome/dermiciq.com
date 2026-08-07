@@ -1,12 +1,14 @@
 /**
  * Single source of truth for DermicIQ™ visual brand primitives.
  * CSS semantic tokens in `styles/brand-tokens.css` must stay in sync with these values.
- * Prefer semantic Tailwind classes (`bg-primary`, `text-accent`) in components — not these hexes.
+ * Prefer semantic Tailwind classes (`bg-primary`, `text-accent`, `bg-header`) in components — not these hexes.
  */
 
 export const brandColors = {
-  /** Logo / recognition — Vibrant Turquoise */
-  turquoise: "#6AEEE8",
+  /** Logo / recognition — Light Cyan Aqua */
+  cyanAqua: "#76EEC6",
+  /** Header / top border — Bright Aqua Teal */
+  headerBg: "#40C0BA",
   /** Base background — Minty Off-White */
   mintBg: "#F8FFFE",
   /** Primary / actions — Deep Sea Teal */

@@ -11,7 +11,7 @@ export default function Cookies() {
   return (
     <Layout>
       <SEO
-        title="Cookie Policy | DermicIQ™"
+        title="Cookie Policy | DermicIQ"
         description="How DermicIQ Technologies Inc. uses cookies and similar technologies on dermiciq.com and the DermicIQ app."
         path="/cookies"
       />
