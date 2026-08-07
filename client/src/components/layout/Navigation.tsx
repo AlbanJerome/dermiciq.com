@@ -57,11 +57,19 @@ export function Navigation() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          {navigation.links.map((link) => (
-            <Link key={link.href} href={link.href} className={navLinkClass(link.href)}>
-              {link.label}
-            </Link>
-          ))}
+          {navigation.links.map((link) => {
+            const external = link.href.startsWith("http");
+            const className = navLinkClass(external ? "" : link.href);
+            return external ? (
+              <a key={link.href} href={link.href} className={className}>
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} className={className}>
+                {link.label}
+              </Link>
+            );
+          })}
           <Button size="sm" variant="inverse" asChild>
             <a
               href={navigation.cta.href}
@@ -88,11 +96,19 @@ export function Navigation() {
       {isOpen && (
         <div className="lg:hidden fixed inset-0 top-16 bg-primary z-40 border-t border-primary-foreground/10">
           <nav className="container-content flex flex-col gap-1 py-6">
-            {navigation.links.map((link) => (
-              <Link key={link.href} href={link.href} className={mobileNavLinkClass(link.href)}>
-                {link.label}
-              </Link>
-            ))}
+            {navigation.links.map((link) => {
+              const external = link.href.startsWith("http");
+              const className = mobileNavLinkClass(external ? "" : link.href);
+              return external ? (
+                <a key={link.href} href={link.href} className={className}>
+                  {link.label}
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href} className={className}>
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="pt-4">
               <Button className="w-full" variant="inverse" asChild>
                 <a

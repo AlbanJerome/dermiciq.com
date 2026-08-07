@@ -46,7 +46,7 @@ export function Footer() {
                   return (
                     <li key={link.label}>
                       {isExternal ? (
-                        <a href={href} className={className} target="_blank" rel="noopener noreferrer">
+                        <a href={href} className={className}>
                           {link.label}
                         </a>
                       ) : link.href.startsWith("/") && !("hash" in link && link.hash) ? (
