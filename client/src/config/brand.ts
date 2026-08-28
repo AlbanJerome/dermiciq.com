@@ -1,3 +1,4 @@
+/**
  * Single source of truth for DermicIQ visual brand primitives.
  * CSS semantic tokens in `styles/brand-tokens.css` must stay in sync with these values.
  * Prefer semantic Tailwind classes (`bg-primary`, `text-accent`, `bg-header`) in components — not these hexes.
